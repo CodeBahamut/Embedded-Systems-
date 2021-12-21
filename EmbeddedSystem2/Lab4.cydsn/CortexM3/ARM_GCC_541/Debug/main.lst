@@ -1,0 +1,1186 @@
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccipJJXH.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.PWM_TACHO_InterruptHandler,"ax",%progbits
+  20              		.align	2
+  21              		.global	PWM_TACHO_InterruptHandler
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	PWM_TACHO_InterruptHandler, %function
+  25              	PWM_TACHO_InterruptHandler:
+  26              	.LFB64:
+  27              		.file 1 "main.c"
+   1:main.c        **** /* ========================================
+   2:main.c        ****  *
+   3:main.c        ****  * Copyright YOUR COMPANY, THE YEAR
+   4:main.c        ****  * All Rights Reserved
+   5:main.c        ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:main.c        ****  *
+   7:main.c        ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:main.c        ****  * WHICH IS THE PROPERTY OF your company.
+   9:main.c        ****  *
+  10:main.c        ****  * ========================================
+  11:main.c        **** */
+  12:main.c        **** #include "project.h"
+  13:main.c        **** #include <stdio.h>
+  14:main.c        **** #include <stdlib.h>
+  15:main.c        **** /* The clock frequency for the PWM_TACHO.
+  16:main.c        **** *
+  17:main.c        **** * It must be in KHz. Please update this define if the clock is updated in the
+  18:main.c        **** * Top-Design.
+  19:main.c        **** */
+  20:main.c        **** #define PWM_FREQ 100
+  21:main.c        **** /* Define to represent 1 second in terms of millisecond */
+  22:main.c        **** #define NO_OF_MSEC 1000
+  23:main.c        **** /* Interrupt occurrence flag */
+  24:main.c        **** uint8 compare_occured = 0;
+  25:main.c        **** /* Define your Interrupt Service Routine
+  26:main.c        **** *
+  27:main.c        **** * The ISR has to read the Status Register of the PWM_TACHO to clear the
+  28:main.c        **** * interrupt bits and indicate the occurrence of an interrupt.
+  29:main.c        **** *
+  30:main.c        **** * You can use any of the 3 methods covered before but remember to make it as
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccipJJXH.s 			page 2
+
+
+  31:main.c        **** * short as possible.
+  32:main.c        **** */
+  33:main.c        **** /* TODO: Write your ISR */
+  34:main.c        **** 
+  35:main.c        **** CY_ISR(PWM_TACHO_InterruptHandler){
+  28              		.loc 1 35 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 08B5     		push	{r3, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 3, -8
+  35              		.cfi_offset 14, -4
+  36:main.c        ****     PWM_TACHO_ReadStatusRegister();
+  36              		.loc 1 36 0
+  37 0002 FFF7FEFF 		bl	PWM_TACHO_ReadStatusRegister
+  38              	.LVL0:
+  37:main.c        ****     compare_occured = 1;
+  39              		.loc 1 37 0
+  40 0006 0122     		movs	r2, #1
+  41 0008 014B     		ldr	r3, .L3
+  42 000a 1A70     		strb	r2, [r3]
+  43 000c 08BD     		pop	{r3, pc}
+  44              	.L4:
+  45 000e 00BF     		.align	2
+  46              	.L3:
+  47 0010 00000000 		.word	.LANCHOR0
+  48              		.cfi_endproc
+  49              	.LFE64:
+  50              		.size	PWM_TACHO_InterruptHandler, .-PWM_TACHO_InterruptHandler
+  51              		.section	.text.main,"ax",%progbits
+  52              		.align	2
+  53              		.global	main
+  54              		.thumb
+  55              		.thumb_func
+  56              		.type	main, %function
+  57              	main:
+  58              	.LFB65:
+  38:main.c        **** }
+  39:main.c        **** 
+  40:main.c        **** 
+  41:main.c        **** int main(void) {
+  59              		.loc 1 41 0
+  60              		.cfi_startproc
+  61              		@ args = 0, pretend = 0, frame = 40
+  62              		@ frame_needed = 0, uses_anonymous_args = 0
+  63 0000 30B5     		push	{r4, r5, lr}
+  64              		.cfi_def_cfa_offset 12
+  65              		.cfi_offset 4, -12
+  66              		.cfi_offset 5, -8
+  67              		.cfi_offset 14, -4
+  68 0002 8BB0     		sub	sp, sp, #44
+  69              		.cfi_def_cfa_offset 56
+  42:main.c        **** /* Variable to store the period of the PWM_TACHO */
+  43:main.c        **** static uint16 pwm_window_period = 0;
+  44:main.c        **** /* Variable to store the count value after capture */
+  45:main.c        **** static uint32 tacho_count = 0;
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccipJJXH.s 			page 3
+
+
+  46:main.c        **** /* Variable to store the measured frequency */
+  47:main.c        **** volatile uint32 input_freq = 0;
+  70              		.loc 1 47 0
+  71 0004 0024     		movs	r4, #0
+  72 0006 0994     		str	r4, [sp, #36]
+  48:main.c        **** /* Variable to store the revolutions per minute */
+  49:main.c        **** volatile uint32 rpm = 0;
+  73              		.loc 1 49 0
+  74 0008 0894     		str	r4, [sp, #32]
+  50:main.c        **** 
+  51:main.c        **** char buffer [32];
+  52:main.c        **** 
+  53:main.c        **** /* Enable global interrupts. */
+  54:main.c        **** CyGlobalIntEnable;
+  75              		.loc 1 54 0
+  76              		.syntax unified
+  77              	@ 54 "main.c" 1
+  78 000a 62B6     		CPSIE   i
+  79              	@ 0 "" 2
+  55:main.c        **** /* Place your initialization code here */
+  56:main.c        **** /* TODO: Initialize the components */
+  57:main.c        ****     
+  58:main.c        **** IRQ_TACHO_StartEx(PWM_TACHO_InterruptHandler);
+  80              		.loc 1 58 0
+  81              		.thumb
+  82              		.syntax unified
+  83 000c 1C48     		ldr	r0, .L9
+  84 000e FFF7FEFF 		bl	IRQ_TACHO_StartEx
+  85              	.LVL1:
+  59:main.c        **** PWM_MOTOR_Start();
+  86              		.loc 1 59 0
+  87 0012 FFF7FEFF 		bl	PWM_MOTOR_Start
+  88              	.LVL2:
+  60:main.c        **** PWM_TACHO_Start();
+  89              		.loc 1 60 0
+  90 0016 FFF7FEFF 		bl	PWM_TACHO_Start
+  91              	.LVL3:
+  61:main.c        **** Counter_TACHO_Start();
+  92              		.loc 1 61 0
+  93 001a FFF7FEFF 		bl	Counter_TACHO_Start
+  94              	.LVL4:
+  62:main.c        **** UART_1_Start();
+  95              		.loc 1 62 0
+  96 001e FFF7FEFF 		bl	UART_1_Start
+  97              	.LVL5:
+  63:main.c        **** PWM_MOTOR_WriteCompare(50);
+  98              		.loc 1 63 0
+  99 0022 3220     		movs	r0, #50
+ 100 0024 FFF7FEFF 		bl	PWM_MOTOR_WriteCompare
+ 101              	.LVL6:
+  64:main.c        **** 
+  65:main.c        **** 
+  66:main.c        **** /* Obtain the time window during which the counter will count. Remember to
+  67:main.c        **** * update this value according to PWM_FREQ.
+  68:main.c        **** */
+  69:main.c        **** /* TODO: Compute pwm_window_period */
+  70:main.c        **** pwm_window_period = 0;
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccipJJXH.s 			page 4
+
+
+ 102              		.loc 1 70 0
+ 103 0028 164D     		ldr	r5, .L9+4
+ 104 002a 6C80     		strh	r4, [r5, #2]	@ movhi
+  71:main.c        **** pwm_window_period = PWM_TACHO_ReadPeriod() / PWM_FREQ;
+ 105              		.loc 1 71 0
+ 106 002c FFF7FEFF 		bl	PWM_TACHO_ReadPeriod
+ 107              	.LVL7:
+ 108 0030 154B     		ldr	r3, .L9+8
+ 109 0032 A3FB0023 		umull	r2, r3, r3, r0
+ 110 0036 5B09     		lsrs	r3, r3, #5
+ 111 0038 6B80     		strh	r3, [r5, #2]	@ movhi
+ 112              	.L6:
+  72:main.c        **** for(;;) {
+  73:main.c        **** /* Check if the PWM interrupt has occurred
+  74:main.c        **** *
+  75:main.c        **** * As defined in the settings, the PWM_TACHO raises an interrupt in the
+  76:main.c        **** * Compare event. This interrupt occurs every 100 ms. When an interrupt
+  77:main.c        **** * occurs, the program performs the frequency computation.
+  78:main.c        **** */
+  79:main.c        **** if (compare_occured == 1) {
+ 113              		.loc 1 79 0
+ 114 003a 124B     		ldr	r3, .L9+4
+ 115 003c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 116 003e 012B     		cmp	r3, #1
+ 117 0040 FBD1     		bne	.L6
+  80:main.c        **** /* Read the COUNTER_TACHO capture register */
+  81:main.c        **** /* TODO: Read the counter */
+  82:main.c        **** tacho_count = Counter_TACHO_ReadCapture();
+ 118              		.loc 1 82 0
+ 119 0042 FFF7FEFF 		bl	Counter_TACHO_ReadCapture
+ 120              	.LVL8:
+  83:main.c        **** /* Convert the counts to frequency.
+  84:main.c        **** *
+  85:main.c        **** 
+  86:main.c        **** * The frequency is the number of counts in seconds. In this case,
+  87:main.c        **** * the number of counts within one "PWM_TACHO time window" (100 ms),
+  88:main.c        **** * hence you need to find it for 1000 milliseconds.
+  89:main.c        **** */
+  90:main.c        **** /* TODO: Compute the measured frequency */
+  91:main.c        **** input_freq = ((tacho_count *NO_OF_MSEC) / pwm_window_period);
+ 121              		.loc 1 91 0
+ 122 0046 4FF47A73 		mov	r3, #1000
+ 123 004a 03FB00F0 		mul	r0, r3, r0
+ 124 004e 0D4C     		ldr	r4, .L9+4
+ 125 0050 6388     		ldrh	r3, [r4, #2]
+ 126 0052 B0FBF3F0 		udiv	r0, r0, r3
+ 127 0056 0990     		str	r0, [sp, #36]
+  92:main.c        **** 
+  93:main.c        **** /* Convert the frequency into rpm
+  94:main.c        **** *
+  95:main.c        **** * Use Equation 1 to compute the revolutions per minute
+  96:main.c        **** */
+  97:main.c        **** /* TODO: Compute the rpm */
+  98:main.c        **** rpm = (60 * input_freq);
+ 128              		.loc 1 98 0
+ 129 0058 099B     		ldr	r3, [sp, #36]
+ 130 005a C3EB0313 		rsb	r3, r3, r3, lsl #4
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccipJJXH.s 			page 5
+
+
+ 131 005e 9A00     		lsls	r2, r3, #2
+ 132 0060 0892     		str	r2, [sp, #32]
+  99:main.c        **** 
+ 100:main.c        **** itoa(rpm,buffer,10);
+ 133              		.loc 1 100 0
+ 134 0062 0898     		ldr	r0, [sp, #32]
+ 135 0064 0A22     		movs	r2, #10
+ 136 0066 6946     		mov	r1, sp
+ 137 0068 FFF7FEFF 		bl	itoa
+ 138              	.LVL9:
+ 101:main.c        **** UART_1_PutString(buffer);
+ 139              		.loc 1 101 0
+ 140 006c 6846     		mov	r0, sp
+ 141 006e FFF7FEFF 		bl	UART_1_PutString
+ 142              	.LVL10:
+ 102:main.c        **** UART_1_PutString("  ");
+ 143              		.loc 1 102 0
+ 144 0072 0648     		ldr	r0, .L9+12
+ 145 0074 FFF7FEFF 		bl	UART_1_PutString
+ 146              	.LVL11:
+ 103:main.c        **** /* Clear the interrupt flag */
+ 104:main.c        **** /* TODO: Lower the interrupt occurrence flag. */
+ 105:main.c        **** compare_occured = 0;
+ 147              		.loc 1 105 0
+ 148 0078 0023     		movs	r3, #0
+ 149 007a 2370     		strb	r3, [r4]
+ 150 007c DDE7     		b	.L6
+ 151              	.L10:
+ 152 007e 00BF     		.align	2
+ 153              	.L9:
+ 154 0080 00000000 		.word	PWM_TACHO_InterruptHandler
+ 155 0084 00000000 		.word	.LANCHOR0
+ 156 0088 1F85EB51 		.word	1374389535
+ 157 008c 00000000 		.word	.LC0
+ 158              		.cfi_endproc
+ 159              	.LFE65:
+ 160              		.size	main, .-main
+ 161              		.global	compare_occured
+ 162              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 163              		.align	2
+ 164              	.LC0:
+ 165 0000 202000   		.ascii	"  \000"
+ 166              		.bss
+ 167              		.align	1
+ 168              		.set	.LANCHOR0,. + 0
+ 169              		.type	compare_occured, %object
+ 170              		.size	compare_occured, 1
+ 171              	compare_occured:
+ 172 0000 00       		.space	1
+ 173 0001 00       		.space	1
+ 174              		.type	pwm_window_period.7135, %object
+ 175              		.size	pwm_window_period.7135, 2
+ 176              	pwm_window_period.7135:
+ 177 0002 0000     		.space	2
+ 178              		.text
+ 179              	.Letext0:
+ 180              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccipJJXH.s 			page 6
+
+
+ 181              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 182              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 183              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 184              		.file 6 "Generated_Source\\PSoC5/PWM_TACHO.h"
+ 185              		.file 7 "Generated_Source\\PSoC5/IRQ_TACHO.h"
+ 186              		.file 8 "Generated_Source\\PSoC5/PWM_MOTOR.h"
+ 187              		.file 9 "Generated_Source\\PSoC5/Counter_TACHO.h"
+ 188              		.file 10 "Generated_Source\\PSoC5/UART_1.h"
+ 189              		.file 11 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4
+ 190              		.section	.debug_info,"",%progbits
+ 191              	.Ldebug_info0:
+ 192 0000 95020000 		.4byte	0x295
+ 193 0004 0400     		.2byte	0x4
+ 194 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 195 000a 04       		.byte	0x4
+ 196 000b 01       		.uleb128 0x1
+ 197 000c AD000000 		.4byte	.LASF35
+ 198 0010 0C       		.byte	0xc
+ 199 0011 1C020000 		.4byte	.LASF36
+ 200 0015 53000000 		.4byte	.LASF37
+ 201 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 202 001d 00000000 		.4byte	0
+ 203 0021 00000000 		.4byte	.Ldebug_line0
+ 204 0025 02       		.uleb128 0x2
+ 205 0026 01       		.byte	0x1
+ 206 0027 06       		.byte	0x6
+ 207 0028 AC020000 		.4byte	.LASF0
+ 208 002c 02       		.uleb128 0x2
+ 209 002d 01       		.byte	0x1
+ 210 002e 08       		.byte	0x8
+ 211 002f 9F000000 		.4byte	.LASF1
+ 212 0033 02       		.uleb128 0x2
+ 213 0034 02       		.byte	0x2
+ 214 0035 05       		.byte	0x5
+ 215 0036 8D020000 		.4byte	.LASF2
+ 216 003a 02       		.uleb128 0x2
+ 217 003b 02       		.byte	0x2
+ 218 003c 07       		.byte	0x7
+ 219 003d 4D010000 		.4byte	.LASF3
+ 220 0041 03       		.uleb128 0x3
+ 221 0042 1D000000 		.4byte	.LASF9
+ 222 0046 02       		.byte	0x2
+ 223 0047 3F       		.byte	0x3f
+ 224 0048 4C000000 		.4byte	0x4c
+ 225 004c 02       		.uleb128 0x2
+ 226 004d 04       		.byte	0x4
+ 227 004e 05       		.byte	0x5
+ 228 004f 97020000 		.4byte	.LASF4
+ 229 0053 02       		.uleb128 0x2
+ 230 0054 04       		.byte	0x4
+ 231 0055 07       		.byte	0x7
+ 232 0056 3B010000 		.4byte	.LASF5
+ 233 005a 02       		.uleb128 0x2
+ 234 005b 08       		.byte	0x8
+ 235 005c 05       		.byte	0x5
+ 236 005d 0E020000 		.4byte	.LASF6
+ 237 0061 02       		.uleb128 0x2
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccipJJXH.s 			page 7
+
+
+ 238 0062 08       		.byte	0x8
+ 239 0063 07       		.byte	0x7
+ 240 0064 D1010000 		.4byte	.LASF7
+ 241 0068 04       		.uleb128 0x4
+ 242 0069 04       		.byte	0x4
+ 243 006a 05       		.byte	0x5
+ 244 006b 696E7400 		.ascii	"int\000"
+ 245 006f 02       		.uleb128 0x2
+ 246 0070 04       		.byte	0x4
+ 247 0071 07       		.byte	0x7
+ 248 0072 C4010000 		.4byte	.LASF8
+ 249 0076 03       		.uleb128 0x3
+ 250 0077 FD010000 		.4byte	.LASF10
+ 251 007b 03       		.byte	0x3
+ 252 007c 2C       		.byte	0x2c
+ 253 007d 41000000 		.4byte	0x41
+ 254 0081 05       		.uleb128 0x5
+ 255 0082 77020000 		.4byte	.LASF11
+ 256 0086 04       		.byte	0x4
+ 257 0087 E801     		.2byte	0x1e8
+ 258 0089 2C000000 		.4byte	0x2c
+ 259 008d 05       		.uleb128 0x5
+ 260 008e B1010000 		.4byte	.LASF12
+ 261 0092 04       		.byte	0x4
+ 262 0093 E901     		.2byte	0x1e9
+ 263 0095 3A000000 		.4byte	0x3a
+ 264 0099 05       		.uleb128 0x5
+ 265 009a B8010000 		.4byte	.LASF13
+ 266 009e 04       		.byte	0x4
+ 267 009f EA01     		.2byte	0x1ea
+ 268 00a1 53000000 		.4byte	0x53
+ 269 00a5 02       		.uleb128 0x2
+ 270 00a6 04       		.byte	0x4
+ 271 00a7 04       		.byte	0x4
+ 272 00a8 94000000 		.4byte	.LASF14
+ 273 00ac 02       		.uleb128 0x2
+ 274 00ad 08       		.byte	0x8
+ 275 00ae 04       		.byte	0x4
+ 276 00af 9A010000 		.4byte	.LASF15
+ 277 00b3 02       		.uleb128 0x2
+ 278 00b4 01       		.byte	0x1
+ 279 00b5 08       		.byte	0x8
+ 280 00b6 23020000 		.4byte	.LASF16
+ 281 00ba 06       		.uleb128 0x6
+ 282 00bb 99000000 		.4byte	0x99
+ 283 00bf 02       		.uleb128 0x2
+ 284 00c0 08       		.byte	0x8
+ 285 00c1 04       		.byte	0x4
+ 286 00c2 A0020000 		.4byte	.LASF17
+ 287 00c6 02       		.uleb128 0x2
+ 288 00c7 04       		.byte	0x4
+ 289 00c8 07       		.byte	0x7
+ 290 00c9 05020000 		.4byte	.LASF18
+ 291 00cd 07       		.uleb128 0x7
+ 292 00ce 7F010000 		.4byte	.LASF38
+ 293 00d2 01       		.byte	0x1
+ 294 00d3 23       		.byte	0x23
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccipJJXH.s 			page 8
+
+
+ 295 00d4 00000000 		.4byte	.LFB64
+ 296 00d8 14000000 		.4byte	.LFE64-.LFB64
+ 297 00dc 01       		.uleb128 0x1
+ 298 00dd 9C       		.byte	0x9c
+ 299 00de EC000000 		.4byte	0xec
+ 300 00e2 08       		.uleb128 0x8
+ 301 00e3 06000000 		.4byte	.LVL0
+ 302 00e7 1F020000 		.4byte	0x21f
+ 303 00eb 00       		.byte	0
+ 304 00ec 09       		.uleb128 0x9
+ 305 00ed BF010000 		.4byte	.LASF39
+ 306 00f1 01       		.byte	0x1
+ 307 00f2 29       		.byte	0x29
+ 308 00f3 68000000 		.4byte	0x68
+ 309 00f7 00000000 		.4byte	.LFB65
+ 310 00fb 90000000 		.4byte	.LFE65-.LFB65
+ 311 00ff 01       		.uleb128 0x1
+ 312 0100 9C       		.byte	0x9c
+ 313 0101 ED010000 		.4byte	0x1ed
+ 314 0105 0A       		.uleb128 0xa
+ 315 0106 6D010000 		.4byte	.LASF19
+ 316 010a 01       		.byte	0x1
+ 317 010b 2B       		.byte	0x2b
+ 318 010c 8D000000 		.4byte	0x8d
+ 319 0110 05       		.uleb128 0x5
+ 320 0111 03       		.byte	0x3
+ 321 0112 02000000 		.4byte	pwm_window_period.7135
+ 322 0116 0B       		.uleb128 0xb
+ 323 0117 3C020000 		.4byte	.LASF40
+ 324 011b 01       		.byte	0x1
+ 325 011c 2D       		.byte	0x2d
+ 326 011d 99000000 		.4byte	0x99
+ 327 0121 0A       		.uleb128 0xa
+ 328 0122 65020000 		.4byte	.LASF20
+ 329 0126 01       		.byte	0x1
+ 330 0127 2F       		.byte	0x2f
+ 331 0128 BA000000 		.4byte	0xba
+ 332 012c 02       		.uleb128 0x2
+ 333 012d 91       		.byte	0x91
+ 334 012e 6C       		.sleb128 -20
+ 335 012f 0C       		.uleb128 0xc
+ 336 0130 72706D00 		.ascii	"rpm\000"
+ 337 0134 01       		.byte	0x1
+ 338 0135 31       		.byte	0x31
+ 339 0136 BA000000 		.4byte	0xba
+ 340 013a 02       		.uleb128 0x2
+ 341 013b 91       		.byte	0x91
+ 342 013c 68       		.sleb128 -24
+ 343 013d 0A       		.uleb128 0xa
+ 344 013e 70020000 		.4byte	.LASF21
+ 345 0142 01       		.byte	0x1
+ 346 0143 33       		.byte	0x33
+ 347 0144 ED010000 		.4byte	0x1ed
+ 348 0148 02       		.uleb128 0x2
+ 349 0149 91       		.byte	0x91
+ 350 014a 48       		.sleb128 -56
+ 351 014b 0D       		.uleb128 0xd
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccipJJXH.s 			page 9
+
+
+ 352 014c 12000000 		.4byte	.LVL1
+ 353 0150 2A020000 		.4byte	0x22a
+ 354 0154 62010000 		.4byte	0x162
+ 355 0158 0E       		.uleb128 0xe
+ 356 0159 01       		.uleb128 0x1
+ 357 015a 50       		.byte	0x50
+ 358 015b 05       		.uleb128 0x5
+ 359 015c 03       		.byte	0x3
+ 360 015d 00000000 		.4byte	PWM_TACHO_InterruptHandler
+ 361 0161 00       		.byte	0
+ 362 0162 08       		.uleb128 0x8
+ 363 0163 16000000 		.4byte	.LVL2
+ 364 0167 35020000 		.4byte	0x235
+ 365 016b 08       		.uleb128 0x8
+ 366 016c 1A000000 		.4byte	.LVL3
+ 367 0170 40020000 		.4byte	0x240
+ 368 0174 08       		.uleb128 0x8
+ 369 0175 1E000000 		.4byte	.LVL4
+ 370 0179 4B020000 		.4byte	0x24b
+ 371 017d 08       		.uleb128 0x8
+ 372 017e 22000000 		.4byte	.LVL5
+ 373 0182 56020000 		.4byte	0x256
+ 374 0186 0D       		.uleb128 0xd
+ 375 0187 28000000 		.4byte	.LVL6
+ 376 018b 61020000 		.4byte	0x261
+ 377 018f 9A010000 		.4byte	0x19a
+ 378 0193 0E       		.uleb128 0xe
+ 379 0194 01       		.uleb128 0x1
+ 380 0195 50       		.byte	0x50
+ 381 0196 02       		.uleb128 0x2
+ 382 0197 08       		.byte	0x8
+ 383 0198 32       		.byte	0x32
+ 384 0199 00       		.byte	0
+ 385 019a 08       		.uleb128 0x8
+ 386 019b 30000000 		.4byte	.LVL7
+ 387 019f 6C020000 		.4byte	0x26c
+ 388 01a3 08       		.uleb128 0x8
+ 389 01a4 46000000 		.4byte	.LVL8
+ 390 01a8 77020000 		.4byte	0x277
+ 391 01ac 0D       		.uleb128 0xd
+ 392 01ad 6C000000 		.4byte	.LVL9
+ 393 01b1 82020000 		.4byte	0x282
+ 394 01b5 C5010000 		.4byte	0x1c5
+ 395 01b9 0E       		.uleb128 0xe
+ 396 01ba 01       		.uleb128 0x1
+ 397 01bb 51       		.byte	0x51
+ 398 01bc 02       		.uleb128 0x2
+ 399 01bd 7D       		.byte	0x7d
+ 400 01be 00       		.sleb128 0
+ 401 01bf 0E       		.uleb128 0xe
+ 402 01c0 01       		.uleb128 0x1
+ 403 01c1 52       		.byte	0x52
+ 404 01c2 01       		.uleb128 0x1
+ 405 01c3 3A       		.byte	0x3a
+ 406 01c4 00       		.byte	0
+ 407 01c5 0D       		.uleb128 0xd
+ 408 01c6 72000000 		.4byte	.LVL10
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccipJJXH.s 			page 10
+
+
+ 409 01ca 8D020000 		.4byte	0x28d
+ 410 01ce D9010000 		.4byte	0x1d9
+ 411 01d2 0E       		.uleb128 0xe
+ 412 01d3 01       		.uleb128 0x1
+ 413 01d4 50       		.byte	0x50
+ 414 01d5 02       		.uleb128 0x2
+ 415 01d6 7D       		.byte	0x7d
+ 416 01d7 00       		.sleb128 0
+ 417 01d8 00       		.byte	0
+ 418 01d9 0F       		.uleb128 0xf
+ 419 01da 78000000 		.4byte	.LVL11
+ 420 01de 8D020000 		.4byte	0x28d
+ 421 01e2 0E       		.uleb128 0xe
+ 422 01e3 01       		.uleb128 0x1
+ 423 01e4 50       		.byte	0x50
+ 424 01e5 05       		.uleb128 0x5
+ 425 01e6 03       		.byte	0x3
+ 426 01e7 00000000 		.4byte	.LC0
+ 427 01eb 00       		.byte	0
+ 428 01ec 00       		.byte	0
+ 429 01ed 10       		.uleb128 0x10
+ 430 01ee B3000000 		.4byte	0xb3
+ 431 01f2 FD010000 		.4byte	0x1fd
+ 432 01f6 11       		.uleb128 0x11
+ 433 01f7 C6000000 		.4byte	0xc6
+ 434 01fb 1F       		.byte	0x1f
+ 435 01fc 00       		.byte	0
+ 436 01fd 12       		.uleb128 0x12
+ 437 01fe 60010000 		.4byte	.LASF22
+ 438 0202 05       		.byte	0x5
+ 439 0203 1207     		.2byte	0x712
+ 440 0205 09020000 		.4byte	0x209
+ 441 0209 06       		.uleb128 0x6
+ 442 020a 76000000 		.4byte	0x76
+ 443 020e 13       		.uleb128 0x13
+ 444 020f 0D000000 		.4byte	.LASF23
+ 445 0213 01       		.byte	0x1
+ 446 0214 18       		.byte	0x18
+ 447 0215 81000000 		.4byte	0x81
+ 448 0219 05       		.uleb128 0x5
+ 449 021a 03       		.byte	0x3
+ 450 021b 00000000 		.4byte	compare_occured
+ 451 021f 14       		.uleb128 0x14
+ 452 0220 48020000 		.4byte	.LASF24
+ 453 0224 48020000 		.4byte	.LASF24
+ 454 0228 06       		.byte	0x6
+ 455 0229 97       		.byte	0x97
+ 456 022a 14       		.uleb128 0x14
+ 457 022b 27000000 		.4byte	.LASF25
+ 458 022f 27000000 		.4byte	.LASF25
+ 459 0233 07       		.byte	0x7
+ 460 0234 18       		.byte	0x18
+ 461 0235 14       		.uleb128 0x14
+ 462 0236 A1010000 		.4byte	.LASF26
+ 463 023a A1010000 		.4byte	.LASF26
+ 464 023e 08       		.byte	0x8
+ 465 023f 92       		.byte	0x92
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccipJJXH.s 			page 11
+
+
+ 466 0240 14       		.uleb128 0x14
+ 467 0241 7D020000 		.4byte	.LASF27
+ 468 0245 7D020000 		.4byte	.LASF27
+ 469 0249 06       		.byte	0x6
+ 470 024a 92       		.byte	0x92
+ 471 024b 14       		.uleb128 0x14
+ 472 024c 28020000 		.4byte	.LASF28
+ 473 0250 28020000 		.4byte	.LASF28
+ 474 0254 09       		.byte	0x9
+ 475 0255 4F       		.byte	0x4f
+ 476 0256 14       		.uleb128 0x14
+ 477 0257 00000000 		.4byte	.LASF29
+ 478 025b 00000000 		.4byte	.LASF29
+ 479 025f 0A       		.byte	0xa
+ 480 0260 54       		.byte	0x54
+ 481 0261 14       		.uleb128 0x14
+ 482 0262 C9020000 		.4byte	.LASF30
+ 483 0266 C9020000 		.4byte	.LASF30
+ 484 026a 08       		.byte	0x8
+ 485 026b C3       		.byte	0xc3
+ 486 026c 14       		.uleb128 0x14
+ 487 026d E8010000 		.4byte	.LASF31
+ 488 0271 E8010000 		.4byte	.LASF31
+ 489 0275 06       		.byte	0x6
+ 490 0276 C0       		.byte	0xc0
+ 491 0277 14       		.uleb128 0x14
+ 492 0278 39000000 		.4byte	.LASF32
+ 493 027c 39000000 		.4byte	.LASF32
+ 494 0280 09       		.byte	0x9
+ 495 0281 5E       		.byte	0x5e
+ 496 0282 14       		.uleb128 0x14
+ 497 0283 9A000000 		.4byte	.LASF33
+ 498 0287 9A000000 		.4byte	.LASF33
+ 499 028b 0B       		.byte	0xb
+ 500 028c CB       		.byte	0xcb
+ 501 028d 14       		.uleb128 0x14
+ 502 028e B8020000 		.4byte	.LASF34
+ 503 0292 B8020000 		.4byte	.LASF34
+ 504 0296 0A       		.byte	0xa
+ 505 0297 8B       		.byte	0x8b
+ 506 0298 00       		.byte	0
+ 507              		.section	.debug_abbrev,"",%progbits
+ 508              	.Ldebug_abbrev0:
+ 509 0000 01       		.uleb128 0x1
+ 510 0001 11       		.uleb128 0x11
+ 511 0002 01       		.byte	0x1
+ 512 0003 25       		.uleb128 0x25
+ 513 0004 0E       		.uleb128 0xe
+ 514 0005 13       		.uleb128 0x13
+ 515 0006 0B       		.uleb128 0xb
+ 516 0007 03       		.uleb128 0x3
+ 517 0008 0E       		.uleb128 0xe
+ 518 0009 1B       		.uleb128 0x1b
+ 519 000a 0E       		.uleb128 0xe
+ 520 000b 55       		.uleb128 0x55
+ 521 000c 17       		.uleb128 0x17
+ 522 000d 11       		.uleb128 0x11
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccipJJXH.s 			page 12
+
+
+ 523 000e 01       		.uleb128 0x1
+ 524 000f 10       		.uleb128 0x10
+ 525 0010 17       		.uleb128 0x17
+ 526 0011 00       		.byte	0
+ 527 0012 00       		.byte	0
+ 528 0013 02       		.uleb128 0x2
+ 529 0014 24       		.uleb128 0x24
+ 530 0015 00       		.byte	0
+ 531 0016 0B       		.uleb128 0xb
+ 532 0017 0B       		.uleb128 0xb
+ 533 0018 3E       		.uleb128 0x3e
+ 534 0019 0B       		.uleb128 0xb
+ 535 001a 03       		.uleb128 0x3
+ 536 001b 0E       		.uleb128 0xe
+ 537 001c 00       		.byte	0
+ 538 001d 00       		.byte	0
+ 539 001e 03       		.uleb128 0x3
+ 540 001f 16       		.uleb128 0x16
+ 541 0020 00       		.byte	0
+ 542 0021 03       		.uleb128 0x3
+ 543 0022 0E       		.uleb128 0xe
+ 544 0023 3A       		.uleb128 0x3a
+ 545 0024 0B       		.uleb128 0xb
+ 546 0025 3B       		.uleb128 0x3b
+ 547 0026 0B       		.uleb128 0xb
+ 548 0027 49       		.uleb128 0x49
+ 549 0028 13       		.uleb128 0x13
+ 550 0029 00       		.byte	0
+ 551 002a 00       		.byte	0
+ 552 002b 04       		.uleb128 0x4
+ 553 002c 24       		.uleb128 0x24
+ 554 002d 00       		.byte	0
+ 555 002e 0B       		.uleb128 0xb
+ 556 002f 0B       		.uleb128 0xb
+ 557 0030 3E       		.uleb128 0x3e
+ 558 0031 0B       		.uleb128 0xb
+ 559 0032 03       		.uleb128 0x3
+ 560 0033 08       		.uleb128 0x8
+ 561 0034 00       		.byte	0
+ 562 0035 00       		.byte	0
+ 563 0036 05       		.uleb128 0x5
+ 564 0037 16       		.uleb128 0x16
+ 565 0038 00       		.byte	0
+ 566 0039 03       		.uleb128 0x3
+ 567 003a 0E       		.uleb128 0xe
+ 568 003b 3A       		.uleb128 0x3a
+ 569 003c 0B       		.uleb128 0xb
+ 570 003d 3B       		.uleb128 0x3b
+ 571 003e 05       		.uleb128 0x5
+ 572 003f 49       		.uleb128 0x49
+ 573 0040 13       		.uleb128 0x13
+ 574 0041 00       		.byte	0
+ 575 0042 00       		.byte	0
+ 576 0043 06       		.uleb128 0x6
+ 577 0044 35       		.uleb128 0x35
+ 578 0045 00       		.byte	0
+ 579 0046 49       		.uleb128 0x49
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccipJJXH.s 			page 13
+
+
+ 580 0047 13       		.uleb128 0x13
+ 581 0048 00       		.byte	0
+ 582 0049 00       		.byte	0
+ 583 004a 07       		.uleb128 0x7
+ 584 004b 2E       		.uleb128 0x2e
+ 585 004c 01       		.byte	0x1
+ 586 004d 3F       		.uleb128 0x3f
+ 587 004e 19       		.uleb128 0x19
+ 588 004f 03       		.uleb128 0x3
+ 589 0050 0E       		.uleb128 0xe
+ 590 0051 3A       		.uleb128 0x3a
+ 591 0052 0B       		.uleb128 0xb
+ 592 0053 3B       		.uleb128 0x3b
+ 593 0054 0B       		.uleb128 0xb
+ 594 0055 27       		.uleb128 0x27
+ 595 0056 19       		.uleb128 0x19
+ 596 0057 11       		.uleb128 0x11
+ 597 0058 01       		.uleb128 0x1
+ 598 0059 12       		.uleb128 0x12
+ 599 005a 06       		.uleb128 0x6
+ 600 005b 40       		.uleb128 0x40
+ 601 005c 18       		.uleb128 0x18
+ 602 005d 9742     		.uleb128 0x2117
+ 603 005f 19       		.uleb128 0x19
+ 604 0060 01       		.uleb128 0x1
+ 605 0061 13       		.uleb128 0x13
+ 606 0062 00       		.byte	0
+ 607 0063 00       		.byte	0
+ 608 0064 08       		.uleb128 0x8
+ 609 0065 898201   		.uleb128 0x4109
+ 610 0068 00       		.byte	0
+ 611 0069 11       		.uleb128 0x11
+ 612 006a 01       		.uleb128 0x1
+ 613 006b 31       		.uleb128 0x31
+ 614 006c 13       		.uleb128 0x13
+ 615 006d 00       		.byte	0
+ 616 006e 00       		.byte	0
+ 617 006f 09       		.uleb128 0x9
+ 618 0070 2E       		.uleb128 0x2e
+ 619 0071 01       		.byte	0x1
+ 620 0072 3F       		.uleb128 0x3f
+ 621 0073 19       		.uleb128 0x19
+ 622 0074 03       		.uleb128 0x3
+ 623 0075 0E       		.uleb128 0xe
+ 624 0076 3A       		.uleb128 0x3a
+ 625 0077 0B       		.uleb128 0xb
+ 626 0078 3B       		.uleb128 0x3b
+ 627 0079 0B       		.uleb128 0xb
+ 628 007a 27       		.uleb128 0x27
+ 629 007b 19       		.uleb128 0x19
+ 630 007c 49       		.uleb128 0x49
+ 631 007d 13       		.uleb128 0x13
+ 632 007e 8701     		.uleb128 0x87
+ 633 0080 19       		.uleb128 0x19
+ 634 0081 11       		.uleb128 0x11
+ 635 0082 01       		.uleb128 0x1
+ 636 0083 12       		.uleb128 0x12
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccipJJXH.s 			page 14
+
+
+ 637 0084 06       		.uleb128 0x6
+ 638 0085 40       		.uleb128 0x40
+ 639 0086 18       		.uleb128 0x18
+ 640 0087 9742     		.uleb128 0x2117
+ 641 0089 19       		.uleb128 0x19
+ 642 008a 01       		.uleb128 0x1
+ 643 008b 13       		.uleb128 0x13
+ 644 008c 00       		.byte	0
+ 645 008d 00       		.byte	0
+ 646 008e 0A       		.uleb128 0xa
+ 647 008f 34       		.uleb128 0x34
+ 648 0090 00       		.byte	0
+ 649 0091 03       		.uleb128 0x3
+ 650 0092 0E       		.uleb128 0xe
+ 651 0093 3A       		.uleb128 0x3a
+ 652 0094 0B       		.uleb128 0xb
+ 653 0095 3B       		.uleb128 0x3b
+ 654 0096 0B       		.uleb128 0xb
+ 655 0097 49       		.uleb128 0x49
+ 656 0098 13       		.uleb128 0x13
+ 657 0099 02       		.uleb128 0x2
+ 658 009a 18       		.uleb128 0x18
+ 659 009b 00       		.byte	0
+ 660 009c 00       		.byte	0
+ 661 009d 0B       		.uleb128 0xb
+ 662 009e 34       		.uleb128 0x34
+ 663 009f 00       		.byte	0
+ 664 00a0 03       		.uleb128 0x3
+ 665 00a1 0E       		.uleb128 0xe
+ 666 00a2 3A       		.uleb128 0x3a
+ 667 00a3 0B       		.uleb128 0xb
+ 668 00a4 3B       		.uleb128 0x3b
+ 669 00a5 0B       		.uleb128 0xb
+ 670 00a6 49       		.uleb128 0x49
+ 671 00a7 13       		.uleb128 0x13
+ 672 00a8 00       		.byte	0
+ 673 00a9 00       		.byte	0
+ 674 00aa 0C       		.uleb128 0xc
+ 675 00ab 34       		.uleb128 0x34
+ 676 00ac 00       		.byte	0
+ 677 00ad 03       		.uleb128 0x3
+ 678 00ae 08       		.uleb128 0x8
+ 679 00af 3A       		.uleb128 0x3a
+ 680 00b0 0B       		.uleb128 0xb
+ 681 00b1 3B       		.uleb128 0x3b
+ 682 00b2 0B       		.uleb128 0xb
+ 683 00b3 49       		.uleb128 0x49
+ 684 00b4 13       		.uleb128 0x13
+ 685 00b5 02       		.uleb128 0x2
+ 686 00b6 18       		.uleb128 0x18
+ 687 00b7 00       		.byte	0
+ 688 00b8 00       		.byte	0
+ 689 00b9 0D       		.uleb128 0xd
+ 690 00ba 898201   		.uleb128 0x4109
+ 691 00bd 01       		.byte	0x1
+ 692 00be 11       		.uleb128 0x11
+ 693 00bf 01       		.uleb128 0x1
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccipJJXH.s 			page 15
+
+
+ 694 00c0 31       		.uleb128 0x31
+ 695 00c1 13       		.uleb128 0x13
+ 696 00c2 01       		.uleb128 0x1
+ 697 00c3 13       		.uleb128 0x13
+ 698 00c4 00       		.byte	0
+ 699 00c5 00       		.byte	0
+ 700 00c6 0E       		.uleb128 0xe
+ 701 00c7 8A8201   		.uleb128 0x410a
+ 702 00ca 00       		.byte	0
+ 703 00cb 02       		.uleb128 0x2
+ 704 00cc 18       		.uleb128 0x18
+ 705 00cd 9142     		.uleb128 0x2111
+ 706 00cf 18       		.uleb128 0x18
+ 707 00d0 00       		.byte	0
+ 708 00d1 00       		.byte	0
+ 709 00d2 0F       		.uleb128 0xf
+ 710 00d3 898201   		.uleb128 0x4109
+ 711 00d6 01       		.byte	0x1
+ 712 00d7 11       		.uleb128 0x11
+ 713 00d8 01       		.uleb128 0x1
+ 714 00d9 31       		.uleb128 0x31
+ 715 00da 13       		.uleb128 0x13
+ 716 00db 00       		.byte	0
+ 717 00dc 00       		.byte	0
+ 718 00dd 10       		.uleb128 0x10
+ 719 00de 01       		.uleb128 0x1
+ 720 00df 01       		.byte	0x1
+ 721 00e0 49       		.uleb128 0x49
+ 722 00e1 13       		.uleb128 0x13
+ 723 00e2 01       		.uleb128 0x1
+ 724 00e3 13       		.uleb128 0x13
+ 725 00e4 00       		.byte	0
+ 726 00e5 00       		.byte	0
+ 727 00e6 11       		.uleb128 0x11
+ 728 00e7 21       		.uleb128 0x21
+ 729 00e8 00       		.byte	0
+ 730 00e9 49       		.uleb128 0x49
+ 731 00ea 13       		.uleb128 0x13
+ 732 00eb 2F       		.uleb128 0x2f
+ 733 00ec 0B       		.uleb128 0xb
+ 734 00ed 00       		.byte	0
+ 735 00ee 00       		.byte	0
+ 736 00ef 12       		.uleb128 0x12
+ 737 00f0 34       		.uleb128 0x34
+ 738 00f1 00       		.byte	0
+ 739 00f2 03       		.uleb128 0x3
+ 740 00f3 0E       		.uleb128 0xe
+ 741 00f4 3A       		.uleb128 0x3a
+ 742 00f5 0B       		.uleb128 0xb
+ 743 00f6 3B       		.uleb128 0x3b
+ 744 00f7 05       		.uleb128 0x5
+ 745 00f8 49       		.uleb128 0x49
+ 746 00f9 13       		.uleb128 0x13
+ 747 00fa 3F       		.uleb128 0x3f
+ 748 00fb 19       		.uleb128 0x19
+ 749 00fc 3C       		.uleb128 0x3c
+ 750 00fd 19       		.uleb128 0x19
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccipJJXH.s 			page 16
+
+
+ 751 00fe 00       		.byte	0
+ 752 00ff 00       		.byte	0
+ 753 0100 13       		.uleb128 0x13
+ 754 0101 34       		.uleb128 0x34
+ 755 0102 00       		.byte	0
+ 756 0103 03       		.uleb128 0x3
+ 757 0104 0E       		.uleb128 0xe
+ 758 0105 3A       		.uleb128 0x3a
+ 759 0106 0B       		.uleb128 0xb
+ 760 0107 3B       		.uleb128 0x3b
+ 761 0108 0B       		.uleb128 0xb
+ 762 0109 49       		.uleb128 0x49
+ 763 010a 13       		.uleb128 0x13
+ 764 010b 3F       		.uleb128 0x3f
+ 765 010c 19       		.uleb128 0x19
+ 766 010d 02       		.uleb128 0x2
+ 767 010e 18       		.uleb128 0x18
+ 768 010f 00       		.byte	0
+ 769 0110 00       		.byte	0
+ 770 0111 14       		.uleb128 0x14
+ 771 0112 2E       		.uleb128 0x2e
+ 772 0113 00       		.byte	0
+ 773 0114 3F       		.uleb128 0x3f
+ 774 0115 19       		.uleb128 0x19
+ 775 0116 3C       		.uleb128 0x3c
+ 776 0117 19       		.uleb128 0x19
+ 777 0118 6E       		.uleb128 0x6e
+ 778 0119 0E       		.uleb128 0xe
+ 779 011a 03       		.uleb128 0x3
+ 780 011b 0E       		.uleb128 0xe
+ 781 011c 3A       		.uleb128 0x3a
+ 782 011d 0B       		.uleb128 0xb
+ 783 011e 3B       		.uleb128 0x3b
+ 784 011f 0B       		.uleb128 0xb
+ 785 0120 00       		.byte	0
+ 786 0121 00       		.byte	0
+ 787 0122 00       		.byte	0
+ 788              		.section	.debug_aranges,"",%progbits
+ 789 0000 24000000 		.4byte	0x24
+ 790 0004 0200     		.2byte	0x2
+ 791 0006 00000000 		.4byte	.Ldebug_info0
+ 792 000a 04       		.byte	0x4
+ 793 000b 00       		.byte	0
+ 794 000c 0000     		.2byte	0
+ 795 000e 0000     		.2byte	0
+ 796 0010 00000000 		.4byte	.LFB64
+ 797 0014 14000000 		.4byte	.LFE64-.LFB64
+ 798 0018 00000000 		.4byte	.LFB65
+ 799 001c 90000000 		.4byte	.LFE65-.LFB65
+ 800 0020 00000000 		.4byte	0
+ 801 0024 00000000 		.4byte	0
+ 802              		.section	.debug_ranges,"",%progbits
+ 803              	.Ldebug_ranges0:
+ 804 0000 00000000 		.4byte	.LFB64
+ 805 0004 14000000 		.4byte	.LFE64
+ 806 0008 00000000 		.4byte	.LFB65
+ 807 000c 90000000 		.4byte	.LFE65
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccipJJXH.s 			page 17
+
+
+ 808 0010 00000000 		.4byte	0
+ 809 0014 00000000 		.4byte	0
+ 810              		.section	.debug_line,"",%progbits
+ 811              	.Ldebug_line0:
+ 812 0000 47020000 		.section	.debug_str,"MS",%progbits,1
+ 812      02000C02 
+ 812      00000201 
+ 812      FB0E0D00 
+ 812      01010101 
+ 813              	.LASF29:
+ 814 0000 55415254 		.ascii	"UART_1_Start\000"
+ 814      5F315F53 
+ 814      74617274 
+ 814      00
+ 815              	.LASF23:
+ 816 000d 636F6D70 		.ascii	"compare_occured\000"
+ 816      6172655F 
+ 816      6F636375 
+ 816      72656400 
+ 817              	.LASF9:
+ 818 001d 5F5F696E 		.ascii	"__int32_t\000"
+ 818      7433325F 
+ 818      7400
+ 819              	.LASF25:
+ 820 0027 4952515F 		.ascii	"IRQ_TACHO_StartEx\000"
+ 820      54414348 
+ 820      4F5F5374 
+ 820      61727445 
+ 820      7800
+ 821              	.LASF32:
+ 822 0039 436F756E 		.ascii	"Counter_TACHO_ReadCapture\000"
+ 822      7465725F 
+ 822      54414348 
+ 822      4F5F5265 
+ 822      61644361 
+ 823              	.LASF37:
+ 824 0053 433A5C55 		.ascii	"C:\\Users\\Abude\\Documents\\PSoC Creator\\Embedded"
+ 824      73657273 
+ 824      5C416275 
+ 824      64655C44 
+ 824      6F63756D 
+ 825 0081 53797374 		.ascii	"System2\\Lab4.cydsn\000"
+ 825      656D325C 
+ 825      4C616234 
+ 825      2E637964 
+ 825      736E00
+ 826              	.LASF14:
+ 827 0094 666C6F61 		.ascii	"float\000"
+ 827      7400
+ 828              	.LASF33:
+ 829 009a 69746F61 		.ascii	"itoa\000"
+ 829      00
+ 830              	.LASF1:
+ 831 009f 756E7369 		.ascii	"unsigned char\000"
+ 831      676E6564 
+ 831      20636861 
+ 831      7200
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccipJJXH.s 			page 18
+
+
+ 832              	.LASF35:
+ 833 00ad 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 833      43313120 
+ 833      352E342E 
+ 833      31203230 
+ 833      31363036 
+ 834 00e0 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 834      20726576 
+ 834      6973696F 
+ 834      6E203233 
+ 834      37373135 
+ 835 0113 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 835      66756E63 
+ 835      74696F6E 
+ 835      2D736563 
+ 835      74696F6E 
+ 836              	.LASF5:
+ 837 013b 6C6F6E67 		.ascii	"long unsigned int\000"
+ 837      20756E73 
+ 837      69676E65 
+ 837      6420696E 
+ 837      7400
+ 838              	.LASF3:
+ 839 014d 73686F72 		.ascii	"short unsigned int\000"
+ 839      7420756E 
+ 839      7369676E 
+ 839      65642069 
+ 839      6E7400
+ 840              	.LASF22:
+ 841 0160 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 841      52784275 
+ 841      66666572 
+ 841      00
+ 842              	.LASF19:
+ 843 016d 70776D5F 		.ascii	"pwm_window_period\000"
+ 843      77696E64 
+ 843      6F775F70 
+ 843      6572696F 
+ 843      6400
+ 844              	.LASF38:
+ 845 017f 50574D5F 		.ascii	"PWM_TACHO_InterruptHandler\000"
+ 845      54414348 
+ 845      4F5F496E 
+ 845      74657272 
+ 845      75707448 
+ 846              	.LASF15:
+ 847 019a 646F7562 		.ascii	"double\000"
+ 847      6C6500
+ 848              	.LASF26:
+ 849 01a1 50574D5F 		.ascii	"PWM_MOTOR_Start\000"
+ 849      4D4F544F 
+ 849      525F5374 
+ 849      61727400 
+ 850              	.LASF12:
+ 851 01b1 75696E74 		.ascii	"uint16\000"
+ 851      313600
+ 852              	.LASF13:
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccipJJXH.s 			page 19
+
+
+ 853 01b8 75696E74 		.ascii	"uint32\000"
+ 853      333200
+ 854              	.LASF39:
+ 855 01bf 6D61696E 		.ascii	"main\000"
+ 855      00
+ 856              	.LASF8:
+ 857 01c4 756E7369 		.ascii	"unsigned int\000"
+ 857      676E6564 
+ 857      20696E74 
+ 857      00
+ 858              	.LASF7:
+ 859 01d1 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 859      206C6F6E 
+ 859      6720756E 
+ 859      7369676E 
+ 859      65642069 
+ 860              	.LASF31:
+ 861 01e8 50574D5F 		.ascii	"PWM_TACHO_ReadPeriod\000"
+ 861      54414348 
+ 861      4F5F5265 
+ 861      61645065 
+ 861      72696F64 
+ 862              	.LASF10:
+ 863 01fd 696E7433 		.ascii	"int32_t\000"
+ 863      325F7400 
+ 864              	.LASF18:
+ 865 0205 73697A65 		.ascii	"sizetype\000"
+ 865      74797065 
+ 865      00
+ 866              	.LASF6:
+ 867 020e 6C6F6E67 		.ascii	"long long int\000"
+ 867      206C6F6E 
+ 867      6720696E 
+ 867      7400
+ 868              	.LASF36:
+ 869 021c 6D61696E 		.ascii	"main.c\000"
+ 869      2E6300
+ 870              	.LASF16:
+ 871 0223 63686172 		.ascii	"char\000"
+ 871      00
+ 872              	.LASF28:
+ 873 0228 436F756E 		.ascii	"Counter_TACHO_Start\000"
+ 873      7465725F 
+ 873      54414348 
+ 873      4F5F5374 
+ 873      61727400 
+ 874              	.LASF40:
+ 875 023c 74616368 		.ascii	"tacho_count\000"
+ 875      6F5F636F 
+ 875      756E7400 
+ 876              	.LASF24:
+ 877 0248 50574D5F 		.ascii	"PWM_TACHO_ReadStatusRegister\000"
+ 877      54414348 
+ 877      4F5F5265 
+ 877      61645374 
+ 877      61747573 
+ 878              	.LASF20:
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccipJJXH.s 			page 20
+
+
+ 879 0265 696E7075 		.ascii	"input_freq\000"
+ 879      745F6672 
+ 879      657100
+ 880              	.LASF21:
+ 881 0270 62756666 		.ascii	"buffer\000"
+ 881      657200
+ 882              	.LASF11:
+ 883 0277 75696E74 		.ascii	"uint8\000"
+ 883      3800
+ 884              	.LASF27:
+ 885 027d 50574D5F 		.ascii	"PWM_TACHO_Start\000"
+ 885      54414348 
+ 885      4F5F5374 
+ 885      61727400 
+ 886              	.LASF2:
+ 887 028d 73686F72 		.ascii	"short int\000"
+ 887      7420696E 
+ 887      7400
+ 888              	.LASF4:
+ 889 0297 6C6F6E67 		.ascii	"long int\000"
+ 889      20696E74 
+ 889      00
+ 890              	.LASF17:
+ 891 02a0 6C6F6E67 		.ascii	"long double\000"
+ 891      20646F75 
+ 891      626C6500 
+ 892              	.LASF0:
+ 893 02ac 7369676E 		.ascii	"signed char\000"
+ 893      65642063 
+ 893      68617200 
+ 894              	.LASF34:
+ 895 02b8 55415254 		.ascii	"UART_1_PutString\000"
+ 895      5F315F50 
+ 895      75745374 
+ 895      72696E67 
+ 895      00
+ 896              	.LASF30:
+ 897 02c9 50574D5F 		.ascii	"PWM_MOTOR_WriteCompare\000"
+ 897      4D4F544F 
+ 897      525F5772 
+ 897      69746543 
+ 897      6F6D7061 
+ 898              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

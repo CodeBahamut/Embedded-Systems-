@@ -1,0 +1,2305 @@
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"Counter_TACHO.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.Counter_TACHO_Enable,"ax",%progbits
+  20              		.align	2
+  21              		.global	Counter_TACHO_Enable
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	Counter_TACHO_Enable, %function
+  25              	Counter_TACHO_Enable:
+  26              	.LFB1:
+  27              		.file 1 "Generated_Source\\PSoC5\\Counter_TACHO.c"
+   1:Generated_Source\PSoC5/Counter_TACHO.c **** /*******************************************************************************
+   2:Generated_Source\PSoC5/Counter_TACHO.c **** * File Name: Counter_TACHO.c  
+   3:Generated_Source\PSoC5/Counter_TACHO.c **** * Version 3.0
+   4:Generated_Source\PSoC5/Counter_TACHO.c **** *
+   5:Generated_Source\PSoC5/Counter_TACHO.c **** *  Description:
+   6:Generated_Source\PSoC5/Counter_TACHO.c **** *     The Counter component consists of a 8, 16, 24 or 32-bit counter with
+   7:Generated_Source\PSoC5/Counter_TACHO.c **** *     a selectable period between 2 and 2^Width - 1.  
+   8:Generated_Source\PSoC5/Counter_TACHO.c **** *
+   9:Generated_Source\PSoC5/Counter_TACHO.c **** *   Note:
+  10:Generated_Source\PSoC5/Counter_TACHO.c **** *     None
+  11:Generated_Source\PSoC5/Counter_TACHO.c **** *
+  12:Generated_Source\PSoC5/Counter_TACHO.c **** ********************************************************************************
+  13:Generated_Source\PSoC5/Counter_TACHO.c **** * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  14:Generated_Source\PSoC5/Counter_TACHO.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  15:Generated_Source\PSoC5/Counter_TACHO.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  16:Generated_Source\PSoC5/Counter_TACHO.c **** * the software package with which this file was provided.
+  17:Generated_Source\PSoC5/Counter_TACHO.c **** *******************************************************************************/
+  18:Generated_Source\PSoC5/Counter_TACHO.c **** 
+  19:Generated_Source\PSoC5/Counter_TACHO.c **** #include "Counter_TACHO.h"
+  20:Generated_Source\PSoC5/Counter_TACHO.c **** 
+  21:Generated_Source\PSoC5/Counter_TACHO.c **** uint8 Counter_TACHO_initVar = 0u;
+  22:Generated_Source\PSoC5/Counter_TACHO.c **** 
+  23:Generated_Source\PSoC5/Counter_TACHO.c **** 
+  24:Generated_Source\PSoC5/Counter_TACHO.c **** /*******************************************************************************
+  25:Generated_Source\PSoC5/Counter_TACHO.c **** * Function Name: Counter_TACHO_Init
+  26:Generated_Source\PSoC5/Counter_TACHO.c **** ********************************************************************************
+  27:Generated_Source\PSoC5/Counter_TACHO.c **** * Summary:
+  28:Generated_Source\PSoC5/Counter_TACHO.c **** *     Initialize to the schematic state
+  29:Generated_Source\PSoC5/Counter_TACHO.c **** * 
+  30:Generated_Source\PSoC5/Counter_TACHO.c **** * Parameters:  
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 2
+
+
+  31:Generated_Source\PSoC5/Counter_TACHO.c **** *  void  
+  32:Generated_Source\PSoC5/Counter_TACHO.c **** *
+  33:Generated_Source\PSoC5/Counter_TACHO.c **** * Return: 
+  34:Generated_Source\PSoC5/Counter_TACHO.c **** *  void
+  35:Generated_Source\PSoC5/Counter_TACHO.c **** *
+  36:Generated_Source\PSoC5/Counter_TACHO.c **** *******************************************************************************/
+  37:Generated_Source\PSoC5/Counter_TACHO.c **** void Counter_TACHO_Init(void) 
+  38:Generated_Source\PSoC5/Counter_TACHO.c **** {
+  39:Generated_Source\PSoC5/Counter_TACHO.c ****         #if (!Counter_TACHO_UsingFixedFunction && !Counter_TACHO_ControlRegRemoved)
+  40:Generated_Source\PSoC5/Counter_TACHO.c ****             uint8 ctrl;
+  41:Generated_Source\PSoC5/Counter_TACHO.c ****         #endif /* (!Counter_TACHO_UsingFixedFunction && !Counter_TACHO_ControlRegRemoved) */
+  42:Generated_Source\PSoC5/Counter_TACHO.c ****         
+  43:Generated_Source\PSoC5/Counter_TACHO.c ****         #if(!Counter_TACHO_UsingFixedFunction) 
+  44:Generated_Source\PSoC5/Counter_TACHO.c ****             /* Interrupt State Backup for Critical Region*/
+  45:Generated_Source\PSoC5/Counter_TACHO.c ****             uint8 Counter_TACHO_interruptState;
+  46:Generated_Source\PSoC5/Counter_TACHO.c ****         #endif /* (!Counter_TACHO_UsingFixedFunction) */
+  47:Generated_Source\PSoC5/Counter_TACHO.c ****         
+  48:Generated_Source\PSoC5/Counter_TACHO.c ****         #if (Counter_TACHO_UsingFixedFunction)
+  49:Generated_Source\PSoC5/Counter_TACHO.c ****             /* Clear all bits but the enable bit (if it's already set for Timer operation */
+  50:Generated_Source\PSoC5/Counter_TACHO.c ****             Counter_TACHO_CONTROL &= Counter_TACHO_CTRL_ENABLE;
+  51:Generated_Source\PSoC5/Counter_TACHO.c ****             
+  52:Generated_Source\PSoC5/Counter_TACHO.c ****             /* Clear the mode bits for continuous run mode */
+  53:Generated_Source\PSoC5/Counter_TACHO.c ****             #if (CY_PSOC5A)
+  54:Generated_Source\PSoC5/Counter_TACHO.c ****                 Counter_TACHO_CONTROL2 &= ((uint8)(~Counter_TACHO_CTRL_MODE_MASK));
+  55:Generated_Source\PSoC5/Counter_TACHO.c ****             #endif /* (CY_PSOC5A) */
+  56:Generated_Source\PSoC5/Counter_TACHO.c ****             #if (CY_PSOC3 || CY_PSOC5LP)
+  57:Generated_Source\PSoC5/Counter_TACHO.c ****                 Counter_TACHO_CONTROL3 &= ((uint8)(~Counter_TACHO_CTRL_MODE_MASK));                
+  58:Generated_Source\PSoC5/Counter_TACHO.c ****             #endif /* (CY_PSOC3 || CY_PSOC5LP) */
+  59:Generated_Source\PSoC5/Counter_TACHO.c ****             /* Check if One Shot mode is enabled i.e. RunMode !=0*/
+  60:Generated_Source\PSoC5/Counter_TACHO.c ****             #if (Counter_TACHO_RunModeUsed != 0x0u)
+  61:Generated_Source\PSoC5/Counter_TACHO.c ****                 /* Set 3rd bit of Control register to enable one shot mode */
+  62:Generated_Source\PSoC5/Counter_TACHO.c ****                 Counter_TACHO_CONTROL |= Counter_TACHO_ONESHOT;
+  63:Generated_Source\PSoC5/Counter_TACHO.c ****             #endif /* (Counter_TACHO_RunModeUsed != 0x0u) */
+  64:Generated_Source\PSoC5/Counter_TACHO.c ****             
+  65:Generated_Source\PSoC5/Counter_TACHO.c ****             /* Set the IRQ to use the status register interrupts */
+  66:Generated_Source\PSoC5/Counter_TACHO.c ****             Counter_TACHO_CONTROL2 |= Counter_TACHO_CTRL2_IRQ_SEL;
+  67:Generated_Source\PSoC5/Counter_TACHO.c ****             
+  68:Generated_Source\PSoC5/Counter_TACHO.c ****             /* Clear and Set SYNCTC and SYNCCMP bits of RT1 register */
+  69:Generated_Source\PSoC5/Counter_TACHO.c ****             Counter_TACHO_RT1 &= ((uint8)(~Counter_TACHO_RT1_MASK));
+  70:Generated_Source\PSoC5/Counter_TACHO.c ****             Counter_TACHO_RT1 |= Counter_TACHO_SYNC;     
+  71:Generated_Source\PSoC5/Counter_TACHO.c ****                     
+  72:Generated_Source\PSoC5/Counter_TACHO.c ****             /*Enable DSI Sync all all inputs of the Timer*/
+  73:Generated_Source\PSoC5/Counter_TACHO.c ****             Counter_TACHO_RT1 &= ((uint8)(~Counter_TACHO_SYNCDSI_MASK));
+  74:Generated_Source\PSoC5/Counter_TACHO.c ****             Counter_TACHO_RT1 |= Counter_TACHO_SYNCDSI_EN;
+  75:Generated_Source\PSoC5/Counter_TACHO.c **** 
+  76:Generated_Source\PSoC5/Counter_TACHO.c ****         #else
+  77:Generated_Source\PSoC5/Counter_TACHO.c ****             #if(!Counter_TACHO_ControlRegRemoved)
+  78:Generated_Source\PSoC5/Counter_TACHO.c ****             /* Set the default compare mode defined in the parameter */
+  79:Generated_Source\PSoC5/Counter_TACHO.c ****             ctrl = Counter_TACHO_CONTROL & ((uint8)(~Counter_TACHO_CTRL_CMPMODE_MASK));
+  80:Generated_Source\PSoC5/Counter_TACHO.c ****             Counter_TACHO_CONTROL = ctrl | Counter_TACHO_DEFAULT_COMPARE_MODE;
+  81:Generated_Source\PSoC5/Counter_TACHO.c ****             
+  82:Generated_Source\PSoC5/Counter_TACHO.c ****             /* Set the default capture mode defined in the parameter */
+  83:Generated_Source\PSoC5/Counter_TACHO.c ****             ctrl = Counter_TACHO_CONTROL & ((uint8)(~Counter_TACHO_CTRL_CAPMODE_MASK));
+  84:Generated_Source\PSoC5/Counter_TACHO.c ****             
+  85:Generated_Source\PSoC5/Counter_TACHO.c ****             #if( 0 != Counter_TACHO_CAPTURE_MODE_CONF)
+  86:Generated_Source\PSoC5/Counter_TACHO.c ****                 Counter_TACHO_CONTROL = ctrl | Counter_TACHO_DEFAULT_CAPTURE_MODE;
+  87:Generated_Source\PSoC5/Counter_TACHO.c ****             #else
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 3
+
+
+  88:Generated_Source\PSoC5/Counter_TACHO.c ****                 Counter_TACHO_CONTROL = ctrl;
+  89:Generated_Source\PSoC5/Counter_TACHO.c ****             #endif /* 0 != Counter_TACHO_CAPTURE_MODE */ 
+  90:Generated_Source\PSoC5/Counter_TACHO.c ****             
+  91:Generated_Source\PSoC5/Counter_TACHO.c ****             #endif /* (!Counter_TACHO_ControlRegRemoved) */
+  92:Generated_Source\PSoC5/Counter_TACHO.c ****         #endif /* (Counter_TACHO_UsingFixedFunction) */
+  93:Generated_Source\PSoC5/Counter_TACHO.c ****         
+  94:Generated_Source\PSoC5/Counter_TACHO.c ****         /* Clear all data in the FIFO's */
+  95:Generated_Source\PSoC5/Counter_TACHO.c ****         #if (!Counter_TACHO_UsingFixedFunction)
+  96:Generated_Source\PSoC5/Counter_TACHO.c ****             Counter_TACHO_ClearFIFO();
+  97:Generated_Source\PSoC5/Counter_TACHO.c ****         #endif /* (!Counter_TACHO_UsingFixedFunction) */
+  98:Generated_Source\PSoC5/Counter_TACHO.c ****         
+  99:Generated_Source\PSoC5/Counter_TACHO.c ****         /* Set Initial values from Configuration */
+ 100:Generated_Source\PSoC5/Counter_TACHO.c ****         Counter_TACHO_WritePeriod(Counter_TACHO_INIT_PERIOD_VALUE);
+ 101:Generated_Source\PSoC5/Counter_TACHO.c ****         #if (!(Counter_TACHO_UsingFixedFunction && (CY_PSOC5A)))
+ 102:Generated_Source\PSoC5/Counter_TACHO.c ****             Counter_TACHO_WriteCounter(Counter_TACHO_INIT_COUNTER_VALUE);
+ 103:Generated_Source\PSoC5/Counter_TACHO.c ****         #endif /* (!(Counter_TACHO_UsingFixedFunction && (CY_PSOC5A))) */
+ 104:Generated_Source\PSoC5/Counter_TACHO.c ****         Counter_TACHO_SetInterruptMode(Counter_TACHO_INIT_INTERRUPTS_MASK);
+ 105:Generated_Source\PSoC5/Counter_TACHO.c ****         
+ 106:Generated_Source\PSoC5/Counter_TACHO.c ****         #if (!Counter_TACHO_UsingFixedFunction)
+ 107:Generated_Source\PSoC5/Counter_TACHO.c ****             /* Read the status register to clear the unwanted interrupts */
+ 108:Generated_Source\PSoC5/Counter_TACHO.c ****             (void)Counter_TACHO_ReadStatusRegister();
+ 109:Generated_Source\PSoC5/Counter_TACHO.c ****             /* Set the compare value (only available to non-fixed function implementation */
+ 110:Generated_Source\PSoC5/Counter_TACHO.c ****             Counter_TACHO_WriteCompare(Counter_TACHO_INIT_COMPARE_VALUE);
+ 111:Generated_Source\PSoC5/Counter_TACHO.c ****             /* Use the interrupt output of the status register for IRQ output */
+ 112:Generated_Source\PSoC5/Counter_TACHO.c ****             
+ 113:Generated_Source\PSoC5/Counter_TACHO.c ****             /* CyEnterCriticalRegion and CyExitCriticalRegion are used to mark following region cri
+ 114:Generated_Source\PSoC5/Counter_TACHO.c ****             /* Enter Critical Region*/
+ 115:Generated_Source\PSoC5/Counter_TACHO.c ****             Counter_TACHO_interruptState = CyEnterCriticalSection();
+ 116:Generated_Source\PSoC5/Counter_TACHO.c ****             
+ 117:Generated_Source\PSoC5/Counter_TACHO.c ****             Counter_TACHO_STATUS_AUX_CTRL |= Counter_TACHO_STATUS_ACTL_INT_EN_MASK;
+ 118:Generated_Source\PSoC5/Counter_TACHO.c ****             
+ 119:Generated_Source\PSoC5/Counter_TACHO.c ****             /* Exit Critical Region*/
+ 120:Generated_Source\PSoC5/Counter_TACHO.c ****             CyExitCriticalSection(Counter_TACHO_interruptState);
+ 121:Generated_Source\PSoC5/Counter_TACHO.c ****             
+ 122:Generated_Source\PSoC5/Counter_TACHO.c ****         #endif /* (!Counter_TACHO_UsingFixedFunction) */
+ 123:Generated_Source\PSoC5/Counter_TACHO.c **** }
+ 124:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 125:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 126:Generated_Source\PSoC5/Counter_TACHO.c **** /*******************************************************************************
+ 127:Generated_Source\PSoC5/Counter_TACHO.c **** * Function Name: Counter_TACHO_Enable
+ 128:Generated_Source\PSoC5/Counter_TACHO.c **** ********************************************************************************
+ 129:Generated_Source\PSoC5/Counter_TACHO.c **** * Summary:
+ 130:Generated_Source\PSoC5/Counter_TACHO.c **** *     Enable the Counter
+ 131:Generated_Source\PSoC5/Counter_TACHO.c **** * 
+ 132:Generated_Source\PSoC5/Counter_TACHO.c **** * Parameters:  
+ 133:Generated_Source\PSoC5/Counter_TACHO.c **** *  void  
+ 134:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 135:Generated_Source\PSoC5/Counter_TACHO.c **** * Return: 
+ 136:Generated_Source\PSoC5/Counter_TACHO.c **** *  void
+ 137:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 138:Generated_Source\PSoC5/Counter_TACHO.c **** * Side Effects: 
+ 139:Generated_Source\PSoC5/Counter_TACHO.c **** *   If the Enable mode is set to Hardware only then this function has no effect 
+ 140:Generated_Source\PSoC5/Counter_TACHO.c **** *   on the operation of the counter.
+ 141:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 142:Generated_Source\PSoC5/Counter_TACHO.c **** *******************************************************************************/
+ 143:Generated_Source\PSoC5/Counter_TACHO.c **** void Counter_TACHO_Enable(void) 
+ 144:Generated_Source\PSoC5/Counter_TACHO.c **** {
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 4
+
+
+  28              		.loc 1 144 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+ 145:Generated_Source\PSoC5/Counter_TACHO.c ****     /* Globally Enable the Fixed Function Block chosen */
+ 146:Generated_Source\PSoC5/Counter_TACHO.c ****     #if (Counter_TACHO_UsingFixedFunction)
+ 147:Generated_Source\PSoC5/Counter_TACHO.c ****         Counter_TACHO_GLOBAL_ENABLE |= Counter_TACHO_BLOCK_EN_MASK;
+ 148:Generated_Source\PSoC5/Counter_TACHO.c ****         Counter_TACHO_GLOBAL_STBY_ENABLE |= Counter_TACHO_BLOCK_STBY_EN_MASK;
+ 149:Generated_Source\PSoC5/Counter_TACHO.c ****     #endif /* (Counter_TACHO_UsingFixedFunction) */  
+ 150:Generated_Source\PSoC5/Counter_TACHO.c ****         
+ 151:Generated_Source\PSoC5/Counter_TACHO.c ****     /* Enable the counter from the control register  */
+ 152:Generated_Source\PSoC5/Counter_TACHO.c ****     /* If Fixed Function then make sure Mode is set correctly */
+ 153:Generated_Source\PSoC5/Counter_TACHO.c ****     /* else make sure reset is clear */
+ 154:Generated_Source\PSoC5/Counter_TACHO.c ****     #if(!Counter_TACHO_ControlRegRemoved || Counter_TACHO_UsingFixedFunction)
+ 155:Generated_Source\PSoC5/Counter_TACHO.c ****         Counter_TACHO_CONTROL |= Counter_TACHO_CTRL_ENABLE;                
+  33              		.loc 1 155 0
+  34 0000 024A     		ldr	r2, .L2
+  35 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  36 0004 43F08003 		orr	r3, r3, #128
+  37 0008 1370     		strb	r3, [r2]
+  38 000a 7047     		bx	lr
+  39              	.L3:
+  40              		.align	2
+  41              	.L2:
+  42 000c 77650040 		.word	1073767799
+  43              		.cfi_endproc
+  44              	.LFE1:
+  45              		.size	Counter_TACHO_Enable, .-Counter_TACHO_Enable
+  46              		.section	.text.Counter_TACHO_Stop,"ax",%progbits
+  47              		.align	2
+  48              		.global	Counter_TACHO_Stop
+  49              		.thumb
+  50              		.thumb_func
+  51              		.type	Counter_TACHO_Stop, %function
+  52              	Counter_TACHO_Stop:
+  53              	.LFB3:
+ 156:Generated_Source\PSoC5/Counter_TACHO.c ****     #endif /* (!Counter_TACHO_ControlRegRemoved || Counter_TACHO_UsingFixedFunction) */
+ 157:Generated_Source\PSoC5/Counter_TACHO.c ****     
+ 158:Generated_Source\PSoC5/Counter_TACHO.c **** }
+ 159:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 160:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 161:Generated_Source\PSoC5/Counter_TACHO.c **** /*******************************************************************************
+ 162:Generated_Source\PSoC5/Counter_TACHO.c **** * Function Name: Counter_TACHO_Start
+ 163:Generated_Source\PSoC5/Counter_TACHO.c **** ********************************************************************************
+ 164:Generated_Source\PSoC5/Counter_TACHO.c **** * Summary:
+ 165:Generated_Source\PSoC5/Counter_TACHO.c **** *  Enables the counter for operation 
+ 166:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 167:Generated_Source\PSoC5/Counter_TACHO.c **** * Parameters:  
+ 168:Generated_Source\PSoC5/Counter_TACHO.c **** *  void  
+ 169:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 170:Generated_Source\PSoC5/Counter_TACHO.c **** * Return: 
+ 171:Generated_Source\PSoC5/Counter_TACHO.c **** *  void
+ 172:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 173:Generated_Source\PSoC5/Counter_TACHO.c **** * Global variables:
+ 174:Generated_Source\PSoC5/Counter_TACHO.c **** *  Counter_TACHO_initVar: Is modified when this function is called for the  
+ 175:Generated_Source\PSoC5/Counter_TACHO.c **** *   first time. Is used to ensure that initialization happens only once.
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 5
+
+
+ 176:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 177:Generated_Source\PSoC5/Counter_TACHO.c **** *******************************************************************************/
+ 178:Generated_Source\PSoC5/Counter_TACHO.c **** void Counter_TACHO_Start(void) 
+ 179:Generated_Source\PSoC5/Counter_TACHO.c **** {
+ 180:Generated_Source\PSoC5/Counter_TACHO.c ****     if(Counter_TACHO_initVar == 0u)
+ 181:Generated_Source\PSoC5/Counter_TACHO.c ****     {
+ 182:Generated_Source\PSoC5/Counter_TACHO.c ****         Counter_TACHO_Init();
+ 183:Generated_Source\PSoC5/Counter_TACHO.c ****         
+ 184:Generated_Source\PSoC5/Counter_TACHO.c ****         Counter_TACHO_initVar = 1u; /* Clear this bit for Initialization */        
+ 185:Generated_Source\PSoC5/Counter_TACHO.c ****     }
+ 186:Generated_Source\PSoC5/Counter_TACHO.c ****     
+ 187:Generated_Source\PSoC5/Counter_TACHO.c ****     /* Enable the Counter */
+ 188:Generated_Source\PSoC5/Counter_TACHO.c ****     Counter_TACHO_Enable();        
+ 189:Generated_Source\PSoC5/Counter_TACHO.c **** }
+ 190:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 191:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 192:Generated_Source\PSoC5/Counter_TACHO.c **** /*******************************************************************************
+ 193:Generated_Source\PSoC5/Counter_TACHO.c **** * Function Name: Counter_TACHO_Stop
+ 194:Generated_Source\PSoC5/Counter_TACHO.c **** ********************************************************************************
+ 195:Generated_Source\PSoC5/Counter_TACHO.c **** * Summary:
+ 196:Generated_Source\PSoC5/Counter_TACHO.c **** * Halts the counter, but does not change any modes or disable interrupts.
+ 197:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 198:Generated_Source\PSoC5/Counter_TACHO.c **** * Parameters:  
+ 199:Generated_Source\PSoC5/Counter_TACHO.c **** *  void  
+ 200:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 201:Generated_Source\PSoC5/Counter_TACHO.c **** * Return: 
+ 202:Generated_Source\PSoC5/Counter_TACHO.c **** *  void
+ 203:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 204:Generated_Source\PSoC5/Counter_TACHO.c **** * Side Effects: If the Enable mode is set to Hardware only then this function
+ 205:Generated_Source\PSoC5/Counter_TACHO.c **** *               has no effect on the operation of the counter.
+ 206:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 207:Generated_Source\PSoC5/Counter_TACHO.c **** *******************************************************************************/
+ 208:Generated_Source\PSoC5/Counter_TACHO.c **** void Counter_TACHO_Stop(void) 
+ 209:Generated_Source\PSoC5/Counter_TACHO.c **** {
+  54              		.loc 1 209 0
+  55              		.cfi_startproc
+  56              		@ args = 0, pretend = 0, frame = 0
+  57              		@ frame_needed = 0, uses_anonymous_args = 0
+  58              		@ link register save eliminated.
+ 210:Generated_Source\PSoC5/Counter_TACHO.c ****     /* Disable Counter */
+ 211:Generated_Source\PSoC5/Counter_TACHO.c ****     #if(!Counter_TACHO_ControlRegRemoved || Counter_TACHO_UsingFixedFunction)
+ 212:Generated_Source\PSoC5/Counter_TACHO.c ****         Counter_TACHO_CONTROL &= ((uint8)(~Counter_TACHO_CTRL_ENABLE));        
+  59              		.loc 1 212 0
+  60 0000 024A     		ldr	r2, .L5
+  61 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  62 0004 03F07F03 		and	r3, r3, #127
+  63 0008 1370     		strb	r3, [r2]
+  64 000a 7047     		bx	lr
+  65              	.L6:
+  66              		.align	2
+  67              	.L5:
+  68 000c 77650040 		.word	1073767799
+  69              		.cfi_endproc
+  70              	.LFE3:
+  71              		.size	Counter_TACHO_Stop, .-Counter_TACHO_Stop
+  72              		.section	.text.Counter_TACHO_SetInterruptMode,"ax",%progbits
+  73              		.align	2
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 6
+
+
+  74              		.global	Counter_TACHO_SetInterruptMode
+  75              		.thumb
+  76              		.thumb_func
+  77              		.type	Counter_TACHO_SetInterruptMode, %function
+  78              	Counter_TACHO_SetInterruptMode:
+  79              	.LFB4:
+ 213:Generated_Source\PSoC5/Counter_TACHO.c ****     #endif /* (!Counter_TACHO_ControlRegRemoved || Counter_TACHO_UsingFixedFunction) */
+ 214:Generated_Source\PSoC5/Counter_TACHO.c ****     
+ 215:Generated_Source\PSoC5/Counter_TACHO.c ****     /* Globally disable the Fixed Function Block chosen */
+ 216:Generated_Source\PSoC5/Counter_TACHO.c ****     #if (Counter_TACHO_UsingFixedFunction)
+ 217:Generated_Source\PSoC5/Counter_TACHO.c ****         Counter_TACHO_GLOBAL_ENABLE &= ((uint8)(~Counter_TACHO_BLOCK_EN_MASK));
+ 218:Generated_Source\PSoC5/Counter_TACHO.c ****         Counter_TACHO_GLOBAL_STBY_ENABLE &= ((uint8)(~Counter_TACHO_BLOCK_STBY_EN_MASK));
+ 219:Generated_Source\PSoC5/Counter_TACHO.c ****     #endif /* (Counter_TACHO_UsingFixedFunction) */
+ 220:Generated_Source\PSoC5/Counter_TACHO.c **** }
+ 221:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 222:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 223:Generated_Source\PSoC5/Counter_TACHO.c **** /*******************************************************************************
+ 224:Generated_Source\PSoC5/Counter_TACHO.c **** * Function Name: Counter_TACHO_SetInterruptMode
+ 225:Generated_Source\PSoC5/Counter_TACHO.c **** ********************************************************************************
+ 226:Generated_Source\PSoC5/Counter_TACHO.c **** * Summary:
+ 227:Generated_Source\PSoC5/Counter_TACHO.c **** * Configures which interrupt sources are enabled to generate the final interrupt
+ 228:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 229:Generated_Source\PSoC5/Counter_TACHO.c **** * Parameters:  
+ 230:Generated_Source\PSoC5/Counter_TACHO.c **** *  InterruptsMask: This parameter is an or'd collection of the status bits
+ 231:Generated_Source\PSoC5/Counter_TACHO.c **** *                   which will be allowed to generate the counters interrupt.   
+ 232:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 233:Generated_Source\PSoC5/Counter_TACHO.c **** * Return: 
+ 234:Generated_Source\PSoC5/Counter_TACHO.c **** *  void
+ 235:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 236:Generated_Source\PSoC5/Counter_TACHO.c **** *******************************************************************************/
+ 237:Generated_Source\PSoC5/Counter_TACHO.c **** void Counter_TACHO_SetInterruptMode(uint8 interruptsMask) 
+ 238:Generated_Source\PSoC5/Counter_TACHO.c **** {
+  80              		.loc 1 238 0
+  81              		.cfi_startproc
+  82              		@ args = 0, pretend = 0, frame = 0
+  83              		@ frame_needed = 0, uses_anonymous_args = 0
+  84              		@ link register save eliminated.
+  85              	.LVL0:
+ 239:Generated_Source\PSoC5/Counter_TACHO.c ****     Counter_TACHO_STATUS_MASK = interruptsMask;
+  86              		.loc 1 239 0
+  87 0000 014B     		ldr	r3, .L8
+  88 0002 1870     		strb	r0, [r3]
+  89 0004 7047     		bx	lr
+  90              	.L9:
+  91 0006 00BF     		.align	2
+  92              	.L8:
+  93 0008 87650040 		.word	1073767815
+  94              		.cfi_endproc
+  95              	.LFE4:
+  96              		.size	Counter_TACHO_SetInterruptMode, .-Counter_TACHO_SetInterruptMode
+  97              		.section	.text.Counter_TACHO_ReadStatusRegister,"ax",%progbits
+  98              		.align	2
+  99              		.global	Counter_TACHO_ReadStatusRegister
+ 100              		.thumb
+ 101              		.thumb_func
+ 102              		.type	Counter_TACHO_ReadStatusRegister, %function
+ 103              	Counter_TACHO_ReadStatusRegister:
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 7
+
+
+ 104              	.LFB5:
+ 240:Generated_Source\PSoC5/Counter_TACHO.c **** }
+ 241:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 242:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 243:Generated_Source\PSoC5/Counter_TACHO.c **** /*******************************************************************************
+ 244:Generated_Source\PSoC5/Counter_TACHO.c **** * Function Name: Counter_TACHO_ReadStatusRegister
+ 245:Generated_Source\PSoC5/Counter_TACHO.c **** ********************************************************************************
+ 246:Generated_Source\PSoC5/Counter_TACHO.c **** * Summary:
+ 247:Generated_Source\PSoC5/Counter_TACHO.c **** *   Reads the status register and returns it's state. This function should use
+ 248:Generated_Source\PSoC5/Counter_TACHO.c **** *       defined types for the bit-field information as the bits in this
+ 249:Generated_Source\PSoC5/Counter_TACHO.c **** *       register may be permuteable.
+ 250:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 251:Generated_Source\PSoC5/Counter_TACHO.c **** * Parameters:  
+ 252:Generated_Source\PSoC5/Counter_TACHO.c **** *  void
+ 253:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 254:Generated_Source\PSoC5/Counter_TACHO.c **** * Return: 
+ 255:Generated_Source\PSoC5/Counter_TACHO.c **** *  (uint8) The contents of the status register
+ 256:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 257:Generated_Source\PSoC5/Counter_TACHO.c **** * Side Effects:
+ 258:Generated_Source\PSoC5/Counter_TACHO.c **** *   Status register bits may be clear on read. 
+ 259:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 260:Generated_Source\PSoC5/Counter_TACHO.c **** *******************************************************************************/
+ 261:Generated_Source\PSoC5/Counter_TACHO.c **** uint8   Counter_TACHO_ReadStatusRegister(void) 
+ 262:Generated_Source\PSoC5/Counter_TACHO.c **** {
+ 105              		.loc 1 262 0
+ 106              		.cfi_startproc
+ 107              		@ args = 0, pretend = 0, frame = 0
+ 108              		@ frame_needed = 0, uses_anonymous_args = 0
+ 109              		@ link register save eliminated.
+ 263:Generated_Source\PSoC5/Counter_TACHO.c ****     return Counter_TACHO_STATUS;
+ 110              		.loc 1 263 0
+ 111 0000 014B     		ldr	r3, .L11
+ 112 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 264:Generated_Source\PSoC5/Counter_TACHO.c **** }
+ 113              		.loc 1 264 0
+ 114 0004 7047     		bx	lr
+ 115              	.L12:
+ 116 0006 00BF     		.align	2
+ 117              	.L11:
+ 118 0008 67650040 		.word	1073767783
+ 119              		.cfi_endproc
+ 120              	.LFE5:
+ 121              		.size	Counter_TACHO_ReadStatusRegister, .-Counter_TACHO_ReadStatusRegister
+ 122              		.section	.text.Counter_TACHO_ReadControlRegister,"ax",%progbits
+ 123              		.align	2
+ 124              		.global	Counter_TACHO_ReadControlRegister
+ 125              		.thumb
+ 126              		.thumb_func
+ 127              		.type	Counter_TACHO_ReadControlRegister, %function
+ 128              	Counter_TACHO_ReadControlRegister:
+ 129              	.LFB6:
+ 265:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 266:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 267:Generated_Source\PSoC5/Counter_TACHO.c **** #if(!Counter_TACHO_ControlRegRemoved)
+ 268:Generated_Source\PSoC5/Counter_TACHO.c **** /*******************************************************************************
+ 269:Generated_Source\PSoC5/Counter_TACHO.c **** * Function Name: Counter_TACHO_ReadControlRegister
+ 270:Generated_Source\PSoC5/Counter_TACHO.c **** ********************************************************************************
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 8
+
+
+ 271:Generated_Source\PSoC5/Counter_TACHO.c **** * Summary:
+ 272:Generated_Source\PSoC5/Counter_TACHO.c **** *   Reads the control register and returns it's state. This function should use
+ 273:Generated_Source\PSoC5/Counter_TACHO.c **** *       defined types for the bit-field information as the bits in this
+ 274:Generated_Source\PSoC5/Counter_TACHO.c **** *       register may be permuteable.
+ 275:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 276:Generated_Source\PSoC5/Counter_TACHO.c **** * Parameters:  
+ 277:Generated_Source\PSoC5/Counter_TACHO.c **** *  void
+ 278:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 279:Generated_Source\PSoC5/Counter_TACHO.c **** * Return: 
+ 280:Generated_Source\PSoC5/Counter_TACHO.c **** *  (uint8) The contents of the control register
+ 281:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 282:Generated_Source\PSoC5/Counter_TACHO.c **** *******************************************************************************/
+ 283:Generated_Source\PSoC5/Counter_TACHO.c **** uint8   Counter_TACHO_ReadControlRegister(void) 
+ 284:Generated_Source\PSoC5/Counter_TACHO.c **** {
+ 130              		.loc 1 284 0
+ 131              		.cfi_startproc
+ 132              		@ args = 0, pretend = 0, frame = 0
+ 133              		@ frame_needed = 0, uses_anonymous_args = 0
+ 134              		@ link register save eliminated.
+ 285:Generated_Source\PSoC5/Counter_TACHO.c ****     return Counter_TACHO_CONTROL;
+ 135              		.loc 1 285 0
+ 136 0000 014B     		ldr	r3, .L14
+ 137 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 286:Generated_Source\PSoC5/Counter_TACHO.c **** }
+ 138              		.loc 1 286 0
+ 139 0004 7047     		bx	lr
+ 140              	.L15:
+ 141 0006 00BF     		.align	2
+ 142              	.L14:
+ 143 0008 77650040 		.word	1073767799
+ 144              		.cfi_endproc
+ 145              	.LFE6:
+ 146              		.size	Counter_TACHO_ReadControlRegister, .-Counter_TACHO_ReadControlRegister
+ 147              		.section	.text.Counter_TACHO_WriteControlRegister,"ax",%progbits
+ 148              		.align	2
+ 149              		.global	Counter_TACHO_WriteControlRegister
+ 150              		.thumb
+ 151              		.thumb_func
+ 152              		.type	Counter_TACHO_WriteControlRegister, %function
+ 153              	Counter_TACHO_WriteControlRegister:
+ 154              	.LFB7:
+ 287:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 288:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 289:Generated_Source\PSoC5/Counter_TACHO.c **** /*******************************************************************************
+ 290:Generated_Source\PSoC5/Counter_TACHO.c **** * Function Name: Counter_TACHO_WriteControlRegister
+ 291:Generated_Source\PSoC5/Counter_TACHO.c **** ********************************************************************************
+ 292:Generated_Source\PSoC5/Counter_TACHO.c **** * Summary:
+ 293:Generated_Source\PSoC5/Counter_TACHO.c **** *   Sets the bit-field of the control register.  This function should use
+ 294:Generated_Source\PSoC5/Counter_TACHO.c **** *       defined types for the bit-field information as the bits in this
+ 295:Generated_Source\PSoC5/Counter_TACHO.c **** *       register may be permuteable.
+ 296:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 297:Generated_Source\PSoC5/Counter_TACHO.c **** * Parameters:  
+ 298:Generated_Source\PSoC5/Counter_TACHO.c **** *  void
+ 299:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 300:Generated_Source\PSoC5/Counter_TACHO.c **** * Return: 
+ 301:Generated_Source\PSoC5/Counter_TACHO.c **** *  (uint8) The contents of the control register
+ 302:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 9
+
+
+ 303:Generated_Source\PSoC5/Counter_TACHO.c **** *******************************************************************************/
+ 304:Generated_Source\PSoC5/Counter_TACHO.c **** void    Counter_TACHO_WriteControlRegister(uint8 control) 
+ 305:Generated_Source\PSoC5/Counter_TACHO.c **** {
+ 155              		.loc 1 305 0
+ 156              		.cfi_startproc
+ 157              		@ args = 0, pretend = 0, frame = 0
+ 158              		@ frame_needed = 0, uses_anonymous_args = 0
+ 159              		@ link register save eliminated.
+ 160              	.LVL1:
+ 306:Generated_Source\PSoC5/Counter_TACHO.c ****     Counter_TACHO_CONTROL = control;
+ 161              		.loc 1 306 0
+ 162 0000 014B     		ldr	r3, .L17
+ 163 0002 1870     		strb	r0, [r3]
+ 164 0004 7047     		bx	lr
+ 165              	.L18:
+ 166 0006 00BF     		.align	2
+ 167              	.L17:
+ 168 0008 77650040 		.word	1073767799
+ 169              		.cfi_endproc
+ 170              	.LFE7:
+ 171              		.size	Counter_TACHO_WriteControlRegister, .-Counter_TACHO_WriteControlRegister
+ 172              		.section	.text.Counter_TACHO_WriteCounter,"ax",%progbits
+ 173              		.align	2
+ 174              		.global	Counter_TACHO_WriteCounter
+ 175              		.thumb
+ 176              		.thumb_func
+ 177              		.type	Counter_TACHO_WriteCounter, %function
+ 178              	Counter_TACHO_WriteCounter:
+ 179              	.LFB8:
+ 307:Generated_Source\PSoC5/Counter_TACHO.c **** }
+ 308:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 309:Generated_Source\PSoC5/Counter_TACHO.c **** #endif  /* (!Counter_TACHO_ControlRegRemoved) */
+ 310:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 311:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 312:Generated_Source\PSoC5/Counter_TACHO.c **** #if (!(Counter_TACHO_UsingFixedFunction && (CY_PSOC5A)))
+ 313:Generated_Source\PSoC5/Counter_TACHO.c **** /*******************************************************************************
+ 314:Generated_Source\PSoC5/Counter_TACHO.c **** * Function Name: Counter_TACHO_WriteCounter
+ 315:Generated_Source\PSoC5/Counter_TACHO.c **** ********************************************************************************
+ 316:Generated_Source\PSoC5/Counter_TACHO.c **** * Summary:
+ 317:Generated_Source\PSoC5/Counter_TACHO.c **** *   This funtion is used to set the counter to a specific value
+ 318:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 319:Generated_Source\PSoC5/Counter_TACHO.c **** * Parameters:  
+ 320:Generated_Source\PSoC5/Counter_TACHO.c **** *  counter:  New counter value. 
+ 321:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 322:Generated_Source\PSoC5/Counter_TACHO.c **** * Return: 
+ 323:Generated_Source\PSoC5/Counter_TACHO.c **** *  void 
+ 324:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 325:Generated_Source\PSoC5/Counter_TACHO.c **** *******************************************************************************/
+ 326:Generated_Source\PSoC5/Counter_TACHO.c **** void Counter_TACHO_WriteCounter(uint32 counter) \
+ 327:Generated_Source\PSoC5/Counter_TACHO.c ****                                    
+ 328:Generated_Source\PSoC5/Counter_TACHO.c **** {
+ 180              		.loc 1 328 0
+ 181              		.cfi_startproc
+ 182              		@ args = 0, pretend = 0, frame = 0
+ 183              		@ frame_needed = 0, uses_anonymous_args = 0
+ 184              		@ link register save eliminated.
+ 185              	.LVL2:
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 10
+
+
+ 329:Generated_Source\PSoC5/Counter_TACHO.c ****     #if(Counter_TACHO_UsingFixedFunction)
+ 330:Generated_Source\PSoC5/Counter_TACHO.c ****         /* assert if block is already enabled */
+ 331:Generated_Source\PSoC5/Counter_TACHO.c ****         CYASSERT (0u == (Counter_TACHO_GLOBAL_ENABLE & Counter_TACHO_BLOCK_EN_MASK));
+ 332:Generated_Source\PSoC5/Counter_TACHO.c ****         /* If block is disabled, enable it and then write the counter */
+ 333:Generated_Source\PSoC5/Counter_TACHO.c ****         Counter_TACHO_GLOBAL_ENABLE |= Counter_TACHO_BLOCK_EN_MASK;
+ 334:Generated_Source\PSoC5/Counter_TACHO.c ****         CY_SET_REG16(Counter_TACHO_COUNTER_LSB_PTR, (uint16)counter);
+ 335:Generated_Source\PSoC5/Counter_TACHO.c ****         Counter_TACHO_GLOBAL_ENABLE &= ((uint8)(~Counter_TACHO_BLOCK_EN_MASK));
+ 336:Generated_Source\PSoC5/Counter_TACHO.c ****     #else
+ 337:Generated_Source\PSoC5/Counter_TACHO.c ****         CY_SET_REG32(Counter_TACHO_COUNTER_LSB_PTR, counter);
+ 186              		.loc 1 337 0
+ 187 0000 014B     		ldr	r3, .L20
+ 188 0002 1860     		str	r0, [r3]
+ 189 0004 7047     		bx	lr
+ 190              	.L21:
+ 191 0006 00BF     		.align	2
+ 192              	.L20:
+ 193 0008 04650040 		.word	1073767684
+ 194              		.cfi_endproc
+ 195              	.LFE8:
+ 196              		.size	Counter_TACHO_WriteCounter, .-Counter_TACHO_WriteCounter
+ 197              		.section	.text.Counter_TACHO_ReadCounter,"ax",%progbits
+ 198              		.align	2
+ 199              		.global	Counter_TACHO_ReadCounter
+ 200              		.thumb
+ 201              		.thumb_func
+ 202              		.type	Counter_TACHO_ReadCounter, %function
+ 203              	Counter_TACHO_ReadCounter:
+ 204              	.LFB9:
+ 338:Generated_Source\PSoC5/Counter_TACHO.c ****     #endif /* (Counter_TACHO_UsingFixedFunction) */
+ 339:Generated_Source\PSoC5/Counter_TACHO.c **** }
+ 340:Generated_Source\PSoC5/Counter_TACHO.c **** #endif /* (!(Counter_TACHO_UsingFixedFunction && (CY_PSOC5A))) */
+ 341:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 342:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 343:Generated_Source\PSoC5/Counter_TACHO.c **** /*******************************************************************************
+ 344:Generated_Source\PSoC5/Counter_TACHO.c **** * Function Name: Counter_TACHO_ReadCounter
+ 345:Generated_Source\PSoC5/Counter_TACHO.c **** ********************************************************************************
+ 346:Generated_Source\PSoC5/Counter_TACHO.c **** * Summary:
+ 347:Generated_Source\PSoC5/Counter_TACHO.c **** * Returns the current value of the counter.  It doesn't matter
+ 348:Generated_Source\PSoC5/Counter_TACHO.c **** * if the counter is enabled or running.
+ 349:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 350:Generated_Source\PSoC5/Counter_TACHO.c **** * Parameters:  
+ 351:Generated_Source\PSoC5/Counter_TACHO.c **** *  void:  
+ 352:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 353:Generated_Source\PSoC5/Counter_TACHO.c **** * Return: 
+ 354:Generated_Source\PSoC5/Counter_TACHO.c **** *  (uint32) The present value of the counter.
+ 355:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 356:Generated_Source\PSoC5/Counter_TACHO.c **** *******************************************************************************/
+ 357:Generated_Source\PSoC5/Counter_TACHO.c **** uint32 Counter_TACHO_ReadCounter(void) 
+ 358:Generated_Source\PSoC5/Counter_TACHO.c **** {
+ 205              		.loc 1 358 0
+ 206              		.cfi_startproc
+ 207              		@ args = 0, pretend = 0, frame = 0
+ 208              		@ frame_needed = 0, uses_anonymous_args = 0
+ 209              		@ link register save eliminated.
+ 359:Generated_Source\PSoC5/Counter_TACHO.c ****     /* Force capture by reading Accumulator */
+ 360:Generated_Source\PSoC5/Counter_TACHO.c ****     /* Must first do a software capture to be able to read the counter */
+ 361:Generated_Source\PSoC5/Counter_TACHO.c ****     /* It is up to the user code to make sure there isn't already captured data in the FIFO */
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 11
+
+
+ 362:Generated_Source\PSoC5/Counter_TACHO.c ****     #if(Counter_TACHO_UsingFixedFunction)
+ 363:Generated_Source\PSoC5/Counter_TACHO.c **** 		(void)CY_GET_REG16(Counter_TACHO_COUNTER_LSB_PTR);
+ 364:Generated_Source\PSoC5/Counter_TACHO.c **** 	#else
+ 365:Generated_Source\PSoC5/Counter_TACHO.c **** 		(void)CY_GET_REG8(Counter_TACHO_COUNTER_LSB_PTR_8BIT);
+ 210              		.loc 1 365 0
+ 211 0000 024B     		ldr	r3, .L23
+ 212 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 366:Generated_Source\PSoC5/Counter_TACHO.c **** 	#endif/* (Counter_TACHO_UsingFixedFunction) */
+ 367:Generated_Source\PSoC5/Counter_TACHO.c ****     
+ 368:Generated_Source\PSoC5/Counter_TACHO.c ****     /* Read the data from the FIFO (or capture register for Fixed Function)*/
+ 369:Generated_Source\PSoC5/Counter_TACHO.c ****     #if(Counter_TACHO_UsingFixedFunction)
+ 370:Generated_Source\PSoC5/Counter_TACHO.c ****         return ((uint32)CY_GET_REG16(Counter_TACHO_STATICCOUNT_LSB_PTR));
+ 371:Generated_Source\PSoC5/Counter_TACHO.c ****     #else
+ 372:Generated_Source\PSoC5/Counter_TACHO.c ****         return (CY_GET_REG32(Counter_TACHO_STATICCOUNT_LSB_PTR));
+ 213              		.loc 1 372 0
+ 214 0004 024B     		ldr	r3, .L23+4
+ 215 0006 1868     		ldr	r0, [r3]
+ 373:Generated_Source\PSoC5/Counter_TACHO.c ****     #endif /* (Counter_TACHO_UsingFixedFunction) */
+ 374:Generated_Source\PSoC5/Counter_TACHO.c **** }
+ 216              		.loc 1 374 0
+ 217 0008 7047     		bx	lr
+ 218              	.L24:
+ 219 000a 00BF     		.align	2
+ 220              	.L23:
+ 221 000c 04650040 		.word	1073767684
+ 222 0010 44650040 		.word	1073767748
+ 223              		.cfi_endproc
+ 224              	.LFE9:
+ 225              		.size	Counter_TACHO_ReadCounter, .-Counter_TACHO_ReadCounter
+ 226              		.section	.text.Counter_TACHO_ReadCapture,"ax",%progbits
+ 227              		.align	2
+ 228              		.global	Counter_TACHO_ReadCapture
+ 229              		.thumb
+ 230              		.thumb_func
+ 231              		.type	Counter_TACHO_ReadCapture, %function
+ 232              	Counter_TACHO_ReadCapture:
+ 233              	.LFB10:
+ 375:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 376:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 377:Generated_Source\PSoC5/Counter_TACHO.c **** /*******************************************************************************
+ 378:Generated_Source\PSoC5/Counter_TACHO.c **** * Function Name: Counter_TACHO_ReadCapture
+ 379:Generated_Source\PSoC5/Counter_TACHO.c **** ********************************************************************************
+ 380:Generated_Source\PSoC5/Counter_TACHO.c **** * Summary:
+ 381:Generated_Source\PSoC5/Counter_TACHO.c **** *   This function returns the last value captured.
+ 382:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 383:Generated_Source\PSoC5/Counter_TACHO.c **** * Parameters:  
+ 384:Generated_Source\PSoC5/Counter_TACHO.c **** *  void
+ 385:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 386:Generated_Source\PSoC5/Counter_TACHO.c **** * Return: 
+ 387:Generated_Source\PSoC5/Counter_TACHO.c **** *  (uint32) Present Capture value.
+ 388:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 389:Generated_Source\PSoC5/Counter_TACHO.c **** *******************************************************************************/
+ 390:Generated_Source\PSoC5/Counter_TACHO.c **** uint32 Counter_TACHO_ReadCapture(void) 
+ 391:Generated_Source\PSoC5/Counter_TACHO.c **** {
+ 234              		.loc 1 391 0
+ 235              		.cfi_startproc
+ 236              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 12
+
+
+ 237              		@ frame_needed = 0, uses_anonymous_args = 0
+ 238              		@ link register save eliminated.
+ 392:Generated_Source\PSoC5/Counter_TACHO.c ****     #if(Counter_TACHO_UsingFixedFunction)
+ 393:Generated_Source\PSoC5/Counter_TACHO.c ****         return ((uint32)CY_GET_REG16(Counter_TACHO_STATICCOUNT_LSB_PTR));
+ 394:Generated_Source\PSoC5/Counter_TACHO.c ****     #else
+ 395:Generated_Source\PSoC5/Counter_TACHO.c ****         return (CY_GET_REG32(Counter_TACHO_STATICCOUNT_LSB_PTR));
+ 239              		.loc 1 395 0
+ 240 0000 014B     		ldr	r3, .L26
+ 241 0002 1868     		ldr	r0, [r3]
+ 396:Generated_Source\PSoC5/Counter_TACHO.c ****     #endif /* (Counter_TACHO_UsingFixedFunction) */
+ 397:Generated_Source\PSoC5/Counter_TACHO.c **** }
+ 242              		.loc 1 397 0
+ 243 0004 7047     		bx	lr
+ 244              	.L27:
+ 245 0006 00BF     		.align	2
+ 246              	.L26:
+ 247 0008 44650040 		.word	1073767748
+ 248              		.cfi_endproc
+ 249              	.LFE10:
+ 250              		.size	Counter_TACHO_ReadCapture, .-Counter_TACHO_ReadCapture
+ 251              		.section	.text.Counter_TACHO_WritePeriod,"ax",%progbits
+ 252              		.align	2
+ 253              		.global	Counter_TACHO_WritePeriod
+ 254              		.thumb
+ 255              		.thumb_func
+ 256              		.type	Counter_TACHO_WritePeriod, %function
+ 257              	Counter_TACHO_WritePeriod:
+ 258              	.LFB11:
+ 398:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 399:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 400:Generated_Source\PSoC5/Counter_TACHO.c **** /*******************************************************************************
+ 401:Generated_Source\PSoC5/Counter_TACHO.c **** * Function Name: Counter_TACHO_WritePeriod
+ 402:Generated_Source\PSoC5/Counter_TACHO.c **** ********************************************************************************
+ 403:Generated_Source\PSoC5/Counter_TACHO.c **** * Summary:
+ 404:Generated_Source\PSoC5/Counter_TACHO.c **** * Changes the period of the counter.  The new period 
+ 405:Generated_Source\PSoC5/Counter_TACHO.c **** * will be loaded the next time terminal count is detected.
+ 406:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 407:Generated_Source\PSoC5/Counter_TACHO.c **** * Parameters:  
+ 408:Generated_Source\PSoC5/Counter_TACHO.c **** *  period: (uint32) A value of 0 will result in
+ 409:Generated_Source\PSoC5/Counter_TACHO.c **** *         the counter remaining at zero.  
+ 410:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 411:Generated_Source\PSoC5/Counter_TACHO.c **** * Return: 
+ 412:Generated_Source\PSoC5/Counter_TACHO.c **** *  void
+ 413:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 414:Generated_Source\PSoC5/Counter_TACHO.c **** *******************************************************************************/
+ 415:Generated_Source\PSoC5/Counter_TACHO.c **** void Counter_TACHO_WritePeriod(uint32 period) 
+ 416:Generated_Source\PSoC5/Counter_TACHO.c **** {
+ 259              		.loc 1 416 0
+ 260              		.cfi_startproc
+ 261              		@ args = 0, pretend = 0, frame = 0
+ 262              		@ frame_needed = 0, uses_anonymous_args = 0
+ 263              		@ link register save eliminated.
+ 264              	.LVL3:
+ 417:Generated_Source\PSoC5/Counter_TACHO.c ****     #if(Counter_TACHO_UsingFixedFunction)
+ 418:Generated_Source\PSoC5/Counter_TACHO.c ****         CY_SET_REG16(Counter_TACHO_PERIOD_LSB_PTR,(uint16)period);
+ 419:Generated_Source\PSoC5/Counter_TACHO.c ****     #else
+ 420:Generated_Source\PSoC5/Counter_TACHO.c ****         CY_SET_REG32(Counter_TACHO_PERIOD_LSB_PTR, period);
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 13
+
+
+ 265              		.loc 1 420 0
+ 266 0000 014B     		ldr	r3, .L29
+ 267 0002 1860     		str	r0, [r3]
+ 268 0004 7047     		bx	lr
+ 269              	.L30:
+ 270 0006 00BF     		.align	2
+ 271              	.L29:
+ 272 0008 24650040 		.word	1073767716
+ 273              		.cfi_endproc
+ 274              	.LFE11:
+ 275              		.size	Counter_TACHO_WritePeriod, .-Counter_TACHO_WritePeriod
+ 276              		.section	.text.Counter_TACHO_ReadPeriod,"ax",%progbits
+ 277              		.align	2
+ 278              		.global	Counter_TACHO_ReadPeriod
+ 279              		.thumb
+ 280              		.thumb_func
+ 281              		.type	Counter_TACHO_ReadPeriod, %function
+ 282              	Counter_TACHO_ReadPeriod:
+ 283              	.LFB12:
+ 421:Generated_Source\PSoC5/Counter_TACHO.c ****     #endif /* (Counter_TACHO_UsingFixedFunction) */
+ 422:Generated_Source\PSoC5/Counter_TACHO.c **** }
+ 423:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 424:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 425:Generated_Source\PSoC5/Counter_TACHO.c **** /*******************************************************************************
+ 426:Generated_Source\PSoC5/Counter_TACHO.c **** * Function Name: Counter_TACHO_ReadPeriod
+ 427:Generated_Source\PSoC5/Counter_TACHO.c **** ********************************************************************************
+ 428:Generated_Source\PSoC5/Counter_TACHO.c **** * Summary:
+ 429:Generated_Source\PSoC5/Counter_TACHO.c **** * Reads the current period value without affecting counter operation.
+ 430:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 431:Generated_Source\PSoC5/Counter_TACHO.c **** * Parameters:  
+ 432:Generated_Source\PSoC5/Counter_TACHO.c **** *  void:  
+ 433:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 434:Generated_Source\PSoC5/Counter_TACHO.c **** * Return: 
+ 435:Generated_Source\PSoC5/Counter_TACHO.c **** *  (uint32) Present period value.
+ 436:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 437:Generated_Source\PSoC5/Counter_TACHO.c **** *******************************************************************************/
+ 438:Generated_Source\PSoC5/Counter_TACHO.c **** uint32 Counter_TACHO_ReadPeriod(void) 
+ 439:Generated_Source\PSoC5/Counter_TACHO.c **** {
+ 284              		.loc 1 439 0
+ 285              		.cfi_startproc
+ 286              		@ args = 0, pretend = 0, frame = 0
+ 287              		@ frame_needed = 0, uses_anonymous_args = 0
+ 288              		@ link register save eliminated.
+ 440:Generated_Source\PSoC5/Counter_TACHO.c ****     #if(Counter_TACHO_UsingFixedFunction)
+ 441:Generated_Source\PSoC5/Counter_TACHO.c ****         return ((uint32)CY_GET_REG16(Counter_TACHO_PERIOD_LSB_PTR));
+ 442:Generated_Source\PSoC5/Counter_TACHO.c ****     #else
+ 443:Generated_Source\PSoC5/Counter_TACHO.c ****         return (CY_GET_REG32(Counter_TACHO_PERIOD_LSB_PTR));
+ 289              		.loc 1 443 0
+ 290 0000 014B     		ldr	r3, .L32
+ 291 0002 1868     		ldr	r0, [r3]
+ 444:Generated_Source\PSoC5/Counter_TACHO.c ****     #endif /* (Counter_TACHO_UsingFixedFunction) */
+ 445:Generated_Source\PSoC5/Counter_TACHO.c **** }
+ 292              		.loc 1 445 0
+ 293 0004 7047     		bx	lr
+ 294              	.L33:
+ 295 0006 00BF     		.align	2
+ 296              	.L32:
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 14
+
+
+ 297 0008 24650040 		.word	1073767716
+ 298              		.cfi_endproc
+ 299              	.LFE12:
+ 300              		.size	Counter_TACHO_ReadPeriod, .-Counter_TACHO_ReadPeriod
+ 301              		.section	.text.Counter_TACHO_WriteCompare,"ax",%progbits
+ 302              		.align	2
+ 303              		.global	Counter_TACHO_WriteCompare
+ 304              		.thumb
+ 305              		.thumb_func
+ 306              		.type	Counter_TACHO_WriteCompare, %function
+ 307              	Counter_TACHO_WriteCompare:
+ 308              	.LFB13:
+ 446:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 447:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 448:Generated_Source\PSoC5/Counter_TACHO.c **** #if (!Counter_TACHO_UsingFixedFunction)
+ 449:Generated_Source\PSoC5/Counter_TACHO.c **** /*******************************************************************************
+ 450:Generated_Source\PSoC5/Counter_TACHO.c **** * Function Name: Counter_TACHO_WriteCompare
+ 451:Generated_Source\PSoC5/Counter_TACHO.c **** ********************************************************************************
+ 452:Generated_Source\PSoC5/Counter_TACHO.c **** * Summary:
+ 453:Generated_Source\PSoC5/Counter_TACHO.c **** * Changes the compare value.  The compare output will 
+ 454:Generated_Source\PSoC5/Counter_TACHO.c **** * reflect the new value on the next UDB clock.  The compare output will be 
+ 455:Generated_Source\PSoC5/Counter_TACHO.c **** * driven high when the present counter value compares true based on the 
+ 456:Generated_Source\PSoC5/Counter_TACHO.c **** * configured compare mode setting. 
+ 457:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 458:Generated_Source\PSoC5/Counter_TACHO.c **** * Parameters:  
+ 459:Generated_Source\PSoC5/Counter_TACHO.c **** *  Compare:  New compare value. 
+ 460:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 461:Generated_Source\PSoC5/Counter_TACHO.c **** * Return: 
+ 462:Generated_Source\PSoC5/Counter_TACHO.c **** *  void
+ 463:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 464:Generated_Source\PSoC5/Counter_TACHO.c **** *******************************************************************************/
+ 465:Generated_Source\PSoC5/Counter_TACHO.c **** void Counter_TACHO_WriteCompare(uint32 compare) \
+ 466:Generated_Source\PSoC5/Counter_TACHO.c ****                                    
+ 467:Generated_Source\PSoC5/Counter_TACHO.c **** {
+ 309              		.loc 1 467 0
+ 310              		.cfi_startproc
+ 311              		@ args = 0, pretend = 0, frame = 0
+ 312              		@ frame_needed = 0, uses_anonymous_args = 0
+ 313              		@ link register save eliminated.
+ 314              	.LVL4:
+ 468:Generated_Source\PSoC5/Counter_TACHO.c ****     #if(Counter_TACHO_UsingFixedFunction)
+ 469:Generated_Source\PSoC5/Counter_TACHO.c ****         CY_SET_REG16(Counter_TACHO_COMPARE_LSB_PTR, (uint16)compare);
+ 470:Generated_Source\PSoC5/Counter_TACHO.c ****     #else
+ 471:Generated_Source\PSoC5/Counter_TACHO.c ****         CY_SET_REG32(Counter_TACHO_COMPARE_LSB_PTR, compare);
+ 315              		.loc 1 471 0
+ 316 0000 014B     		ldr	r3, .L35
+ 317 0002 1860     		str	r0, [r3]
+ 318 0004 7047     		bx	lr
+ 319              	.L36:
+ 320 0006 00BF     		.align	2
+ 321              	.L35:
+ 322 0008 34650040 		.word	1073767732
+ 323              		.cfi_endproc
+ 324              	.LFE13:
+ 325              		.size	Counter_TACHO_WriteCompare, .-Counter_TACHO_WriteCompare
+ 326              		.section	.text.Counter_TACHO_ReadCompare,"ax",%progbits
+ 327              		.align	2
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 15
+
+
+ 328              		.global	Counter_TACHO_ReadCompare
+ 329              		.thumb
+ 330              		.thumb_func
+ 331              		.type	Counter_TACHO_ReadCompare, %function
+ 332              	Counter_TACHO_ReadCompare:
+ 333              	.LFB14:
+ 472:Generated_Source\PSoC5/Counter_TACHO.c ****     #endif /* (Counter_TACHO_UsingFixedFunction) */
+ 473:Generated_Source\PSoC5/Counter_TACHO.c **** }
+ 474:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 475:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 476:Generated_Source\PSoC5/Counter_TACHO.c **** /*******************************************************************************
+ 477:Generated_Source\PSoC5/Counter_TACHO.c **** * Function Name: Counter_TACHO_ReadCompare
+ 478:Generated_Source\PSoC5/Counter_TACHO.c **** ********************************************************************************
+ 479:Generated_Source\PSoC5/Counter_TACHO.c **** * Summary:
+ 480:Generated_Source\PSoC5/Counter_TACHO.c **** * Returns the compare value.
+ 481:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 482:Generated_Source\PSoC5/Counter_TACHO.c **** * Parameters:  
+ 483:Generated_Source\PSoC5/Counter_TACHO.c **** *  void:
+ 484:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 485:Generated_Source\PSoC5/Counter_TACHO.c **** * Return: 
+ 486:Generated_Source\PSoC5/Counter_TACHO.c **** *  (uint32) Present compare value.
+ 487:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 488:Generated_Source\PSoC5/Counter_TACHO.c **** *******************************************************************************/
+ 489:Generated_Source\PSoC5/Counter_TACHO.c **** uint32 Counter_TACHO_ReadCompare(void) 
+ 490:Generated_Source\PSoC5/Counter_TACHO.c **** {
+ 334              		.loc 1 490 0
+ 335              		.cfi_startproc
+ 336              		@ args = 0, pretend = 0, frame = 0
+ 337              		@ frame_needed = 0, uses_anonymous_args = 0
+ 338              		@ link register save eliminated.
+ 491:Generated_Source\PSoC5/Counter_TACHO.c ****     return (CY_GET_REG32(Counter_TACHO_COMPARE_LSB_PTR));
+ 339              		.loc 1 491 0
+ 340 0000 014B     		ldr	r3, .L38
+ 341 0002 1868     		ldr	r0, [r3]
+ 492:Generated_Source\PSoC5/Counter_TACHO.c **** }
+ 342              		.loc 1 492 0
+ 343 0004 7047     		bx	lr
+ 344              	.L39:
+ 345 0006 00BF     		.align	2
+ 346              	.L38:
+ 347 0008 34650040 		.word	1073767732
+ 348              		.cfi_endproc
+ 349              	.LFE14:
+ 350              		.size	Counter_TACHO_ReadCompare, .-Counter_TACHO_ReadCompare
+ 351              		.section	.text.Counter_TACHO_SetCompareMode,"ax",%progbits
+ 352              		.align	2
+ 353              		.global	Counter_TACHO_SetCompareMode
+ 354              		.thumb
+ 355              		.thumb_func
+ 356              		.type	Counter_TACHO_SetCompareMode, %function
+ 357              	Counter_TACHO_SetCompareMode:
+ 358              	.LFB15:
+ 493:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 494:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 495:Generated_Source\PSoC5/Counter_TACHO.c **** #if (Counter_TACHO_COMPARE_MODE_SOFTWARE)
+ 496:Generated_Source\PSoC5/Counter_TACHO.c **** /*******************************************************************************
+ 497:Generated_Source\PSoC5/Counter_TACHO.c **** * Function Name: Counter_TACHO_SetCompareMode
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 16
+
+
+ 498:Generated_Source\PSoC5/Counter_TACHO.c **** ********************************************************************************
+ 499:Generated_Source\PSoC5/Counter_TACHO.c **** * Summary:
+ 500:Generated_Source\PSoC5/Counter_TACHO.c **** *  Sets the software controlled Compare Mode.
+ 501:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 502:Generated_Source\PSoC5/Counter_TACHO.c **** * Parameters:
+ 503:Generated_Source\PSoC5/Counter_TACHO.c **** *  compareMode:  Compare Mode Enumerated Type.
+ 504:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 505:Generated_Source\PSoC5/Counter_TACHO.c **** * Return:
+ 506:Generated_Source\PSoC5/Counter_TACHO.c **** *  void
+ 507:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 508:Generated_Source\PSoC5/Counter_TACHO.c **** *******************************************************************************/
+ 509:Generated_Source\PSoC5/Counter_TACHO.c **** void Counter_TACHO_SetCompareMode(uint8 compareMode) 
+ 510:Generated_Source\PSoC5/Counter_TACHO.c **** {
+ 359              		.loc 1 510 0
+ 360              		.cfi_startproc
+ 361              		@ args = 0, pretend = 0, frame = 0
+ 362              		@ frame_needed = 0, uses_anonymous_args = 0
+ 363              		@ link register save eliminated.
+ 364              	.LVL5:
+ 511:Generated_Source\PSoC5/Counter_TACHO.c ****     /* Clear the compare mode bits in the control register */
+ 512:Generated_Source\PSoC5/Counter_TACHO.c ****     Counter_TACHO_CONTROL &= ((uint8)(~Counter_TACHO_CTRL_CMPMODE_MASK));
+ 365              		.loc 1 512 0
+ 366 0000 044B     		ldr	r3, .L41
+ 367 0002 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 368 0004 02F0F802 		and	r2, r2, #248
+ 369 0008 1A70     		strb	r2, [r3]
+ 513:Generated_Source\PSoC5/Counter_TACHO.c ****     
+ 514:Generated_Source\PSoC5/Counter_TACHO.c ****     /* Write the new setting */
+ 515:Generated_Source\PSoC5/Counter_TACHO.c ****     Counter_TACHO_CONTROL |= compareMode;
+ 370              		.loc 1 515 0
+ 371 000a 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 372 000c 1043     		orrs	r0, r0, r2
+ 373              	.LVL6:
+ 374 000e 1870     		strb	r0, [r3]
+ 375 0010 7047     		bx	lr
+ 376              	.L42:
+ 377 0012 00BF     		.align	2
+ 378              	.L41:
+ 379 0014 77650040 		.word	1073767799
+ 380              		.cfi_endproc
+ 381              	.LFE15:
+ 382              		.size	Counter_TACHO_SetCompareMode, .-Counter_TACHO_SetCompareMode
+ 383              		.section	.text.Counter_TACHO_ClearFIFO,"ax",%progbits
+ 384              		.align	2
+ 385              		.global	Counter_TACHO_ClearFIFO
+ 386              		.thumb
+ 387              		.thumb_func
+ 388              		.type	Counter_TACHO_ClearFIFO, %function
+ 389              	Counter_TACHO_ClearFIFO:
+ 390              	.LFB16:
+ 516:Generated_Source\PSoC5/Counter_TACHO.c **** }
+ 517:Generated_Source\PSoC5/Counter_TACHO.c **** #endif  /* (Counter_TACHO_COMPARE_MODE_SOFTWARE) */
+ 518:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 519:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 520:Generated_Source\PSoC5/Counter_TACHO.c **** #if (Counter_TACHO_CAPTURE_MODE_SOFTWARE)
+ 521:Generated_Source\PSoC5/Counter_TACHO.c **** /*******************************************************************************
+ 522:Generated_Source\PSoC5/Counter_TACHO.c **** * Function Name: Counter_TACHO_SetCaptureMode
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 17
+
+
+ 523:Generated_Source\PSoC5/Counter_TACHO.c **** ********************************************************************************
+ 524:Generated_Source\PSoC5/Counter_TACHO.c **** * Summary:
+ 525:Generated_Source\PSoC5/Counter_TACHO.c **** *  Sets the software controlled Capture Mode.
+ 526:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 527:Generated_Source\PSoC5/Counter_TACHO.c **** * Parameters:
+ 528:Generated_Source\PSoC5/Counter_TACHO.c **** *  captureMode:  Capture Mode Enumerated Type.
+ 529:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 530:Generated_Source\PSoC5/Counter_TACHO.c **** * Return:
+ 531:Generated_Source\PSoC5/Counter_TACHO.c **** *  void
+ 532:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 533:Generated_Source\PSoC5/Counter_TACHO.c **** *******************************************************************************/
+ 534:Generated_Source\PSoC5/Counter_TACHO.c **** void Counter_TACHO_SetCaptureMode(uint8 captureMode) 
+ 535:Generated_Source\PSoC5/Counter_TACHO.c **** {
+ 536:Generated_Source\PSoC5/Counter_TACHO.c ****     /* Clear the capture mode bits in the control register */
+ 537:Generated_Source\PSoC5/Counter_TACHO.c ****     Counter_TACHO_CONTROL &= ((uint8)(~Counter_TACHO_CTRL_CAPMODE_MASK));
+ 538:Generated_Source\PSoC5/Counter_TACHO.c ****     
+ 539:Generated_Source\PSoC5/Counter_TACHO.c ****     /* Write the new setting */
+ 540:Generated_Source\PSoC5/Counter_TACHO.c ****     Counter_TACHO_CONTROL |= ((uint8)((uint8)captureMode << Counter_TACHO_CTRL_CAPMODE0_SHIFT));
+ 541:Generated_Source\PSoC5/Counter_TACHO.c **** }
+ 542:Generated_Source\PSoC5/Counter_TACHO.c **** #endif  /* (Counter_TACHO_CAPTURE_MODE_SOFTWARE) */
+ 543:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 544:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 545:Generated_Source\PSoC5/Counter_TACHO.c **** /*******************************************************************************
+ 546:Generated_Source\PSoC5/Counter_TACHO.c **** * Function Name: Counter_TACHO_ClearFIFO
+ 547:Generated_Source\PSoC5/Counter_TACHO.c **** ********************************************************************************
+ 548:Generated_Source\PSoC5/Counter_TACHO.c **** * Summary:
+ 549:Generated_Source\PSoC5/Counter_TACHO.c **** *   This function clears all capture data from the capture FIFO
+ 550:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 551:Generated_Source\PSoC5/Counter_TACHO.c **** * Parameters:  
+ 552:Generated_Source\PSoC5/Counter_TACHO.c **** *  void:
+ 553:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 554:Generated_Source\PSoC5/Counter_TACHO.c **** * Return: 
+ 555:Generated_Source\PSoC5/Counter_TACHO.c **** *  None
+ 556:Generated_Source\PSoC5/Counter_TACHO.c **** *
+ 557:Generated_Source\PSoC5/Counter_TACHO.c **** *******************************************************************************/
+ 558:Generated_Source\PSoC5/Counter_TACHO.c **** void Counter_TACHO_ClearFIFO(void) 
+ 559:Generated_Source\PSoC5/Counter_TACHO.c **** {
+ 391              		.loc 1 559 0
+ 392              		.cfi_startproc
+ 393              		@ args = 0, pretend = 0, frame = 0
+ 394              		@ frame_needed = 0, uses_anonymous_args = 0
+ 395 0000 08B5     		push	{r3, lr}
+ 396              		.cfi_def_cfa_offset 8
+ 397              		.cfi_offset 3, -8
+ 398              		.cfi_offset 14, -4
+ 560:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 561:Generated_Source\PSoC5/Counter_TACHO.c ****     while(0u != (Counter_TACHO_ReadStatusRegister() & Counter_TACHO_STATUS_FIFONEMP))
+ 399              		.loc 1 561 0
+ 400 0002 01E0     		b	.L44
+ 401              	.L45:
+ 562:Generated_Source\PSoC5/Counter_TACHO.c ****     {
+ 563:Generated_Source\PSoC5/Counter_TACHO.c ****         (void)Counter_TACHO_ReadCapture();
+ 402              		.loc 1 563 0
+ 403 0004 FFF7FEFF 		bl	Counter_TACHO_ReadCapture
+ 404              	.LVL7:
+ 405              	.L44:
+ 561:Generated_Source\PSoC5/Counter_TACHO.c ****     {
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 18
+
+
+ 406              		.loc 1 561 0
+ 407 0008 FFF7FEFF 		bl	Counter_TACHO_ReadStatusRegister
+ 408              	.LVL8:
+ 409 000c 10F0400F 		tst	r0, #64
+ 410 0010 F8D1     		bne	.L45
+ 564:Generated_Source\PSoC5/Counter_TACHO.c ****     }
+ 565:Generated_Source\PSoC5/Counter_TACHO.c **** 
+ 566:Generated_Source\PSoC5/Counter_TACHO.c **** }
+ 411              		.loc 1 566 0
+ 412 0012 08BD     		pop	{r3, pc}
+ 413              		.cfi_endproc
+ 414              	.LFE16:
+ 415              		.size	Counter_TACHO_ClearFIFO, .-Counter_TACHO_ClearFIFO
+ 416              		.section	.text.Counter_TACHO_Init,"ax",%progbits
+ 417              		.align	2
+ 418              		.global	Counter_TACHO_Init
+ 419              		.thumb
+ 420              		.thumb_func
+ 421              		.type	Counter_TACHO_Init, %function
+ 422              	Counter_TACHO_Init:
+ 423              	.LFB0:
+  38:Generated_Source\PSoC5/Counter_TACHO.c ****         #if (!Counter_TACHO_UsingFixedFunction && !Counter_TACHO_ControlRegRemoved)
+ 424              		.loc 1 38 0
+ 425              		.cfi_startproc
+ 426              		@ args = 0, pretend = 0, frame = 0
+ 427              		@ frame_needed = 0, uses_anonymous_args = 0
+ 428 0000 08B5     		push	{r3, lr}
+ 429              		.cfi_def_cfa_offset 8
+ 430              		.cfi_offset 3, -8
+ 431              		.cfi_offset 14, -4
+  79:Generated_Source\PSoC5/Counter_TACHO.c ****             Counter_TACHO_CONTROL = ctrl | Counter_TACHO_DEFAULT_COMPARE_MODE;
+ 432              		.loc 1 79 0
+ 433 0002 144A     		ldr	r2, .L49
+ 434 0004 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 435 0006 03F0F803 		and	r3, r3, #248
+ 436              	.LVL9:
+  80:Generated_Source\PSoC5/Counter_TACHO.c ****             
+ 437              		.loc 1 80 0
+ 438 000a 43F00503 		orr	r3, r3, #5
+ 439              	.LVL10:
+ 440 000e 1370     		strb	r3, [r2]
+  83:Generated_Source\PSoC5/Counter_TACHO.c ****             
+ 441              		.loc 1 83 0
+ 442 0010 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 443 0012 03F0FC03 		and	r3, r3, #252
+ 444              	.LVL11:
+  86:Generated_Source\PSoC5/Counter_TACHO.c ****             #else
+ 445              		.loc 1 86 0
+ 446 0016 43F00803 		orr	r3, r3, #8
+ 447              	.LVL12:
+ 448 001a 1370     		strb	r3, [r2]
+  96:Generated_Source\PSoC5/Counter_TACHO.c ****         #endif /* (!Counter_TACHO_UsingFixedFunction) */
+ 449              		.loc 1 96 0
+ 450 001c FFF7FEFF 		bl	Counter_TACHO_ClearFIFO
+ 451              	.LVL13:
+ 100:Generated_Source\PSoC5/Counter_TACHO.c ****         #if (!(Counter_TACHO_UsingFixedFunction && (CY_PSOC5A)))
+ 452              		.loc 1 100 0
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 19
+
+
+ 453 0020 6FF00100 		mvn	r0, #1
+ 454 0024 FFF7FEFF 		bl	Counter_TACHO_WritePeriod
+ 455              	.LVL14:
+ 102:Generated_Source\PSoC5/Counter_TACHO.c ****         #endif /* (!(Counter_TACHO_UsingFixedFunction && (CY_PSOC5A))) */
+ 456              		.loc 1 102 0
+ 457 0028 0020     		movs	r0, #0
+ 458 002a FFF7FEFF 		bl	Counter_TACHO_WriteCounter
+ 459              	.LVL15:
+ 104:Generated_Source\PSoC5/Counter_TACHO.c ****         
+ 460              		.loc 1 104 0
+ 461 002e 0020     		movs	r0, #0
+ 462 0030 FFF7FEFF 		bl	Counter_TACHO_SetInterruptMode
+ 463              	.LVL16:
+ 108:Generated_Source\PSoC5/Counter_TACHO.c ****             /* Set the compare value (only available to non-fixed function implementation */
+ 464              		.loc 1 108 0
+ 465 0034 FFF7FEFF 		bl	Counter_TACHO_ReadStatusRegister
+ 466              	.LVL17:
+ 110:Generated_Source\PSoC5/Counter_TACHO.c ****             /* Use the interrupt output of the status register for IRQ output */
+ 467              		.loc 1 110 0
+ 468 0038 FF20     		movs	r0, #255
+ 469 003a FFF7FEFF 		bl	Counter_TACHO_WriteCompare
+ 470              	.LVL18:
+ 115:Generated_Source\PSoC5/Counter_TACHO.c ****             
+ 471              		.loc 1 115 0
+ 472 003e FFF7FEFF 		bl	CyEnterCriticalSection
+ 473              	.LVL19:
+ 117:Generated_Source\PSoC5/Counter_TACHO.c ****             
+ 474              		.loc 1 117 0
+ 475 0042 054A     		ldr	r2, .L49+4
+ 476 0044 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 477 0046 43F01003 		orr	r3, r3, #16
+ 478 004a 1370     		strb	r3, [r2]
+ 120:Generated_Source\PSoC5/Counter_TACHO.c ****             
+ 479              		.loc 1 120 0
+ 480 004c FFF7FEFF 		bl	CyExitCriticalSection
+ 481              	.LVL20:
+ 482 0050 08BD     		pop	{r3, pc}
+ 483              	.L50:
+ 484 0052 00BF     		.align	2
+ 485              	.L49:
+ 486 0054 77650040 		.word	1073767799
+ 487 0058 97650040 		.word	1073767831
+ 488              		.cfi_endproc
+ 489              	.LFE0:
+ 490              		.size	Counter_TACHO_Init, .-Counter_TACHO_Init
+ 491              		.section	.text.Counter_TACHO_Start,"ax",%progbits
+ 492              		.align	2
+ 493              		.global	Counter_TACHO_Start
+ 494              		.thumb
+ 495              		.thumb_func
+ 496              		.type	Counter_TACHO_Start, %function
+ 497              	Counter_TACHO_Start:
+ 498              	.LFB2:
+ 179:Generated_Source\PSoC5/Counter_TACHO.c ****     if(Counter_TACHO_initVar == 0u)
+ 499              		.loc 1 179 0
+ 500              		.cfi_startproc
+ 501              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 20
+
+
+ 502              		@ frame_needed = 0, uses_anonymous_args = 0
+ 503 0000 08B5     		push	{r3, lr}
+ 504              		.cfi_def_cfa_offset 8
+ 505              		.cfi_offset 3, -8
+ 506              		.cfi_offset 14, -4
+ 180:Generated_Source\PSoC5/Counter_TACHO.c ****     {
+ 507              		.loc 1 180 0
+ 508 0002 054B     		ldr	r3, .L54
+ 509 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 510 0006 23B9     		cbnz	r3, .L52
+ 182:Generated_Source\PSoC5/Counter_TACHO.c ****         
+ 511              		.loc 1 182 0
+ 512 0008 FFF7FEFF 		bl	Counter_TACHO_Init
+ 513              	.LVL21:
+ 184:Generated_Source\PSoC5/Counter_TACHO.c ****     }
+ 514              		.loc 1 184 0
+ 515 000c 0122     		movs	r2, #1
+ 516 000e 024B     		ldr	r3, .L54
+ 517 0010 1A70     		strb	r2, [r3]
+ 518              	.L52:
+ 188:Generated_Source\PSoC5/Counter_TACHO.c **** }
+ 519              		.loc 1 188 0
+ 520 0012 FFF7FEFF 		bl	Counter_TACHO_Enable
+ 521              	.LVL22:
+ 522 0016 08BD     		pop	{r3, pc}
+ 523              	.L55:
+ 524              		.align	2
+ 525              	.L54:
+ 526 0018 00000000 		.word	.LANCHOR0
+ 527              		.cfi_endproc
+ 528              	.LFE2:
+ 529              		.size	Counter_TACHO_Start, .-Counter_TACHO_Start
+ 530              		.global	Counter_TACHO_initVar
+ 531              		.bss
+ 532              		.set	.LANCHOR0,. + 0
+ 533              		.type	Counter_TACHO_initVar, %object
+ 534              		.size	Counter_TACHO_initVar, 1
+ 535              	Counter_TACHO_initVar:
+ 536 0000 00       		.space	1
+ 537              		.text
+ 538              	.Letext0:
+ 539              		.file 2 "Generated_Source\\PSoC5\\cytypes.h"
+ 540              		.file 3 "Generated_Source\\PSoC5\\CyLib.h"
+ 541              		.section	.debug_info,"",%progbits
+ 542              	.Ldebug_info0:
+ 543 0000 67030000 		.4byte	0x367
+ 544 0004 0400     		.2byte	0x4
+ 545 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 546 000a 04       		.byte	0x4
+ 547 000b 01       		.uleb128 0x1
+ 548 000c 2D020000 		.4byte	.LASF45
+ 549 0010 0C       		.byte	0xc
+ 550 0011 D7030000 		.4byte	.LASF46
+ 551 0015 2F030000 		.4byte	.LASF47
+ 552 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 553 001d 00000000 		.4byte	0
+ 554 0021 00000000 		.4byte	.Ldebug_line0
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 21
+
+
+ 555 0025 02       		.uleb128 0x2
+ 556 0026 01       		.byte	0x1
+ 557 0027 06       		.byte	0x6
+ 558 0028 C3030000 		.4byte	.LASF0
+ 559 002c 02       		.uleb128 0x2
+ 560 002d 01       		.byte	0x1
+ 561 002e 08       		.byte	0x8
+ 562 002f 14010000 		.4byte	.LASF1
+ 563 0033 02       		.uleb128 0x2
+ 564 0034 02       		.byte	0x2
+ 565 0035 05       		.byte	0x5
+ 566 0036 25030000 		.4byte	.LASF2
+ 567 003a 02       		.uleb128 0x2
+ 568 003b 02       		.byte	0x2
+ 569 003c 07       		.byte	0x7
+ 570 003d 38000000 		.4byte	.LASF3
+ 571 0041 02       		.uleb128 0x2
+ 572 0042 04       		.byte	0x4
+ 573 0043 05       		.byte	0x5
+ 574 0044 75030000 		.4byte	.LASF4
+ 575 0048 02       		.uleb128 0x2
+ 576 0049 04       		.byte	0x4
+ 577 004a 07       		.byte	0x7
+ 578 004b 6C010000 		.4byte	.LASF5
+ 579 004f 02       		.uleb128 0x2
+ 580 0050 08       		.byte	0x8
+ 581 0051 05       		.byte	0x5
+ 582 0052 C4020000 		.4byte	.LASF6
+ 583 0056 02       		.uleb128 0x2
+ 584 0057 08       		.byte	0x8
+ 585 0058 07       		.byte	0x7
+ 586 0059 DA000000 		.4byte	.LASF7
+ 587 005d 03       		.uleb128 0x3
+ 588 005e 04       		.byte	0x4
+ 589 005f 05       		.byte	0x5
+ 590 0060 696E7400 		.ascii	"int\000"
+ 591 0064 02       		.uleb128 0x2
+ 592 0065 04       		.byte	0x4
+ 593 0066 07       		.byte	0x7
+ 594 0067 F7010000 		.4byte	.LASF8
+ 595 006b 04       		.uleb128 0x4
+ 596 006c 7E010000 		.4byte	.LASF9
+ 597 0070 02       		.byte	0x2
+ 598 0071 E801     		.2byte	0x1e8
+ 599 0073 2C000000 		.4byte	0x2c
+ 600 0077 04       		.uleb128 0x4
+ 601 0078 B8010000 		.4byte	.LASF10
+ 602 007c 02       		.byte	0x2
+ 603 007d EA01     		.2byte	0x1ea
+ 604 007f 48000000 		.4byte	0x48
+ 605 0083 02       		.uleb128 0x2
+ 606 0084 04       		.byte	0x4
+ 607 0085 04       		.byte	0x4
+ 608 0086 CC000000 		.4byte	.LASF11
+ 609 008a 02       		.uleb128 0x2
+ 610 008b 08       		.byte	0x8
+ 611 008c 04       		.byte	0x4
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 22
+
+
+ 612 008d 9B010000 		.4byte	.LASF12
+ 613 0091 02       		.uleb128 0x2
+ 614 0092 01       		.byte	0x1
+ 615 0093 08       		.byte	0x8
+ 616 0094 7E030000 		.4byte	.LASF13
+ 617 0098 04       		.uleb128 0x4
+ 618 0099 4D010000 		.4byte	.LASF14
+ 619 009d 02       		.byte	0x2
+ 620 009e 9202     		.2byte	0x292
+ 621 00a0 A4000000 		.4byte	0xa4
+ 622 00a4 05       		.uleb128 0x5
+ 623 00a5 6B000000 		.4byte	0x6b
+ 624 00a9 04       		.uleb128 0x4
+ 625 00aa 00000000 		.4byte	.LASF15
+ 626 00ae 02       		.byte	0x2
+ 627 00af 9402     		.2byte	0x294
+ 628 00b1 B5000000 		.4byte	0xb5
+ 629 00b5 05       		.uleb128 0x5
+ 630 00b6 77000000 		.4byte	0x77
+ 631 00ba 02       		.uleb128 0x2
+ 632 00bb 08       		.byte	0x8
+ 633 00bc 04       		.byte	0x4
+ 634 00bd 9C030000 		.4byte	.LASF16
+ 635 00c1 02       		.uleb128 0x2
+ 636 00c2 04       		.byte	0x4
+ 637 00c3 07       		.byte	0x7
+ 638 00c4 BB020000 		.4byte	.LASF17
+ 639 00c8 06       		.uleb128 0x6
+ 640 00c9 7F000000 		.4byte	.LASF18
+ 641 00cd 01       		.byte	0x1
+ 642 00ce 8F       		.byte	0x8f
+ 643 00cf 00000000 		.4byte	.LFB1
+ 644 00d3 10000000 		.4byte	.LFE1-.LFB1
+ 645 00d7 01       		.uleb128 0x1
+ 646 00d8 9C       		.byte	0x9c
+ 647 00d9 06       		.uleb128 0x6
+ 648 00da 1A020000 		.4byte	.LASF19
+ 649 00de 01       		.byte	0x1
+ 650 00df D0       		.byte	0xd0
+ 651 00e0 00000000 		.4byte	.LFB3
+ 652 00e4 10000000 		.4byte	.LFE3-.LFB3
+ 653 00e8 01       		.uleb128 0x1
+ 654 00e9 9C       		.byte	0x9c
+ 655 00ea 07       		.uleb128 0x7
+ 656 00eb 06000000 		.4byte	.LASF22
+ 657 00ef 01       		.byte	0x1
+ 658 00f0 ED       		.byte	0xed
+ 659 00f1 00000000 		.4byte	.LFB4
+ 660 00f5 0C000000 		.4byte	.LFE4-.LFB4
+ 661 00f9 01       		.uleb128 0x1
+ 662 00fa 9C       		.byte	0x9c
+ 663 00fb 0D010000 		.4byte	0x10d
+ 664 00ff 08       		.uleb128 0x8
+ 665 0100 8C010000 		.4byte	.LASF24
+ 666 0104 01       		.byte	0x1
+ 667 0105 ED       		.byte	0xed
+ 668 0106 6B000000 		.4byte	0x6b
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 23
+
+
+ 669 010a 01       		.uleb128 0x1
+ 670 010b 50       		.byte	0x50
+ 671 010c 00       		.byte	0
+ 672 010d 09       		.uleb128 0x9
+ 673 010e D6010000 		.4byte	.LASF20
+ 674 0112 01       		.byte	0x1
+ 675 0113 0501     		.2byte	0x105
+ 676 0115 6B000000 		.4byte	0x6b
+ 677 0119 00000000 		.4byte	.LFB5
+ 678 011d 0C000000 		.4byte	.LFE5-.LFB5
+ 679 0121 01       		.uleb128 0x1
+ 680 0122 9C       		.byte	0x9c
+ 681 0123 09       		.uleb128 0x9
+ 682 0124 D2020000 		.4byte	.LASF21
+ 683 0128 01       		.byte	0x1
+ 684 0129 1B01     		.2byte	0x11b
+ 685 012b 6B000000 		.4byte	0x6b
+ 686 012f 00000000 		.4byte	.LFB6
+ 687 0133 0C000000 		.4byte	.LFE6-.LFB6
+ 688 0137 01       		.uleb128 0x1
+ 689 0138 9C       		.byte	0x9c
+ 690 0139 0A       		.uleb128 0xa
+ 691 013a F1000000 		.4byte	.LASF23
+ 692 013e 01       		.byte	0x1
+ 693 013f 3001     		.2byte	0x130
+ 694 0141 00000000 		.4byte	.LFB7
+ 695 0145 0C000000 		.4byte	.LFE7-.LFB7
+ 696 0149 01       		.uleb128 0x1
+ 697 014a 9C       		.byte	0x9c
+ 698 014b 5E010000 		.4byte	0x15e
+ 699 014f 0B       		.uleb128 0xb
+ 700 0150 84010000 		.4byte	.LASF25
+ 701 0154 01       		.byte	0x1
+ 702 0155 3001     		.2byte	0x130
+ 703 0157 6B000000 		.4byte	0x6b
+ 704 015b 01       		.uleb128 0x1
+ 705 015c 50       		.byte	0x50
+ 706 015d 00       		.byte	0
+ 707 015e 0A       		.uleb128 0xa
+ 708 015f B1000000 		.4byte	.LASF26
+ 709 0163 01       		.byte	0x1
+ 710 0164 4601     		.2byte	0x146
+ 711 0166 00000000 		.4byte	.LFB8
+ 712 016a 0C000000 		.4byte	.LFE8-.LFB8
+ 713 016e 01       		.uleb128 0x1
+ 714 016f 9C       		.byte	0x9c
+ 715 0170 83010000 		.4byte	0x183
+ 716 0174 0B       		.uleb128 0xb
+ 717 0175 D2000000 		.4byte	.LASF27
+ 718 0179 01       		.byte	0x1
+ 719 017a 4601     		.2byte	0x146
+ 720 017c 77000000 		.4byte	0x77
+ 721 0180 01       		.uleb128 0x1
+ 722 0181 50       		.byte	0x50
+ 723 0182 00       		.byte	0
+ 724 0183 09       		.uleb128 0x9
+ 725 0184 52010000 		.4byte	.LASF28
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 24
+
+
+ 726 0188 01       		.byte	0x1
+ 727 0189 6501     		.2byte	0x165
+ 728 018b 77000000 		.4byte	0x77
+ 729 018f 00000000 		.4byte	.LFB9
+ 730 0193 14000000 		.4byte	.LFE9-.LFB9
+ 731 0197 01       		.uleb128 0x1
+ 732 0198 9C       		.byte	0x9c
+ 733 0199 09       		.uleb128 0x9
+ 734 019a 4B000000 		.4byte	.LASF29
+ 735 019e 01       		.byte	0x1
+ 736 019f 8601     		.2byte	0x186
+ 737 01a1 77000000 		.4byte	0x77
+ 738 01a5 00000000 		.4byte	.LFB10
+ 739 01a9 0C000000 		.4byte	.LFE10-.LFB10
+ 740 01ad 01       		.uleb128 0x1
+ 741 01ae 9C       		.byte	0x9c
+ 742 01af 0A       		.uleb128 0xa
+ 743 01b0 65000000 		.4byte	.LASF30
+ 744 01b4 01       		.byte	0x1
+ 745 01b5 9F01     		.2byte	0x19f
+ 746 01b7 00000000 		.4byte	.LFB11
+ 747 01bb 0C000000 		.4byte	.LFE11-.LFB11
+ 748 01bf 01       		.uleb128 0x1
+ 749 01c0 9C       		.byte	0x9c
+ 750 01c1 D4010000 		.4byte	0x1d4
+ 751 01c5 0B       		.uleb128 0xb
+ 752 01c6 31000000 		.4byte	.LASF31
+ 753 01ca 01       		.byte	0x1
+ 754 01cb 9F01     		.2byte	0x19f
+ 755 01cd 77000000 		.4byte	0x77
+ 756 01d1 01       		.uleb128 0x1
+ 757 01d2 50       		.byte	0x50
+ 758 01d3 00       		.byte	0
+ 759 01d4 09       		.uleb128 0x9
+ 760 01d5 83030000 		.4byte	.LASF32
+ 761 01d9 01       		.byte	0x1
+ 762 01da B601     		.2byte	0x1b6
+ 763 01dc 77000000 		.4byte	0x77
+ 764 01e0 00000000 		.4byte	.LFB12
+ 765 01e4 0C000000 		.4byte	.LFE12-.LFB12
+ 766 01e8 01       		.uleb128 0x1
+ 767 01e9 9C       		.byte	0x9c
+ 768 01ea 0A       		.uleb128 0xa
+ 769 01eb A8030000 		.4byte	.LASF33
+ 770 01ef 01       		.byte	0x1
+ 771 01f0 D101     		.2byte	0x1d1
+ 772 01f2 00000000 		.4byte	.LFB13
+ 773 01f6 0C000000 		.4byte	.LFE13-.LFB13
+ 774 01fa 01       		.uleb128 0x1
+ 775 01fb 9C       		.byte	0x9c
+ 776 01fc 0F020000 		.4byte	0x20f
+ 777 0200 0B       		.uleb128 0xb
+ 778 0201 CF030000 		.4byte	.LASF34
+ 779 0205 01       		.byte	0x1
+ 780 0206 D101     		.2byte	0x1d1
+ 781 0208 77000000 		.4byte	0x77
+ 782 020c 01       		.uleb128 0x1
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 25
+
+
+ 783 020d 50       		.byte	0x50
+ 784 020e 00       		.byte	0
+ 785 020f 09       		.uleb128 0x9
+ 786 0210 03040000 		.4byte	.LASF35
+ 787 0214 01       		.byte	0x1
+ 788 0215 E901     		.2byte	0x1e9
+ 789 0217 77000000 		.4byte	0x77
+ 790 021b 00000000 		.4byte	.LFB14
+ 791 021f 0C000000 		.4byte	.LFE14-.LFB14
+ 792 0223 01       		.uleb128 0x1
+ 793 0224 9C       		.byte	0x9c
+ 794 0225 0A       		.uleb128 0xa
+ 795 0226 94000000 		.4byte	.LASF36
+ 796 022a 01       		.byte	0x1
+ 797 022b FD01     		.2byte	0x1fd
+ 798 022d 00000000 		.4byte	.LFB15
+ 799 0231 18000000 		.4byte	.LFE15-.LFB15
+ 800 0235 01       		.uleb128 0x1
+ 801 0236 9C       		.byte	0x9c
+ 802 0237 4C020000 		.4byte	0x24c
+ 803 023b 0C       		.uleb128 0xc
+ 804 023c 25000000 		.4byte	.LASF37
+ 805 0240 01       		.byte	0x1
+ 806 0241 FD01     		.2byte	0x1fd
+ 807 0243 6B000000 		.4byte	0x6b
+ 808 0247 00000000 		.4byte	.LLST0
+ 809 024b 00       		.byte	0
+ 810 024c 0A       		.uleb128 0xa
+ 811 024d 22010000 		.4byte	.LASF38
+ 812 0251 01       		.byte	0x1
+ 813 0252 2E02     		.2byte	0x22e
+ 814 0254 00000000 		.4byte	.LFB16
+ 815 0258 14000000 		.4byte	.LFE16-.LFB16
+ 816 025c 01       		.uleb128 0x1
+ 817 025d 9C       		.byte	0x9c
+ 818 025e 75020000 		.4byte	0x275
+ 819 0262 0D       		.uleb128 0xd
+ 820 0263 08000000 		.4byte	.LVL7
+ 821 0267 99010000 		.4byte	0x199
+ 822 026b 0D       		.uleb128 0xd
+ 823 026c 0C000000 		.4byte	.LVL8
+ 824 0270 0D010000 		.4byte	0x10d
+ 825 0274 00       		.byte	0
+ 826 0275 07       		.uleb128 0x7
+ 827 0276 3A010000 		.4byte	.LASF39
+ 828 027a 01       		.byte	0x1
+ 829 027b 25       		.byte	0x25
+ 830 027c 00000000 		.4byte	.LFB0
+ 831 0280 5C000000 		.4byte	.LFE0-.LFB0
+ 832 0284 01       		.uleb128 0x1
+ 833 0285 9C       		.byte	0x9c
+ 834 0286 1B030000 		.4byte	0x31b
+ 835 028a 0E       		.uleb128 0xe
+ 836 028b FE030000 		.4byte	.LASF40
+ 837 028f 01       		.byte	0x1
+ 838 0290 28       		.byte	0x28
+ 839 0291 6B000000 		.4byte	0x6b
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 26
+
+
+ 840 0295 21000000 		.4byte	.LLST1
+ 841 0299 0E       		.uleb128 0xe
+ 842 029a 08030000 		.4byte	.LASF41
+ 843 029e 01       		.byte	0x1
+ 844 029f 2D       		.byte	0x2d
+ 845 02a0 6B000000 		.4byte	0x6b
+ 846 02a4 3F000000 		.4byte	.LLST2
+ 847 02a8 0D       		.uleb128 0xd
+ 848 02a9 20000000 		.4byte	.LVL13
+ 849 02ad 4C020000 		.4byte	0x24c
+ 850 02b1 0F       		.uleb128 0xf
+ 851 02b2 28000000 		.4byte	.LVL14
+ 852 02b6 AF010000 		.4byte	0x1af
+ 853 02ba C5020000 		.4byte	0x2c5
+ 854 02be 10       		.uleb128 0x10
+ 855 02bf 01       		.uleb128 0x1
+ 856 02c0 50       		.byte	0x50
+ 857 02c1 02       		.uleb128 0x2
+ 858 02c2 09       		.byte	0x9
+ 859 02c3 FE       		.byte	0xfe
+ 860 02c4 00       		.byte	0
+ 861 02c5 0F       		.uleb128 0xf
+ 862 02c6 2E000000 		.4byte	.LVL15
+ 863 02ca 5E010000 		.4byte	0x15e
+ 864 02ce D8020000 		.4byte	0x2d8
+ 865 02d2 10       		.uleb128 0x10
+ 866 02d3 01       		.uleb128 0x1
+ 867 02d4 50       		.byte	0x50
+ 868 02d5 01       		.uleb128 0x1
+ 869 02d6 30       		.byte	0x30
+ 870 02d7 00       		.byte	0
+ 871 02d8 0F       		.uleb128 0xf
+ 872 02d9 34000000 		.4byte	.LVL16
+ 873 02dd EA000000 		.4byte	0xea
+ 874 02e1 EB020000 		.4byte	0x2eb
+ 875 02e5 10       		.uleb128 0x10
+ 876 02e6 01       		.uleb128 0x1
+ 877 02e7 50       		.byte	0x50
+ 878 02e8 01       		.uleb128 0x1
+ 879 02e9 30       		.byte	0x30
+ 880 02ea 00       		.byte	0
+ 881 02eb 0D       		.uleb128 0xd
+ 882 02ec 38000000 		.4byte	.LVL17
+ 883 02f0 0D010000 		.4byte	0x10d
+ 884 02f4 0F       		.uleb128 0xf
+ 885 02f5 3E000000 		.4byte	.LVL18
+ 886 02f9 EA010000 		.4byte	0x1ea
+ 887 02fd 08030000 		.4byte	0x308
+ 888 0301 10       		.uleb128 0x10
+ 889 0302 01       		.uleb128 0x1
+ 890 0303 50       		.byte	0x50
+ 891 0304 02       		.uleb128 0x2
+ 892 0305 08       		.byte	0x8
+ 893 0306 FF       		.byte	0xff
+ 894 0307 00       		.byte	0
+ 895 0308 0D       		.uleb128 0xd
+ 896 0309 42000000 		.4byte	.LVL19
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 27
+
+
+ 897 030d 54030000 		.4byte	0x354
+ 898 0311 0D       		.uleb128 0xd
+ 899 0312 50000000 		.4byte	.LVL20
+ 900 0316 5F030000 		.4byte	0x35f
+ 901 031a 00       		.byte	0
+ 902 031b 07       		.uleb128 0x7
+ 903 031c F4020000 		.4byte	.LASF42
+ 904 0320 01       		.byte	0x1
+ 905 0321 B2       		.byte	0xb2
+ 906 0322 00000000 		.4byte	.LFB2
+ 907 0326 1C000000 		.4byte	.LFE2-.LFB2
+ 908 032a 01       		.uleb128 0x1
+ 909 032b 9C       		.byte	0x9c
+ 910 032c 43030000 		.4byte	0x343
+ 911 0330 0D       		.uleb128 0xd
+ 912 0331 0C000000 		.4byte	.LVL21
+ 913 0335 75020000 		.4byte	0x275
+ 914 0339 0D       		.uleb128 0xd
+ 915 033a 16000000 		.4byte	.LVL22
+ 916 033e C8000000 		.4byte	0xc8
+ 917 0342 00       		.byte	0
+ 918 0343 11       		.uleb128 0x11
+ 919 0344 A2010000 		.4byte	.LASF48
+ 920 0348 01       		.byte	0x1
+ 921 0349 15       		.byte	0x15
+ 922 034a 6B000000 		.4byte	0x6b
+ 923 034e 05       		.uleb128 0x5
+ 924 034f 03       		.byte	0x3
+ 925 0350 00000000 		.4byte	Counter_TACHO_initVar
+ 926 0354 12       		.uleb128 0x12
+ 927 0355 BF010000 		.4byte	.LASF43
+ 928 0359 BF010000 		.4byte	.LASF43
+ 929 035d 03       		.byte	0x3
+ 930 035e 7D       		.byte	0x7d
+ 931 035f 12       		.uleb128 0x12
+ 932 0360 04020000 		.4byte	.LASF44
+ 933 0364 04020000 		.4byte	.LASF44
+ 934 0368 03       		.byte	0x3
+ 935 0369 7E       		.byte	0x7e
+ 936 036a 00       		.byte	0
+ 937              		.section	.debug_abbrev,"",%progbits
+ 938              	.Ldebug_abbrev0:
+ 939 0000 01       		.uleb128 0x1
+ 940 0001 11       		.uleb128 0x11
+ 941 0002 01       		.byte	0x1
+ 942 0003 25       		.uleb128 0x25
+ 943 0004 0E       		.uleb128 0xe
+ 944 0005 13       		.uleb128 0x13
+ 945 0006 0B       		.uleb128 0xb
+ 946 0007 03       		.uleb128 0x3
+ 947 0008 0E       		.uleb128 0xe
+ 948 0009 1B       		.uleb128 0x1b
+ 949 000a 0E       		.uleb128 0xe
+ 950 000b 55       		.uleb128 0x55
+ 951 000c 17       		.uleb128 0x17
+ 952 000d 11       		.uleb128 0x11
+ 953 000e 01       		.uleb128 0x1
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 28
+
+
+ 954 000f 10       		.uleb128 0x10
+ 955 0010 17       		.uleb128 0x17
+ 956 0011 00       		.byte	0
+ 957 0012 00       		.byte	0
+ 958 0013 02       		.uleb128 0x2
+ 959 0014 24       		.uleb128 0x24
+ 960 0015 00       		.byte	0
+ 961 0016 0B       		.uleb128 0xb
+ 962 0017 0B       		.uleb128 0xb
+ 963 0018 3E       		.uleb128 0x3e
+ 964 0019 0B       		.uleb128 0xb
+ 965 001a 03       		.uleb128 0x3
+ 966 001b 0E       		.uleb128 0xe
+ 967 001c 00       		.byte	0
+ 968 001d 00       		.byte	0
+ 969 001e 03       		.uleb128 0x3
+ 970 001f 24       		.uleb128 0x24
+ 971 0020 00       		.byte	0
+ 972 0021 0B       		.uleb128 0xb
+ 973 0022 0B       		.uleb128 0xb
+ 974 0023 3E       		.uleb128 0x3e
+ 975 0024 0B       		.uleb128 0xb
+ 976 0025 03       		.uleb128 0x3
+ 977 0026 08       		.uleb128 0x8
+ 978 0027 00       		.byte	0
+ 979 0028 00       		.byte	0
+ 980 0029 04       		.uleb128 0x4
+ 981 002a 16       		.uleb128 0x16
+ 982 002b 00       		.byte	0
+ 983 002c 03       		.uleb128 0x3
+ 984 002d 0E       		.uleb128 0xe
+ 985 002e 3A       		.uleb128 0x3a
+ 986 002f 0B       		.uleb128 0xb
+ 987 0030 3B       		.uleb128 0x3b
+ 988 0031 05       		.uleb128 0x5
+ 989 0032 49       		.uleb128 0x49
+ 990 0033 13       		.uleb128 0x13
+ 991 0034 00       		.byte	0
+ 992 0035 00       		.byte	0
+ 993 0036 05       		.uleb128 0x5
+ 994 0037 35       		.uleb128 0x35
+ 995 0038 00       		.byte	0
+ 996 0039 49       		.uleb128 0x49
+ 997 003a 13       		.uleb128 0x13
+ 998 003b 00       		.byte	0
+ 999 003c 00       		.byte	0
+ 1000 003d 06       		.uleb128 0x6
+ 1001 003e 2E       		.uleb128 0x2e
+ 1002 003f 00       		.byte	0
+ 1003 0040 3F       		.uleb128 0x3f
+ 1004 0041 19       		.uleb128 0x19
+ 1005 0042 03       		.uleb128 0x3
+ 1006 0043 0E       		.uleb128 0xe
+ 1007 0044 3A       		.uleb128 0x3a
+ 1008 0045 0B       		.uleb128 0xb
+ 1009 0046 3B       		.uleb128 0x3b
+ 1010 0047 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 29
+
+
+ 1011 0048 27       		.uleb128 0x27
+ 1012 0049 19       		.uleb128 0x19
+ 1013 004a 11       		.uleb128 0x11
+ 1014 004b 01       		.uleb128 0x1
+ 1015 004c 12       		.uleb128 0x12
+ 1016 004d 06       		.uleb128 0x6
+ 1017 004e 40       		.uleb128 0x40
+ 1018 004f 18       		.uleb128 0x18
+ 1019 0050 9742     		.uleb128 0x2117
+ 1020 0052 19       		.uleb128 0x19
+ 1021 0053 00       		.byte	0
+ 1022 0054 00       		.byte	0
+ 1023 0055 07       		.uleb128 0x7
+ 1024 0056 2E       		.uleb128 0x2e
+ 1025 0057 01       		.byte	0x1
+ 1026 0058 3F       		.uleb128 0x3f
+ 1027 0059 19       		.uleb128 0x19
+ 1028 005a 03       		.uleb128 0x3
+ 1029 005b 0E       		.uleb128 0xe
+ 1030 005c 3A       		.uleb128 0x3a
+ 1031 005d 0B       		.uleb128 0xb
+ 1032 005e 3B       		.uleb128 0x3b
+ 1033 005f 0B       		.uleb128 0xb
+ 1034 0060 27       		.uleb128 0x27
+ 1035 0061 19       		.uleb128 0x19
+ 1036 0062 11       		.uleb128 0x11
+ 1037 0063 01       		.uleb128 0x1
+ 1038 0064 12       		.uleb128 0x12
+ 1039 0065 06       		.uleb128 0x6
+ 1040 0066 40       		.uleb128 0x40
+ 1041 0067 18       		.uleb128 0x18
+ 1042 0068 9742     		.uleb128 0x2117
+ 1043 006a 19       		.uleb128 0x19
+ 1044 006b 01       		.uleb128 0x1
+ 1045 006c 13       		.uleb128 0x13
+ 1046 006d 00       		.byte	0
+ 1047 006e 00       		.byte	0
+ 1048 006f 08       		.uleb128 0x8
+ 1049 0070 05       		.uleb128 0x5
+ 1050 0071 00       		.byte	0
+ 1051 0072 03       		.uleb128 0x3
+ 1052 0073 0E       		.uleb128 0xe
+ 1053 0074 3A       		.uleb128 0x3a
+ 1054 0075 0B       		.uleb128 0xb
+ 1055 0076 3B       		.uleb128 0x3b
+ 1056 0077 0B       		.uleb128 0xb
+ 1057 0078 49       		.uleb128 0x49
+ 1058 0079 13       		.uleb128 0x13
+ 1059 007a 02       		.uleb128 0x2
+ 1060 007b 18       		.uleb128 0x18
+ 1061 007c 00       		.byte	0
+ 1062 007d 00       		.byte	0
+ 1063 007e 09       		.uleb128 0x9
+ 1064 007f 2E       		.uleb128 0x2e
+ 1065 0080 00       		.byte	0
+ 1066 0081 3F       		.uleb128 0x3f
+ 1067 0082 19       		.uleb128 0x19
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 30
+
+
+ 1068 0083 03       		.uleb128 0x3
+ 1069 0084 0E       		.uleb128 0xe
+ 1070 0085 3A       		.uleb128 0x3a
+ 1071 0086 0B       		.uleb128 0xb
+ 1072 0087 3B       		.uleb128 0x3b
+ 1073 0088 05       		.uleb128 0x5
+ 1074 0089 27       		.uleb128 0x27
+ 1075 008a 19       		.uleb128 0x19
+ 1076 008b 49       		.uleb128 0x49
+ 1077 008c 13       		.uleb128 0x13
+ 1078 008d 11       		.uleb128 0x11
+ 1079 008e 01       		.uleb128 0x1
+ 1080 008f 12       		.uleb128 0x12
+ 1081 0090 06       		.uleb128 0x6
+ 1082 0091 40       		.uleb128 0x40
+ 1083 0092 18       		.uleb128 0x18
+ 1084 0093 9742     		.uleb128 0x2117
+ 1085 0095 19       		.uleb128 0x19
+ 1086 0096 00       		.byte	0
+ 1087 0097 00       		.byte	0
+ 1088 0098 0A       		.uleb128 0xa
+ 1089 0099 2E       		.uleb128 0x2e
+ 1090 009a 01       		.byte	0x1
+ 1091 009b 3F       		.uleb128 0x3f
+ 1092 009c 19       		.uleb128 0x19
+ 1093 009d 03       		.uleb128 0x3
+ 1094 009e 0E       		.uleb128 0xe
+ 1095 009f 3A       		.uleb128 0x3a
+ 1096 00a0 0B       		.uleb128 0xb
+ 1097 00a1 3B       		.uleb128 0x3b
+ 1098 00a2 05       		.uleb128 0x5
+ 1099 00a3 27       		.uleb128 0x27
+ 1100 00a4 19       		.uleb128 0x19
+ 1101 00a5 11       		.uleb128 0x11
+ 1102 00a6 01       		.uleb128 0x1
+ 1103 00a7 12       		.uleb128 0x12
+ 1104 00a8 06       		.uleb128 0x6
+ 1105 00a9 40       		.uleb128 0x40
+ 1106 00aa 18       		.uleb128 0x18
+ 1107 00ab 9742     		.uleb128 0x2117
+ 1108 00ad 19       		.uleb128 0x19
+ 1109 00ae 01       		.uleb128 0x1
+ 1110 00af 13       		.uleb128 0x13
+ 1111 00b0 00       		.byte	0
+ 1112 00b1 00       		.byte	0
+ 1113 00b2 0B       		.uleb128 0xb
+ 1114 00b3 05       		.uleb128 0x5
+ 1115 00b4 00       		.byte	0
+ 1116 00b5 03       		.uleb128 0x3
+ 1117 00b6 0E       		.uleb128 0xe
+ 1118 00b7 3A       		.uleb128 0x3a
+ 1119 00b8 0B       		.uleb128 0xb
+ 1120 00b9 3B       		.uleb128 0x3b
+ 1121 00ba 05       		.uleb128 0x5
+ 1122 00bb 49       		.uleb128 0x49
+ 1123 00bc 13       		.uleb128 0x13
+ 1124 00bd 02       		.uleb128 0x2
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 31
+
+
+ 1125 00be 18       		.uleb128 0x18
+ 1126 00bf 00       		.byte	0
+ 1127 00c0 00       		.byte	0
+ 1128 00c1 0C       		.uleb128 0xc
+ 1129 00c2 05       		.uleb128 0x5
+ 1130 00c3 00       		.byte	0
+ 1131 00c4 03       		.uleb128 0x3
+ 1132 00c5 0E       		.uleb128 0xe
+ 1133 00c6 3A       		.uleb128 0x3a
+ 1134 00c7 0B       		.uleb128 0xb
+ 1135 00c8 3B       		.uleb128 0x3b
+ 1136 00c9 05       		.uleb128 0x5
+ 1137 00ca 49       		.uleb128 0x49
+ 1138 00cb 13       		.uleb128 0x13
+ 1139 00cc 02       		.uleb128 0x2
+ 1140 00cd 17       		.uleb128 0x17
+ 1141 00ce 00       		.byte	0
+ 1142 00cf 00       		.byte	0
+ 1143 00d0 0D       		.uleb128 0xd
+ 1144 00d1 898201   		.uleb128 0x4109
+ 1145 00d4 00       		.byte	0
+ 1146 00d5 11       		.uleb128 0x11
+ 1147 00d6 01       		.uleb128 0x1
+ 1148 00d7 31       		.uleb128 0x31
+ 1149 00d8 13       		.uleb128 0x13
+ 1150 00d9 00       		.byte	0
+ 1151 00da 00       		.byte	0
+ 1152 00db 0E       		.uleb128 0xe
+ 1153 00dc 34       		.uleb128 0x34
+ 1154 00dd 00       		.byte	0
+ 1155 00de 03       		.uleb128 0x3
+ 1156 00df 0E       		.uleb128 0xe
+ 1157 00e0 3A       		.uleb128 0x3a
+ 1158 00e1 0B       		.uleb128 0xb
+ 1159 00e2 3B       		.uleb128 0x3b
+ 1160 00e3 0B       		.uleb128 0xb
+ 1161 00e4 49       		.uleb128 0x49
+ 1162 00e5 13       		.uleb128 0x13
+ 1163 00e6 02       		.uleb128 0x2
+ 1164 00e7 17       		.uleb128 0x17
+ 1165 00e8 00       		.byte	0
+ 1166 00e9 00       		.byte	0
+ 1167 00ea 0F       		.uleb128 0xf
+ 1168 00eb 898201   		.uleb128 0x4109
+ 1169 00ee 01       		.byte	0x1
+ 1170 00ef 11       		.uleb128 0x11
+ 1171 00f0 01       		.uleb128 0x1
+ 1172 00f1 31       		.uleb128 0x31
+ 1173 00f2 13       		.uleb128 0x13
+ 1174 00f3 01       		.uleb128 0x1
+ 1175 00f4 13       		.uleb128 0x13
+ 1176 00f5 00       		.byte	0
+ 1177 00f6 00       		.byte	0
+ 1178 00f7 10       		.uleb128 0x10
+ 1179 00f8 8A8201   		.uleb128 0x410a
+ 1180 00fb 00       		.byte	0
+ 1181 00fc 02       		.uleb128 0x2
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 32
+
+
+ 1182 00fd 18       		.uleb128 0x18
+ 1183 00fe 9142     		.uleb128 0x2111
+ 1184 0100 18       		.uleb128 0x18
+ 1185 0101 00       		.byte	0
+ 1186 0102 00       		.byte	0
+ 1187 0103 11       		.uleb128 0x11
+ 1188 0104 34       		.uleb128 0x34
+ 1189 0105 00       		.byte	0
+ 1190 0106 03       		.uleb128 0x3
+ 1191 0107 0E       		.uleb128 0xe
+ 1192 0108 3A       		.uleb128 0x3a
+ 1193 0109 0B       		.uleb128 0xb
+ 1194 010a 3B       		.uleb128 0x3b
+ 1195 010b 0B       		.uleb128 0xb
+ 1196 010c 49       		.uleb128 0x49
+ 1197 010d 13       		.uleb128 0x13
+ 1198 010e 3F       		.uleb128 0x3f
+ 1199 010f 19       		.uleb128 0x19
+ 1200 0110 02       		.uleb128 0x2
+ 1201 0111 18       		.uleb128 0x18
+ 1202 0112 00       		.byte	0
+ 1203 0113 00       		.byte	0
+ 1204 0114 12       		.uleb128 0x12
+ 1205 0115 2E       		.uleb128 0x2e
+ 1206 0116 00       		.byte	0
+ 1207 0117 3F       		.uleb128 0x3f
+ 1208 0118 19       		.uleb128 0x19
+ 1209 0119 3C       		.uleb128 0x3c
+ 1210 011a 19       		.uleb128 0x19
+ 1211 011b 6E       		.uleb128 0x6e
+ 1212 011c 0E       		.uleb128 0xe
+ 1213 011d 03       		.uleb128 0x3
+ 1214 011e 0E       		.uleb128 0xe
+ 1215 011f 3A       		.uleb128 0x3a
+ 1216 0120 0B       		.uleb128 0xb
+ 1217 0121 3B       		.uleb128 0x3b
+ 1218 0122 0B       		.uleb128 0xb
+ 1219 0123 00       		.byte	0
+ 1220 0124 00       		.byte	0
+ 1221 0125 00       		.byte	0
+ 1222              		.section	.debug_loc,"",%progbits
+ 1223              	.Ldebug_loc0:
+ 1224              	.LLST0:
+ 1225 0000 00000000 		.4byte	.LVL5
+ 1226 0004 0E000000 		.4byte	.LVL6
+ 1227 0008 0100     		.2byte	0x1
+ 1228 000a 50       		.byte	0x50
+ 1229 000b 0E000000 		.4byte	.LVL6
+ 1230 000f 18000000 		.4byte	.LFE15
+ 1231 0013 0400     		.2byte	0x4
+ 1232 0015 F3       		.byte	0xf3
+ 1233 0016 01       		.uleb128 0x1
+ 1234 0017 50       		.byte	0x50
+ 1235 0018 9F       		.byte	0x9f
+ 1236 0019 00000000 		.4byte	0
+ 1237 001d 00000000 		.4byte	0
+ 1238              	.LLST1:
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 33
+
+
+ 1239 0021 0A000000 		.4byte	.LVL9
+ 1240 0025 0E000000 		.4byte	.LVL10
+ 1241 0029 0100     		.2byte	0x1
+ 1242 002b 53       		.byte	0x53
+ 1243 002c 16000000 		.4byte	.LVL11
+ 1244 0030 1A000000 		.4byte	.LVL12
+ 1245 0034 0100     		.2byte	0x1
+ 1246 0036 53       		.byte	0x53
+ 1247 0037 00000000 		.4byte	0
+ 1248 003b 00000000 		.4byte	0
+ 1249              	.LLST2:
+ 1250 003f 42000000 		.4byte	.LVL19
+ 1251 0043 4F000000 		.4byte	.LVL20-1
+ 1252 0047 0100     		.2byte	0x1
+ 1253 0049 50       		.byte	0x50
+ 1254 004a 00000000 		.4byte	0
+ 1255 004e 00000000 		.4byte	0
+ 1256              		.section	.debug_aranges,"",%progbits
+ 1257 0000 9C000000 		.4byte	0x9c
+ 1258 0004 0200     		.2byte	0x2
+ 1259 0006 00000000 		.4byte	.Ldebug_info0
+ 1260 000a 04       		.byte	0x4
+ 1261 000b 00       		.byte	0
+ 1262 000c 0000     		.2byte	0
+ 1263 000e 0000     		.2byte	0
+ 1264 0010 00000000 		.4byte	.LFB1
+ 1265 0014 10000000 		.4byte	.LFE1-.LFB1
+ 1266 0018 00000000 		.4byte	.LFB3
+ 1267 001c 10000000 		.4byte	.LFE3-.LFB3
+ 1268 0020 00000000 		.4byte	.LFB4
+ 1269 0024 0C000000 		.4byte	.LFE4-.LFB4
+ 1270 0028 00000000 		.4byte	.LFB5
+ 1271 002c 0C000000 		.4byte	.LFE5-.LFB5
+ 1272 0030 00000000 		.4byte	.LFB6
+ 1273 0034 0C000000 		.4byte	.LFE6-.LFB6
+ 1274 0038 00000000 		.4byte	.LFB7
+ 1275 003c 0C000000 		.4byte	.LFE7-.LFB7
+ 1276 0040 00000000 		.4byte	.LFB8
+ 1277 0044 0C000000 		.4byte	.LFE8-.LFB8
+ 1278 0048 00000000 		.4byte	.LFB9
+ 1279 004c 14000000 		.4byte	.LFE9-.LFB9
+ 1280 0050 00000000 		.4byte	.LFB10
+ 1281 0054 0C000000 		.4byte	.LFE10-.LFB10
+ 1282 0058 00000000 		.4byte	.LFB11
+ 1283 005c 0C000000 		.4byte	.LFE11-.LFB11
+ 1284 0060 00000000 		.4byte	.LFB12
+ 1285 0064 0C000000 		.4byte	.LFE12-.LFB12
+ 1286 0068 00000000 		.4byte	.LFB13
+ 1287 006c 0C000000 		.4byte	.LFE13-.LFB13
+ 1288 0070 00000000 		.4byte	.LFB14
+ 1289 0074 0C000000 		.4byte	.LFE14-.LFB14
+ 1290 0078 00000000 		.4byte	.LFB15
+ 1291 007c 18000000 		.4byte	.LFE15-.LFB15
+ 1292 0080 00000000 		.4byte	.LFB16
+ 1293 0084 14000000 		.4byte	.LFE16-.LFB16
+ 1294 0088 00000000 		.4byte	.LFB0
+ 1295 008c 5C000000 		.4byte	.LFE0-.LFB0
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 34
+
+
+ 1296 0090 00000000 		.4byte	.LFB2
+ 1297 0094 1C000000 		.4byte	.LFE2-.LFB2
+ 1298 0098 00000000 		.4byte	0
+ 1299 009c 00000000 		.4byte	0
+ 1300              		.section	.debug_ranges,"",%progbits
+ 1301              	.Ldebug_ranges0:
+ 1302 0000 00000000 		.4byte	.LFB1
+ 1303 0004 10000000 		.4byte	.LFE1
+ 1304 0008 00000000 		.4byte	.LFB3
+ 1305 000c 10000000 		.4byte	.LFE3
+ 1306 0010 00000000 		.4byte	.LFB4
+ 1307 0014 0C000000 		.4byte	.LFE4
+ 1308 0018 00000000 		.4byte	.LFB5
+ 1309 001c 0C000000 		.4byte	.LFE5
+ 1310 0020 00000000 		.4byte	.LFB6
+ 1311 0024 0C000000 		.4byte	.LFE6
+ 1312 0028 00000000 		.4byte	.LFB7
+ 1313 002c 0C000000 		.4byte	.LFE7
+ 1314 0030 00000000 		.4byte	.LFB8
+ 1315 0034 0C000000 		.4byte	.LFE8
+ 1316 0038 00000000 		.4byte	.LFB9
+ 1317 003c 14000000 		.4byte	.LFE9
+ 1318 0040 00000000 		.4byte	.LFB10
+ 1319 0044 0C000000 		.4byte	.LFE10
+ 1320 0048 00000000 		.4byte	.LFB11
+ 1321 004c 0C000000 		.4byte	.LFE11
+ 1322 0050 00000000 		.4byte	.LFB12
+ 1323 0054 0C000000 		.4byte	.LFE12
+ 1324 0058 00000000 		.4byte	.LFB13
+ 1325 005c 0C000000 		.4byte	.LFE13
+ 1326 0060 00000000 		.4byte	.LFB14
+ 1327 0064 0C000000 		.4byte	.LFE14
+ 1328 0068 00000000 		.4byte	.LFB15
+ 1329 006c 18000000 		.4byte	.LFE15
+ 1330 0070 00000000 		.4byte	.LFB16
+ 1331 0074 14000000 		.4byte	.LFE16
+ 1332 0078 00000000 		.4byte	.LFB0
+ 1333 007c 5C000000 		.4byte	.LFE0
+ 1334 0080 00000000 		.4byte	.LFB2
+ 1335 0084 1C000000 		.4byte	.LFE2
+ 1336 0088 00000000 		.4byte	0
+ 1337 008c 00000000 		.4byte	0
+ 1338              		.section	.debug_line,"",%progbits
+ 1339              	.Ldebug_line0:
+ 1340 0000 9D010000 		.section	.debug_str,"MS",%progbits,1
+ 1340      02005500 
+ 1340      00000201 
+ 1340      FB0E0D00 
+ 1340      01010101 
+ 1341              	.LASF15:
+ 1342 0000 72656733 		.ascii	"reg32\000"
+ 1342      3200
+ 1343              	.LASF22:
+ 1344 0006 436F756E 		.ascii	"Counter_TACHO_SetInterruptMode\000"
+ 1344      7465725F 
+ 1344      54414348 
+ 1344      4F5F5365 
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 35
+
+
+ 1344      74496E74 
+ 1345              	.LASF37:
+ 1346 0025 636F6D70 		.ascii	"compareMode\000"
+ 1346      6172654D 
+ 1346      6F646500 
+ 1347              	.LASF31:
+ 1348 0031 70657269 		.ascii	"period\000"
+ 1348      6F6400
+ 1349              	.LASF3:
+ 1350 0038 73686F72 		.ascii	"short unsigned int\000"
+ 1350      7420756E 
+ 1350      7369676E 
+ 1350      65642069 
+ 1350      6E7400
+ 1351              	.LASF29:
+ 1352 004b 436F756E 		.ascii	"Counter_TACHO_ReadCapture\000"
+ 1352      7465725F 
+ 1352      54414348 
+ 1352      4F5F5265 
+ 1352      61644361 
+ 1353              	.LASF30:
+ 1354 0065 436F756E 		.ascii	"Counter_TACHO_WritePeriod\000"
+ 1354      7465725F 
+ 1354      54414348 
+ 1354      4F5F5772 
+ 1354      69746550 
+ 1355              	.LASF18:
+ 1356 007f 436F756E 		.ascii	"Counter_TACHO_Enable\000"
+ 1356      7465725F 
+ 1356      54414348 
+ 1356      4F5F456E 
+ 1356      61626C65 
+ 1357              	.LASF36:
+ 1358 0094 436F756E 		.ascii	"Counter_TACHO_SetCompareMode\000"
+ 1358      7465725F 
+ 1358      54414348 
+ 1358      4F5F5365 
+ 1358      74436F6D 
+ 1359              	.LASF26:
+ 1360 00b1 436F756E 		.ascii	"Counter_TACHO_WriteCounter\000"
+ 1360      7465725F 
+ 1360      54414348 
+ 1360      4F5F5772 
+ 1360      69746543 
+ 1361              	.LASF11:
+ 1362 00cc 666C6F61 		.ascii	"float\000"
+ 1362      7400
+ 1363              	.LASF27:
+ 1364 00d2 636F756E 		.ascii	"counter\000"
+ 1364      74657200 
+ 1365              	.LASF7:
+ 1366 00da 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1366      206C6F6E 
+ 1366      6720756E 
+ 1366      7369676E 
+ 1366      65642069 
+ 1367              	.LASF23:
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 36
+
+
+ 1368 00f1 436F756E 		.ascii	"Counter_TACHO_WriteControlRegister\000"
+ 1368      7465725F 
+ 1368      54414348 
+ 1368      4F5F5772 
+ 1368      69746543 
+ 1369              	.LASF1:
+ 1370 0114 756E7369 		.ascii	"unsigned char\000"
+ 1370      676E6564 
+ 1370      20636861 
+ 1370      7200
+ 1371              	.LASF38:
+ 1372 0122 436F756E 		.ascii	"Counter_TACHO_ClearFIFO\000"
+ 1372      7465725F 
+ 1372      54414348 
+ 1372      4F5F436C 
+ 1372      65617246 
+ 1373              	.LASF39:
+ 1374 013a 436F756E 		.ascii	"Counter_TACHO_Init\000"
+ 1374      7465725F 
+ 1374      54414348 
+ 1374      4F5F496E 
+ 1374      697400
+ 1375              	.LASF14:
+ 1376 014d 72656738 		.ascii	"reg8\000"
+ 1376      00
+ 1377              	.LASF28:
+ 1378 0152 436F756E 		.ascii	"Counter_TACHO_ReadCounter\000"
+ 1378      7465725F 
+ 1378      54414348 
+ 1378      4F5F5265 
+ 1378      6164436F 
+ 1379              	.LASF5:
+ 1380 016c 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1380      20756E73 
+ 1380      69676E65 
+ 1380      6420696E 
+ 1380      7400
+ 1381              	.LASF9:
+ 1382 017e 75696E74 		.ascii	"uint8\000"
+ 1382      3800
+ 1383              	.LASF25:
+ 1384 0184 636F6E74 		.ascii	"control\000"
+ 1384      726F6C00 
+ 1385              	.LASF24:
+ 1386 018c 696E7465 		.ascii	"interruptsMask\000"
+ 1386      72727570 
+ 1386      74734D61 
+ 1386      736B00
+ 1387              	.LASF12:
+ 1388 019b 646F7562 		.ascii	"double\000"
+ 1388      6C6500
+ 1389              	.LASF48:
+ 1390 01a2 436F756E 		.ascii	"Counter_TACHO_initVar\000"
+ 1390      7465725F 
+ 1390      54414348 
+ 1390      4F5F696E 
+ 1390      69745661 
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 37
+
+
+ 1391              	.LASF10:
+ 1392 01b8 75696E74 		.ascii	"uint32\000"
+ 1392      333200
+ 1393              	.LASF43:
+ 1394 01bf 4379456E 		.ascii	"CyEnterCriticalSection\000"
+ 1394      74657243 
+ 1394      72697469 
+ 1394      63616C53 
+ 1394      65637469 
+ 1395              	.LASF20:
+ 1396 01d6 436F756E 		.ascii	"Counter_TACHO_ReadStatusRegister\000"
+ 1396      7465725F 
+ 1396      54414348 
+ 1396      4F5F5265 
+ 1396      61645374 
+ 1397              	.LASF8:
+ 1398 01f7 756E7369 		.ascii	"unsigned int\000"
+ 1398      676E6564 
+ 1398      20696E74 
+ 1398      00
+ 1399              	.LASF44:
+ 1400 0204 43794578 		.ascii	"CyExitCriticalSection\000"
+ 1400      69744372 
+ 1400      69746963 
+ 1400      616C5365 
+ 1400      6374696F 
+ 1401              	.LASF19:
+ 1402 021a 436F756E 		.ascii	"Counter_TACHO_Stop\000"
+ 1402      7465725F 
+ 1402      54414348 
+ 1402      4F5F5374 
+ 1402      6F7000
+ 1403              	.LASF45:
+ 1404 022d 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1404      43313120 
+ 1404      352E342E 
+ 1404      31203230 
+ 1404      31363036 
+ 1405 0260 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1405      20726576 
+ 1405      6973696F 
+ 1405      6E203233 
+ 1405      37373135 
+ 1406 0293 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1406      66756E63 
+ 1406      74696F6E 
+ 1406      2D736563 
+ 1406      74696F6E 
+ 1407              	.LASF17:
+ 1408 02bb 73697A65 		.ascii	"sizetype\000"
+ 1408      74797065 
+ 1408      00
+ 1409              	.LASF6:
+ 1410 02c4 6C6F6E67 		.ascii	"long long int\000"
+ 1410      206C6F6E 
+ 1410      6720696E 
+ 1410      7400
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 38
+
+
+ 1411              	.LASF21:
+ 1412 02d2 436F756E 		.ascii	"Counter_TACHO_ReadControlRegister\000"
+ 1412      7465725F 
+ 1412      54414348 
+ 1412      4F5F5265 
+ 1412      6164436F 
+ 1413              	.LASF42:
+ 1414 02f4 436F756E 		.ascii	"Counter_TACHO_Start\000"
+ 1414      7465725F 
+ 1414      54414348 
+ 1414      4F5F5374 
+ 1414      61727400 
+ 1415              	.LASF41:
+ 1416 0308 436F756E 		.ascii	"Counter_TACHO_interruptState\000"
+ 1416      7465725F 
+ 1416      54414348 
+ 1416      4F5F696E 
+ 1416      74657272 
+ 1417              	.LASF2:
+ 1418 0325 73686F72 		.ascii	"short int\000"
+ 1418      7420696E 
+ 1418      7400
+ 1419              	.LASF47:
+ 1420 032f 433A5C55 		.ascii	"C:\\Users\\Abude\\Documents\\PSoC Creator\\Embedded"
+ 1420      73657273 
+ 1420      5C416275 
+ 1420      64655C44 
+ 1420      6F63756D 
+ 1421 035d 53797374 		.ascii	"SystemsLab5\\Lab 5.cydsn\000"
+ 1421      656D734C 
+ 1421      6162355C 
+ 1421      4C616220 
+ 1421      352E6379 
+ 1422              	.LASF4:
+ 1423 0375 6C6F6E67 		.ascii	"long int\000"
+ 1423      20696E74 
+ 1423      00
+ 1424              	.LASF13:
+ 1425 037e 63686172 		.ascii	"char\000"
+ 1425      00
+ 1426              	.LASF32:
+ 1427 0383 436F756E 		.ascii	"Counter_TACHO_ReadPeriod\000"
+ 1427      7465725F 
+ 1427      54414348 
+ 1427      4F5F5265 
+ 1427      61645065 
+ 1428              	.LASF16:
+ 1429 039c 6C6F6E67 		.ascii	"long double\000"
+ 1429      20646F75 
+ 1429      626C6500 
+ 1430              	.LASF33:
+ 1431 03a8 436F756E 		.ascii	"Counter_TACHO_WriteCompare\000"
+ 1431      7465725F 
+ 1431      54414348 
+ 1431      4F5F5772 
+ 1431      69746543 
+ 1432              	.LASF0:
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\cc4FIIiM.s 			page 39
+
+
+ 1433 03c3 7369676E 		.ascii	"signed char\000"
+ 1433      65642063 
+ 1433      68617200 
+ 1434              	.LASF34:
+ 1435 03cf 636F6D70 		.ascii	"compare\000"
+ 1435      61726500 
+ 1436              	.LASF46:
+ 1437 03d7 47656E65 		.ascii	"Generated_Source\\PSoC5\\Counter_TACHO.c\000"
+ 1437      72617465 
+ 1437      645F536F 
+ 1437      75726365 
+ 1437      5C50536F 
+ 1438              	.LASF40:
+ 1439 03fe 6374726C 		.ascii	"ctrl\000"
+ 1439      00
+ 1440              	.LASF35:
+ 1441 0403 436F756E 		.ascii	"Counter_TACHO_ReadCompare\000"
+ 1441      7465725F 
+ 1441      54414348 
+ 1441      4F5F5265 
+ 1441      6164436F 
+ 1442              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

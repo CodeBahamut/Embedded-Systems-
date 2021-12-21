@@ -1,0 +1,2930 @@
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"u8x8_d_s1d15721.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.u8x8_d_s1d15721_common,"ax",%progbits
+  20              		.align	2
+  21              		.global	u8x8_d_s1d15721_common
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	u8x8_d_s1d15721_common, %function
+  25              	u8x8_d_s1d15721_common:
+  26              	.LFB0:
+  27              		.file 1 "..\\..\\..\\..\\..\\..\\Dev\\Library embedded l2c display\\u8g2\\csrc\\u8x8_d_s1d15721.c"
+   1:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** /*
+   2:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 
+   3:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   u8x8_d_s1d15721.c
+   4:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 
+   5:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   240x64 display
+   6:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   https://github.com/olikraus/u8g2/issues/1473  
+   7:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   http://datasheet.datasheetarchive.com/originals/library/Datasheets-ISS16/DSAIH000309343.pdf
+   8:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   
+   9:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   Universal 8bit Graphics Library (https://github.com/olikraus/u8g2/)
+  10:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   
+  11:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   Copyright (c) 2020, olikraus@gmail.com
+  12:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   
+  13:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   All rights reserved.
+  14:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   
+  15:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   Redistribution and use in source and binary forms, with or without modification, 
+  16:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   are permitted provided that the following conditions are met:
+  17:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   * Redistributions of source code must retain the above copyright notice, this list 
+  18:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****     of conditions and the following disclaimer.
+  19:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****     
+  20:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   * Redistributions in binary form must reproduce the above copyright notice, this 
+  21:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****     list of conditions and the following disclaimer in the documentation and/or other 
+  22:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****     materials provided with the distribution.
+  23:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****     
+  24:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND 
+  25:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+  26:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF 
+  27:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
+  28:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR 
+  29:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+  30:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 2
+
+
+  31:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+  32:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
+  33:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
+  34:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  35:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF 
+  36:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  
+  37:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   
+  38:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** */
+  39:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** #include "u8x8.h"
+  40:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 
+  41:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** static const uint8_t u8x8_d_s1d15721_powersave0_seq[] = {
+  42:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_START_TRANSFER(),             	/* enable chip, delay is part of the transfer start */
+  43:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_C(0xA8),		                /* display on */
+  44:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_END_TRANSFER(),             	/* disable chip */
+  45:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_END()             			/* end of sequence */
+  46:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** };
+  47:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 
+  48:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** static const uint8_t u8x8_d_s1d15721_powersave1_seq[] = {
+  49:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_START_TRANSFER(),             	/* enable chip, delay is part of the transfer start */
+  50:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_C(0xA8|1),		                /* display off, enter sleep mode */
+  51:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_END_TRANSFER(),             	/* disable chip */
+  52:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_END()             			/* end of sequence */
+  53:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** };
+  54:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 
+  55:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** static const uint8_t u8x8_d_s1d15721_flip0_seq[] = {
+  56:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_START_TRANSFER(),            /* enable chip, delay is part of the transfer start */
+  57:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_C(0xA6),            			/* LCD Mapping */
+  58:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_END_TRANSFER(),             	/* disable chip */
+  59:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_END()             			/* end of sequence */
+  60:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** };
+  61:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 
+  62:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** static const uint8_t u8x8_d_s1d15721_flip1_seq[] = {
+  63:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_START_TRANSFER(),            /* enable chip, delay is part of the transfer start */
+  64:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_C(0xA7),            			/* LCD Mapping */
+  65:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_END_TRANSFER(),             	/* disable chip */
+  66:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_END()             			/* end of sequence */
+  67:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** };
+  68:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 
+  69:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** uint8_t u8x8_d_s1d15721_common(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *arg_ptr)
+  70:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** {
+  28              		.loc 1 70 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              	.LVL0:
+  33 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+  34              		.cfi_def_cfa_offset 24
+  35              		.cfi_offset 3, -24
+  36              		.cfi_offset 4, -20
+  37              		.cfi_offset 5, -16
+  38              		.cfi_offset 6, -12
+  39              		.cfi_offset 7, -8
+  40              		.cfi_offset 14, -4
+  41 0002 0546     		mov	r5, r0
+  42 0004 1446     		mov	r4, r2
+  43 0006 1F46     		mov	r7, r3
+  71:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   uint8_t x, y, c;
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 3
+
+
+  72:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   uint8_t *ptr;
+  73:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   switch(msg)
+  44              		.loc 1 73 0
+  45 0008 0B39     		subs	r1, r1, #11
+  46              	.LVL1:
+  47 000a 0429     		cmp	r1, #4
+  48 000c 04D8     		bhi	.L2
+  49 000e DFE801F0 		tbb	[pc, r1]
+  50              	.LVL2:
+  51              	.L4:
+  52 0012 34       		.byte	(.L3-.L4)/2
+  53 0013 03       		.byte	(.L2-.L4)/2
+  54 0014 3F       		.byte	(.L5-.L4)/2
+  55 0015 52       		.byte	(.L11-.L4)/2
+  56 0016 05       		.byte	(.L7-.L4)/2
+  57 0017 00       		.p2align 1
+  58              	.L2:
+  74:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   {
+  75:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****     case U8X8_MSG_DISPLAY_DRAW_TILE:
+  76:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       u8x8_cad_StartTransfer(u8x8);
+  77:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 
+  78:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       x = ((u8x8_tile_t *)arg_ptr)->x_pos;
+  79:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       x += u8x8->x_offset;
+  80:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       x *= 8;
+  81:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 
+  82:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 	  u8x8_cad_SendCmd(u8x8, 0xB1);	//Page Address - Row
+  83:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 	  u8x8_cad_SendArg(u8x8, (((u8x8_tile_t *)arg_ptr)->y_pos));
+  84:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 
+  85:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       y = ((u8x8_tile_t *)arg_ptr)->y_pos;
+  86:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 
+  87:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       u8x8_cad_SendCmd(u8x8, 0x13);	/* col */
+  88:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       u8x8_cad_SendArg(u8x8, x);
+  89:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 
+  90:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 	  u8x8_cad_SendCmd(u8x8, 0x1D );	//Data Write
+  91:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 
+  92:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       c = ((u8x8_tile_t *)arg_ptr)->cnt;
+  93:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       c *= 8;
+  94:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       ptr = ((u8x8_tile_t *)arg_ptr)->tile_ptr;
+  95:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       do
+  96:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       {
+  97:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 		u8x8_cad_SendData(u8x8, c, ptr);	/* note: SendData can not handle more than 255 bytes */
+  98:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 		arg_int--;
+  99:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       } while( arg_int > 0 );
+ 100:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 
+ 101:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       u8x8_cad_EndTransfer(u8x8);
+ 102:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       break;
+ 103:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****     /*	handled in the calling procedure 
+ 104:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****     case U8X8_MSG_DISPLAY_SETUP_MEMORY:
+ 105:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       u8x8_d_helper_display_setup_memory(u8x8, &u8x8_uc1608_128x64_display_info);
+ 106:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       break;
+ 107:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****     case U8X8_MSG_DISPLAY_INIT:
+ 108:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       u8x8_d_helper_display_init(u8x8);
+ 109:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       u8x8_cad_SendSequence(u8x8, u8x8_d_uc1701_dogs102_init_seq);
+ 110:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       break;
+ 111:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****     */
+ 112:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****     case U8X8_MSG_DISPLAY_SET_POWER_SAVE:
+ 113:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       if ( arg_int == 0 )
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 4
+
+
+ 114:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 	u8x8_cad_SendSequence(u8x8, u8x8_d_s1d15721_powersave0_seq);
+ 115:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       else
+ 116:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 	u8x8_cad_SendSequence(u8x8, u8x8_d_s1d15721_powersave1_seq);
+ 117:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       break;
+ 118:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****     case U8X8_MSG_DISPLAY_SET_FLIP_MODE:
+ 119:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       if ( arg_int == 0 )
+ 120:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       {
+ 121:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 	u8x8_cad_SendSequence(u8x8, u8x8_d_s1d15721_flip0_seq);
+ 122:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 	u8x8->x_offset = u8x8->display_info->default_x_offset;
+ 123:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       }
+ 124:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       else
+ 125:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       {
+ 126:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 	u8x8_cad_SendSequence(u8x8, u8x8_d_s1d15721_flip1_seq);
+ 127:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 	u8x8->x_offset = u8x8->display_info->flipmode_x_offset;
+ 128:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       }	
+ 129:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       break;
+ 130:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** #ifdef U8X8_WITH_SET_CONTRAST
+ 131:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****     case U8X8_MSG_DISPLAY_SET_CONTRAST:
+ 132:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       break;
+ 133:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** #endif
+ 134:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****     default:
+ 135:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       return 0;
+  59              		.loc 1 135 0
+  60 0018 0020     		movs	r0, #0
+  61              	.LVL3:
+  62 001a F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+  63              	.LVL4:
+  64              	.L7:
+  76:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 
+  65              		.loc 1 76 0
+  66 001c FFF7FEFF 		bl	u8x8_cad_StartTransfer
+  67              	.LVL5:
+  78:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       x += u8x8->x_offset;
+  68              		.loc 1 78 0
+  69 0020 7E79     		ldrb	r6, [r7, #5]	@ zero_extendqisi2
+  70              	.LVL6:
+  79:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       x *= 8;
+  71              		.loc 1 79 0
+  72 0022 95F82230 		ldrb	r3, [r5, #34]	@ zero_extendqisi2
+  73 0026 1E44     		add	r6, r6, r3
+  74              	.LVL7:
+  75 0028 F6B2     		uxtb	r6, r6
+  76              	.LVL8:
+  80:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 
+  77              		.loc 1 80 0
+  78 002a F600     		lsls	r6, r6, #3
+  79              	.LVL9:
+  80 002c F6B2     		uxtb	r6, r6
+  81              	.LVL10:
+  82:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 	  u8x8_cad_SendArg(u8x8, (((u8x8_tile_t *)arg_ptr)->y_pos));
+  82              		.loc 1 82 0
+  83 002e B121     		movs	r1, #177
+  84 0030 2846     		mov	r0, r5
+  85 0032 FFF7FEFF 		bl	u8x8_cad_SendCmd
+  86              	.LVL11:
+  83:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 
+  87              		.loc 1 83 0
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 5
+
+
+  88 0036 B979     		ldrb	r1, [r7, #6]	@ zero_extendqisi2
+  89 0038 2846     		mov	r0, r5
+  90 003a FFF7FEFF 		bl	u8x8_cad_SendArg
+  91              	.LVL12:
+  87:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       u8x8_cad_SendArg(u8x8, x);
+  92              		.loc 1 87 0
+  93 003e 1321     		movs	r1, #19
+  94 0040 2846     		mov	r0, r5
+  95 0042 FFF7FEFF 		bl	u8x8_cad_SendCmd
+  96              	.LVL13:
+  88:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 
+  97              		.loc 1 88 0
+  98 0046 3146     		mov	r1, r6
+  99 0048 2846     		mov	r0, r5
+ 100 004a FFF7FEFF 		bl	u8x8_cad_SendArg
+ 101              	.LVL14:
+  90:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 
+ 102              		.loc 1 90 0
+ 103 004e 1D21     		movs	r1, #29
+ 104 0050 2846     		mov	r0, r5
+ 105 0052 FFF7FEFF 		bl	u8x8_cad_SendCmd
+ 106              	.LVL15:
+  92:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       c *= 8;
+ 107              		.loc 1 92 0
+ 108 0056 3E79     		ldrb	r6, [r7, #4]	@ zero_extendqisi2
+ 109              	.LVL16:
+  93:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       ptr = ((u8x8_tile_t *)arg_ptr)->tile_ptr;
+ 110              		.loc 1 93 0
+ 111 0058 F600     		lsls	r6, r6, #3
+ 112              	.LVL17:
+ 113 005a F6B2     		uxtb	r6, r6
+ 114              	.LVL18:
+  94:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       do
+ 115              		.loc 1 94 0
+ 116 005c 3F68     		ldr	r7, [r7]
+ 117              	.LVL19:
+ 118              	.L8:
+  97:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 		arg_int--;
+ 119              		.loc 1 97 0 discriminator 1
+ 120 005e 3A46     		mov	r2, r7
+ 121 0060 3146     		mov	r1, r6
+ 122 0062 2846     		mov	r0, r5
+ 123 0064 FFF7FEFF 		bl	u8x8_cad_SendData
+ 124              	.LVL20:
+  98:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       } while( arg_int > 0 );
+ 125              		.loc 1 98 0 discriminator 1
+ 126 0068 621E     		subs	r2, r4, #1
+ 127              	.LVL21:
+  99:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 
+ 128              		.loc 1 99 0 discriminator 1
+ 129 006a 12F0FF04 		ands	r4, r2, #255
+ 130 006e F6D1     		bne	.L8
+ 101:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       break;
+ 131              		.loc 1 101 0
+ 132 0070 2846     		mov	r0, r5
+ 133 0072 FFF7FEFF 		bl	u8x8_cad_EndTransfer
+ 134              	.LVL22:
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 6
+
+
+ 136:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   }
+ 137:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   return 1;
+ 135              		.loc 1 137 0
+ 136 0076 0120     		movs	r0, #1
+ 102:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****     /*	handled in the calling procedure 
+ 137              		.loc 1 102 0
+ 138 0078 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 139              	.LVL23:
+ 140              	.L3:
+ 113:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 	u8x8_cad_SendSequence(u8x8, u8x8_d_s1d15721_powersave0_seq);
+ 141              		.loc 1 113 0
+ 142 007a 22B9     		cbnz	r2, .L9
+ 114:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       else
+ 143              		.loc 1 114 0
+ 144 007c 0F49     		ldr	r1, .L13
+ 145 007e FFF7FEFF 		bl	u8x8_cad_SendSequence
+ 146              	.LVL24:
+ 147              		.loc 1 137 0
+ 148 0082 0120     		movs	r0, #1
+ 149 0084 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 150              	.LVL25:
+ 151              	.L9:
+ 116:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       break;
+ 152              		.loc 1 116 0
+ 153 0086 0E49     		ldr	r1, .L13+4
+ 154 0088 FFF7FEFF 		bl	u8x8_cad_SendSequence
+ 155              	.LVL26:
+ 156              		.loc 1 137 0
+ 157 008c 0120     		movs	r0, #1
+ 158 008e F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 159              	.LVL27:
+ 160              	.L5:
+ 119:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       {
+ 161              		.loc 1 119 0
+ 162 0090 42B9     		cbnz	r2, .L10
+ 121:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 	u8x8->x_offset = u8x8->display_info->default_x_offset;
+ 163              		.loc 1 121 0
+ 164 0092 0C49     		ldr	r1, .L13+8
+ 165 0094 FFF7FEFF 		bl	u8x8_cad_SendSequence
+ 166              	.LVL28:
+ 122:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       }
+ 167              		.loc 1 122 0
+ 168 0098 2B68     		ldr	r3, [r5]
+ 169 009a 9B7C     		ldrb	r3, [r3, #18]	@ zero_extendqisi2
+ 170 009c 85F82230 		strb	r3, [r5, #34]
+ 171              		.loc 1 137 0
+ 172 00a0 0120     		movs	r0, #1
+ 173 00a2 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 174              	.LVL29:
+ 175              	.L10:
+ 126:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 	u8x8->x_offset = u8x8->display_info->flipmode_x_offset;
+ 176              		.loc 1 126 0
+ 177 00a4 0849     		ldr	r1, .L13+12
+ 178 00a6 FFF7FEFF 		bl	u8x8_cad_SendSequence
+ 179              	.LVL30:
+ 127:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       }	
+ 180              		.loc 1 127 0
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 7
+
+
+ 181 00aa 2B68     		ldr	r3, [r5]
+ 182 00ac DB7C     		ldrb	r3, [r3, #19]	@ zero_extendqisi2
+ 183 00ae 85F82230 		strb	r3, [r5, #34]
+ 184              		.loc 1 137 0
+ 185 00b2 0120     		movs	r0, #1
+ 186 00b4 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 187              	.LVL31:
+ 188              	.L11:
+ 189 00b6 0120     		movs	r0, #1
+ 190              	.LVL32:
+ 138:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** }
+ 191              		.loc 1 138 0
+ 192 00b8 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 193              	.LVL33:
+ 194              	.L14:
+ 195 00ba 00BF     		.align	2
+ 196              	.L13:
+ 197 00bc 00000000 		.word	.LANCHOR0
+ 198 00c0 08000000 		.word	.LANCHOR0+8
+ 199 00c4 10000000 		.word	.LANCHOR0+16
+ 200 00c8 18000000 		.word	.LANCHOR0+24
+ 201              		.cfi_endproc
+ 202              	.LFE0:
+ 203              		.size	u8x8_d_s1d15721_common, .-u8x8_d_s1d15721_common
+ 204              		.section	.text.u8x8_d_s1d15721_240x64,"ax",%progbits
+ 205              		.align	2
+ 206              		.global	u8x8_d_s1d15721_240x64
+ 207              		.thumb
+ 208              		.thumb_func
+ 209              		.type	u8x8_d_s1d15721_240x64, %function
+ 210              	u8x8_d_s1d15721_240x64:
+ 211              	.LFB1:
+ 139:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 
+ 140:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** /*================================================*/
+ 141:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** /* s1d15721 240x64 */
+ 142:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 
+ 143:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 
+ 144:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** static const u8x8_display_info_t u8x8_s1d15721_240x64_display_info =
+ 145:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** {
+ 146:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   /* chip_enable_level = */ 0,	/* low active CS */
+ 147:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   /* chip_disable_level = */ 1,
+ 148:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 
+ 149:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   /* post_chip_enable_wait_ns = */ 10,	/* */
+ 150:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   /* pre_chip_disable_wait_ns = */ 20,	        /* */
+ 151:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   /* reset_pulse_width_ms = */ 1, 	        /* */
+ 152:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   /* post_reset_wait_ms = */ 10, 	
+ 153:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   /* sda_setup_time_ns = */ 30,		/*  */
+ 154:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   /* sck_pulse_width_ns = */ 65,	/* half of cycle time  */
+ 155:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   /* sck_clock_hz = */ 8000000UL,	/* since Arduino 1.6.0, the SPI bus speed in Hz. Should be  10000
+ 156:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   /* i2c_bus_clock_100kHz = */ 4,
+ 157:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   /* data_setup_time_ns = */ 30,	         /*  */
+ 158:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   /* write_pulse_width_ns = */ 65,	/* */
+ 159:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   /* tile_width = */ 30,		                /* width of 20*8=160 pixel (30*8 = 240) */
+ 160:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   /* tile_hight = */ 8,                 /* height 8*8 = 64*/
+ 161:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   /* default_x_offset = */ 1,	
+ 162:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   /* flipmode_x_offset = */ 1,	
+ 163:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   /* pixel_width = */ 240,
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 8
+
+
+ 164:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   /* pixel_height = */ 64
+ 165:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** };
+ 166:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 
+ 167:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** static const uint8_t u8x8_d_s1d15721_240x64_init_seq[] = {
+ 168:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_START_TRANSFER(),           	/* enable chip, delay is part of the transfer start */
+ 169:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_C(0xC4|1),       	    	        /* (5) Common Output Status (Reverse) */
+ 170:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_CA(0xA6, 0x01),            	/* (3) Display Normal Reverse (Normal) */
+ 171:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_CA(0xA4, 0x00), 	           	/* (4) Display All Light (Normal) */
+ 172:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_CAA(0x6D,0x10,0x02), 		/* (18) Duty Set Command */
+ 173:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_CA(0x66, 0x01),           	/* (15) Display Mode, Parameter 0 (0 = Gray Scale 1 = Binary */
+ 174:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_CA(0x39, 0x36),            	/* (16) Gray Scale Pattern Set, Pattern */
+ 175:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_CA(0x2B, 0x07),			/* (27) LCD Drive Mode Voltage Select, Parameter */
+ 176:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_CA(0x81, 0x0a),		        /* (28) Electronic Volume, Parameter */
+ 177:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_CA(0x5F, 0x00),		        /* (24) Built-in Oscillator Frequency, Parameter  */
+ 178:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_C(0xAA|1),			        /* (23) Built-in OSC On */  
+ 179:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_CA(0x25, 0x1f),		        /* (25) Power Control Set, Parameter  */
+ 180:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_CA(0x8A, 0x00),		        /* (6) Start Line Setup, Parameter  */
+ 181:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_CA(0xB1, 0x00),		        /* (7) Page Address Set, Parameter  */
+ 182:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_CA(0x13, 0x00),		        /* (8) Column Address Set  */
+ 183:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_C(0xAE|1),			        /* (1) Display ON/OFF */  
+ 184:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_END_TRANSFER(),           /* disable chip */
+ 185:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   U8X8_END()             			/* end of sequence */
+ 186:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** };
+ 187:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 
+ 188:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** uint8_t u8x8_d_s1d15721_240x64(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *arg_ptr)
+ 189:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** {
+ 212              		.loc 1 189 0
+ 213              		.cfi_startproc
+ 214              		@ args = 0, pretend = 0, frame = 0
+ 215              		@ frame_needed = 0, uses_anonymous_args = 0
+ 216              	.LVL34:
+ 217 0000 38B5     		push	{r3, r4, r5, lr}
+ 218              		.cfi_def_cfa_offset 16
+ 219              		.cfi_offset 3, -16
+ 220              		.cfi_offset 4, -12
+ 221              		.cfi_offset 5, -8
+ 222              		.cfi_offset 14, -4
+ 223 0002 0446     		mov	r4, r0
+ 190:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 
+ 191:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   /* checking for the flip mode cmd first */
+ 192:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   if ( msg == U8X8_MSG_DISPLAY_SET_FLIP_MODE )
+ 224              		.loc 1 192 0
+ 225 0004 0D29     		cmp	r1, #13
+ 226 0006 12D1     		bne	.L16
+ 193:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   {
+ 194:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       if ( arg_int == 0 )
+ 227              		.loc 1 194 0
+ 228 0008 42B9     		cbnz	r2, .L17
+ 195:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       {
+ 196:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 	u8x8_cad_SendSequence(u8x8, u8x8_d_s1d15721_flip0_seq);
+ 229              		.loc 1 196 0
+ 230 000a 1749     		ldr	r1, .L23
+ 231              	.LVL35:
+ 232 000c FFF7FEFF 		bl	u8x8_cad_SendSequence
+ 233              	.LVL36:
+ 197:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 	u8x8->x_offset = u8x8->display_info->default_x_offset;
+ 234              		.loc 1 197 0
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 9
+
+
+ 235 0010 2368     		ldr	r3, [r4]
+ 236 0012 9B7C     		ldrb	r3, [r3, #18]	@ zero_extendqisi2
+ 237 0014 84F82230 		strb	r3, [r4, #34]
+ 198:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       }
+ 199:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       else
+ 200:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       {
+ 201:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 	u8x8_cad_SendSequence(u8x8, u8x8_d_s1d15721_flip1_seq);
+ 202:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 	u8x8->x_offset = u8x8->display_info->flipmode_x_offset;
+ 203:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       }	
+ 204:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       return 1;
+ 238              		.loc 1 204 0
+ 239 0018 0123     		movs	r3, #1
+ 240 001a 22E0     		b	.L18
+ 241              	.LVL37:
+ 242              	.L17:
+ 201:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 	u8x8->x_offset = u8x8->display_info->flipmode_x_offset;
+ 243              		.loc 1 201 0
+ 244 001c 1349     		ldr	r1, .L23+4
+ 245              	.LVL38:
+ 246 001e FFF7FEFF 		bl	u8x8_cad_SendSequence
+ 247              	.LVL39:
+ 202:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       }	
+ 248              		.loc 1 202 0
+ 249 0022 2368     		ldr	r3, [r4]
+ 250 0024 DB7C     		ldrb	r3, [r3, #19]	@ zero_extendqisi2
+ 251 0026 84F82230 		strb	r3, [r4, #34]
+ 252              		.loc 1 204 0
+ 253 002a 0123     		movs	r3, #1
+ 254 002c 19E0     		b	.L18
+ 255              	.LVL40:
+ 256              	.L16:
+ 257 002e 0D46     		mov	r5, r1
+ 205:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   }
+ 206:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   /* call the common procedure, this now leads to the effect, that the flip code is executed again 
+ 207:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   /* maybe we should paste the common code here to avoid this */
+ 208:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 
+ 209:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 
+ 210:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   if ( u8x8_d_s1d15721_common(u8x8, msg, arg_int, arg_ptr) == 0 )
+ 258              		.loc 1 210 0
+ 259 0030 FFF7FEFF 		bl	u8x8_d_s1d15721_common
+ 260              	.LVL41:
+ 261 0034 0346     		mov	r3, r0
+ 262 0036 98B9     		cbnz	r0, .L21
+ 211:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   {
+ 212:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****     /* msg not handled, then try here */
+ 213:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****     switch(msg)
+ 263              		.loc 1 213 0
+ 264 0038 092D     		cmp	r5, #9
+ 265 003a 02D0     		beq	.L19
+ 266 003c 0A2D     		cmp	r5, #10
+ 267 003e 06D0     		beq	.L20
+ 268 0040 0FE0     		b	.L18
+ 269              	.L19:
+ 214:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****     {
+ 215:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       case U8X8_MSG_DISPLAY_SETUP_MEMORY:
+ 216:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 	u8x8_d_helper_display_setup_memory(u8x8, &u8x8_s1d15721_240x64_display_info);
+ 270              		.loc 1 216 0
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 10
+
+
+ 271 0042 0B49     		ldr	r1, .L23+8
+ 272 0044 2046     		mov	r0, r4
+ 273 0046 FFF7FEFF 		bl	u8x8_d_helper_display_setup_memory
+ 274              	.LVL42:
+ 217:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 	break;
+ 218:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       case U8X8_MSG_DISPLAY_INIT:
+ 219:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 	u8x8_d_helper_display_init(u8x8);
+ 220:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 	u8x8_cad_SendSequence(u8x8, u8x8_d_s1d15721_240x64_init_seq);
+ 221:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 	break;
+ 222:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       default:
+ 223:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 	return 0;		/* msg unknown */
+ 224:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****     }
+ 225:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   }
+ 226:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****   return 1;
+ 275              		.loc 1 226 0
+ 276 004a 0123     		movs	r3, #1
+ 217:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 	break;
+ 277              		.loc 1 217 0
+ 278 004c 09E0     		b	.L18
+ 279              	.L20:
+ 219:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 	u8x8_cad_SendSequence(u8x8, u8x8_d_s1d15721_240x64_init_seq);
+ 280              		.loc 1 219 0
+ 281 004e 2046     		mov	r0, r4
+ 282 0050 FFF7FEFF 		bl	u8x8_d_helper_display_init
+ 283              	.LVL43:
+ 220:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** 	break;
+ 284              		.loc 1 220 0
+ 285 0054 0749     		ldr	r1, .L23+12
+ 286 0056 2046     		mov	r0, r4
+ 287 0058 FFF7FEFF 		bl	u8x8_cad_SendSequence
+ 288              	.LVL44:
+ 289              		.loc 1 226 0
+ 290 005c 0123     		movs	r3, #1
+ 221:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c ****       default:
+ 291              		.loc 1 221 0
+ 292 005e 00E0     		b	.L18
+ 293              	.L21:
+ 294              		.loc 1 226 0
+ 295 0060 0123     		movs	r3, #1
+ 296              	.L18:
+ 227:..\..\..\..\..\..\Dev\Library embedded l2c display\u8g2\csrc/u8x8_d_s1d15721.c **** }
+ 297              		.loc 1 227 0
+ 298 0062 1846     		mov	r0, r3
+ 299 0064 38BD     		pop	{r3, r4, r5, pc}
+ 300              	.LVL45:
+ 301              	.L24:
+ 302 0066 00BF     		.align	2
+ 303              	.L23:
+ 304 0068 10000000 		.word	.LANCHOR0+16
+ 305 006c 18000000 		.word	.LANCHOR0+24
+ 306 0070 20000000 		.word	.LANCHOR0+32
+ 307 0074 38000000 		.word	.LANCHOR0+56
+ 308              		.cfi_endproc
+ 309              	.LFE1:
+ 310              		.size	u8x8_d_s1d15721_240x64, .-u8x8_d_s1d15721_240x64
+ 311              		.section	.rodata
+ 312              		.align	2
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 11
+
+
+ 313              		.set	.LANCHOR0,. + 0
+ 314              		.type	u8x8_d_s1d15721_powersave0_seq, %object
+ 315              		.size	u8x8_d_s1d15721_powersave0_seq, 5
+ 316              	u8x8_d_s1d15721_powersave0_seq:
+ 317 0000 18       		.byte	24
+ 318 0001 15       		.byte	21
+ 319 0002 A8       		.byte	-88
+ 320 0003 19       		.byte	25
+ 321 0004 FF       		.byte	-1
+ 322 0005 000000   		.space	3
+ 323              		.type	u8x8_d_s1d15721_powersave1_seq, %object
+ 324              		.size	u8x8_d_s1d15721_powersave1_seq, 5
+ 325              	u8x8_d_s1d15721_powersave1_seq:
+ 326 0008 18       		.byte	24
+ 327 0009 15       		.byte	21
+ 328 000a A9       		.byte	-87
+ 329 000b 19       		.byte	25
+ 330 000c FF       		.byte	-1
+ 331 000d 000000   		.space	3
+ 332              		.type	u8x8_d_s1d15721_flip0_seq, %object
+ 333              		.size	u8x8_d_s1d15721_flip0_seq, 5
+ 334              	u8x8_d_s1d15721_flip0_seq:
+ 335 0010 18       		.byte	24
+ 336 0011 15       		.byte	21
+ 337 0012 A6       		.byte	-90
+ 338 0013 19       		.byte	25
+ 339 0014 FF       		.byte	-1
+ 340 0015 000000   		.space	3
+ 341              		.type	u8x8_d_s1d15721_flip1_seq, %object
+ 342              		.size	u8x8_d_s1d15721_flip1_seq, 5
+ 343              	u8x8_d_s1d15721_flip1_seq:
+ 344 0018 18       		.byte	24
+ 345 0019 15       		.byte	21
+ 346 001a A7       		.byte	-89
+ 347 001b 19       		.byte	25
+ 348 001c FF       		.byte	-1
+ 349 001d 000000   		.space	3
+ 350              		.type	u8x8_s1d15721_240x64_display_info, %object
+ 351              		.size	u8x8_s1d15721_240x64_display_info, 24
+ 352              	u8x8_s1d15721_240x64_display_info:
+ 353 0020 00       		.byte	0
+ 354 0021 01       		.byte	1
+ 355 0022 0A       		.byte	10
+ 356 0023 14       		.byte	20
+ 357 0024 01       		.byte	1
+ 358 0025 0A       		.byte	10
+ 359 0026 1E       		.byte	30
+ 360 0027 41       		.byte	65
+ 361 0028 00127A00 		.word	8000000
+ 362 002c 00       		.byte	0
+ 363 002d 04       		.byte	4
+ 364 002e 1E       		.byte	30
+ 365 002f 41       		.byte	65
+ 366 0030 1E       		.byte	30
+ 367 0031 08       		.byte	8
+ 368 0032 01       		.byte	1
+ 369 0033 01       		.byte	1
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 12
+
+
+ 370 0034 F000     		.short	240
+ 371 0036 4000     		.short	64
+ 372              		.type	u8x8_d_s1d15721_240x64_init_seq, %object
+ 373              		.size	u8x8_d_s1d15721_240x64_init_seq, 59
+ 374              	u8x8_d_s1d15721_240x64_init_seq:
+ 375 0038 18       		.byte	24
+ 376 0039 15       		.byte	21
+ 377 003a C5       		.byte	-59
+ 378 003b 15       		.byte	21
+ 379 003c A6       		.byte	-90
+ 380 003d 16       		.byte	22
+ 381 003e 01       		.byte	1
+ 382 003f 15       		.byte	21
+ 383 0040 A4       		.byte	-92
+ 384 0041 16       		.byte	22
+ 385 0042 00       		.byte	0
+ 386 0043 15       		.byte	21
+ 387 0044 6D       		.byte	109
+ 388 0045 16       		.byte	22
+ 389 0046 10       		.byte	16
+ 390 0047 16       		.byte	22
+ 391 0048 02       		.byte	2
+ 392 0049 15       		.byte	21
+ 393 004a 66       		.byte	102
+ 394 004b 16       		.byte	22
+ 395 004c 01       		.byte	1
+ 396 004d 15       		.byte	21
+ 397 004e 39       		.byte	57
+ 398 004f 16       		.byte	22
+ 399 0050 36       		.byte	54
+ 400 0051 15       		.byte	21
+ 401 0052 2B       		.byte	43
+ 402 0053 16       		.byte	22
+ 403 0054 07       		.byte	7
+ 404 0055 15       		.byte	21
+ 405 0056 81       		.byte	-127
+ 406 0057 16       		.byte	22
+ 407 0058 0A       		.byte	10
+ 408 0059 15       		.byte	21
+ 409 005a 5F       		.byte	95
+ 410 005b 16       		.byte	22
+ 411 005c 00       		.byte	0
+ 412 005d 15       		.byte	21
+ 413 005e AB       		.byte	-85
+ 414 005f 15       		.byte	21
+ 415 0060 25       		.byte	37
+ 416 0061 16       		.byte	22
+ 417 0062 1F       		.byte	31
+ 418 0063 15       		.byte	21
+ 419 0064 8A       		.byte	-118
+ 420 0065 16       		.byte	22
+ 421 0066 00       		.byte	0
+ 422 0067 15       		.byte	21
+ 423 0068 B1       		.byte	-79
+ 424 0069 16       		.byte	22
+ 425 006a 00       		.byte	0
+ 426 006b 15       		.byte	21
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 13
+
+
+ 427 006c 13       		.byte	19
+ 428 006d 16       		.byte	22
+ 429 006e 00       		.byte	0
+ 430 006f 15       		.byte	21
+ 431 0070 AF       		.byte	-81
+ 432 0071 19       		.byte	25
+ 433 0072 FF       		.byte	-1
+ 434              		.text
+ 435              	.Letext0:
+ 436              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 437              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 438              		.file 4 "c:\\dev\\library embedded l2c display\\u8g2\\csrc\\u8x8.h"
+ 439              		.section	.debug_info,"",%progbits
+ 440              	.Ldebug_info0:
+ 441 0000 12070000 		.4byte	0x712
+ 442 0004 0400     		.2byte	0x4
+ 443 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 444 000a 04       		.byte	0x4
+ 445 000b 01       		.uleb128 0x1
+ 446 000c 9C050000 		.4byte	.LASF85
+ 447 0010 0C       		.byte	0xc
+ 448 0011 01010000 		.4byte	.LASF86
+ 449 0015 BB040000 		.4byte	.LASF87
+ 450 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 451 001d 00000000 		.4byte	0
+ 452 0021 00000000 		.4byte	.Ldebug_line0
+ 453 0025 02       		.uleb128 0x2
+ 454 0026 01       		.byte	0x1
+ 455 0027 06       		.byte	0x6
+ 456 0028 4F030000 		.4byte	.LASF0
+ 457 002c 03       		.uleb128 0x3
+ 458 002d C8020000 		.4byte	.LASF3
+ 459 0031 02       		.byte	0x2
+ 460 0032 1D       		.byte	0x1d
+ 461 0033 37000000 		.4byte	0x37
+ 462 0037 02       		.uleb128 0x2
+ 463 0038 01       		.byte	0x1
+ 464 0039 08       		.byte	0x8
+ 465 003a 41030000 		.4byte	.LASF1
+ 466 003e 02       		.uleb128 0x2
+ 467 003f 02       		.byte	0x2
+ 468 0040 05       		.byte	0x5
+ 469 0041 96000000 		.4byte	.LASF2
+ 470 0045 03       		.uleb128 0x3
+ 471 0046 F6000000 		.4byte	.LASF4
+ 472 004a 02       		.byte	0x2
+ 473 004b 2B       		.byte	0x2b
+ 474 004c 50000000 		.4byte	0x50
+ 475 0050 02       		.uleb128 0x2
+ 476 0051 02       		.byte	0x2
+ 477 0052 07       		.byte	0x7
+ 478 0053 10040000 		.4byte	.LASF5
+ 479 0057 02       		.uleb128 0x2
+ 480 0058 04       		.byte	0x4
+ 481 0059 05       		.byte	0x5
+ 482 005a 85020000 		.4byte	.LASF6
+ 483 005e 03       		.uleb128 0x3
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 14
+
+
+ 484 005f EB000000 		.4byte	.LASF7
+ 485 0063 02       		.byte	0x2
+ 486 0064 41       		.byte	0x41
+ 487 0065 69000000 		.4byte	0x69
+ 488 0069 02       		.uleb128 0x2
+ 489 006a 04       		.byte	0x4
+ 490 006b 07       		.byte	0x7
+ 491 006c A9040000 		.4byte	.LASF8
+ 492 0070 02       		.uleb128 0x2
+ 493 0071 08       		.byte	0x8
+ 494 0072 05       		.byte	0x5
+ 495 0073 2C020000 		.4byte	.LASF9
+ 496 0077 02       		.uleb128 0x2
+ 497 0078 08       		.byte	0x8
+ 498 0079 07       		.byte	0x7
+ 499 007a 5B030000 		.4byte	.LASF10
+ 500 007e 04       		.uleb128 0x4
+ 501 007f 04       		.byte	0x4
+ 502 0080 05       		.byte	0x5
+ 503 0081 696E7400 		.ascii	"int\000"
+ 504 0085 02       		.uleb128 0x2
+ 505 0086 04       		.byte	0x4
+ 506 0087 07       		.byte	0x7
+ 507 0088 8C030000 		.4byte	.LASF11
+ 508 008c 03       		.uleb128 0x3
+ 509 008d 9C010000 		.4byte	.LASF12
+ 510 0091 03       		.byte	0x3
+ 511 0092 18       		.byte	0x18
+ 512 0093 2C000000 		.4byte	0x2c
+ 513 0097 03       		.uleb128 0x3
+ 514 0098 99030000 		.4byte	.LASF13
+ 515 009c 03       		.byte	0x3
+ 516 009d 24       		.byte	0x24
+ 517 009e 45000000 		.4byte	0x45
+ 518 00a2 03       		.uleb128 0x3
+ 519 00a3 72030000 		.4byte	.LASF14
+ 520 00a7 03       		.byte	0x3
+ 521 00a8 30       		.byte	0x30
+ 522 00a9 5E000000 		.4byte	0x5e
+ 523 00ad 05       		.uleb128 0x5
+ 524 00ae 04       		.byte	0x4
+ 525 00af 02       		.uleb128 0x2
+ 526 00b0 08       		.byte	0x8
+ 527 00b1 04       		.byte	0x4
+ 528 00b2 29030000 		.4byte	.LASF15
+ 529 00b6 03       		.uleb128 0x3
+ 530 00b7 E7030000 		.4byte	.LASF16
+ 531 00bb 04       		.byte	0x4
+ 532 00bc D2       		.byte	0xd2
+ 533 00bd C1000000 		.4byte	0xc1
+ 534 00c1 06       		.uleb128 0x6
+ 535 00c2 81040000 		.4byte	.LASF37
+ 536 00c6 2C       		.byte	0x2c
+ 537 00c7 04       		.byte	0x4
+ 538 00c8 5501     		.2byte	0x155
+ 539 00ca C6010000 		.4byte	0x1c6
+ 540 00ce 07       		.uleb128 0x7
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 15
+
+
+ 541 00cf 50040000 		.4byte	.LASF17
+ 542 00d3 04       		.byte	0x4
+ 543 00d4 5701     		.2byte	0x157
+ 544 00d6 76030000 		.4byte	0x376
+ 545 00da 00       		.byte	0
+ 546 00db 07       		.uleb128 0x7
+ 547 00dc 51060000 		.4byte	.LASF18
+ 548 00e0 04       		.byte	0x4
+ 549 00e1 5801     		.2byte	0x158
+ 550 00e3 4B030000 		.4byte	0x34b
+ 551 00e7 04       		.byte	0x4
+ 552 00e8 07       		.uleb128 0x7
+ 553 00e9 D2020000 		.4byte	.LASF19
+ 554 00ed 04       		.byte	0x4
+ 555 00ee 5901     		.2byte	0x159
+ 556 00f0 16030000 		.4byte	0x316
+ 557 00f4 08       		.byte	0x8
+ 558 00f5 07       		.uleb128 0x7
+ 559 00f6 89050000 		.4byte	.LASF20
+ 560 00fa 04       		.byte	0x4
+ 561 00fb 5A01     		.2byte	0x15a
+ 562 00fd 16030000 		.4byte	0x316
+ 563 0101 0C       		.byte	0xc
+ 564 0102 07       		.uleb128 0x7
+ 565 0103 01050000 		.4byte	.LASF21
+ 566 0107 04       		.byte	0x4
+ 567 0108 5B01     		.2byte	0x15b
+ 568 010a 16030000 		.4byte	0x316
+ 569 010e 10       		.byte	0x10
+ 570 010f 07       		.uleb128 0x7
+ 571 0110 A0000000 		.4byte	.LASF22
+ 572 0114 04       		.byte	0x4
+ 573 0115 5C01     		.2byte	0x15c
+ 574 0117 16030000 		.4byte	0x316
+ 575 011b 14       		.byte	0x14
+ 576 011c 07       		.uleb128 0x7
+ 577 011d E5010000 		.4byte	.LASF23
+ 578 0121 04       		.byte	0x4
+ 579 0122 5D01     		.2byte	0x15d
+ 580 0124 A2000000 		.4byte	0xa2
+ 581 0128 18       		.byte	0x18
+ 582 0129 07       		.uleb128 0x7
+ 583 012a 7D000000 		.4byte	.LASF24
+ 584 012e 04       		.byte	0x4
+ 585 012f 5E01     		.2byte	0x15e
+ 586 0131 81030000 		.4byte	0x381
+ 587 0135 1C       		.byte	0x1c
+ 588 0136 07       		.uleb128 0x7
+ 589 0137 51050000 		.4byte	.LASF25
+ 590 013b 04       		.byte	0x4
+ 591 013c 5F01     		.2byte	0x15f
+ 592 013e 97000000 		.4byte	0x97
+ 593 0142 20       		.byte	0x20
+ 594 0143 07       		.uleb128 0x7
+ 595 0144 00000000 		.4byte	.LASF26
+ 596 0148 04       		.byte	0x4
+ 597 0149 6001     		.2byte	0x160
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 16
+
+
+ 598 014b 8C000000 		.4byte	0x8c
+ 599 014f 22       		.byte	0x22
+ 600 0150 07       		.uleb128 0x7
+ 601 0151 09000000 		.4byte	.LASF27
+ 602 0155 04       		.byte	0x4
+ 603 0156 6101     		.2byte	0x161
+ 604 0158 8C000000 		.4byte	0x8c
+ 605 015c 23       		.byte	0x23
+ 606 015d 07       		.uleb128 0x7
+ 607 015e 1C050000 		.4byte	.LASF28
+ 608 0162 04       		.byte	0x4
+ 609 0163 6801     		.2byte	0x168
+ 610 0165 8C000000 		.4byte	0x8c
+ 611 0169 24       		.byte	0x24
+ 612 016a 07       		.uleb128 0x7
+ 613 016b 5A050000 		.4byte	.LASF29
+ 614 016f 04       		.byte	0x4
+ 615 0170 6B01     		.2byte	0x16b
+ 616 0172 8C000000 		.4byte	0x8c
+ 617 0176 25       		.byte	0x25
+ 618 0177 07       		.uleb128 0x7
+ 619 0178 76040000 		.4byte	.LASF30
+ 620 017c 04       		.byte	0x4
+ 621 017d 6D01     		.2byte	0x16d
+ 622 017f 8C000000 		.4byte	0x8c
+ 623 0183 26       		.byte	0x26
+ 624 0184 07       		.uleb128 0x7
+ 625 0185 3A020000 		.4byte	.LASF31
+ 626 0189 04       		.byte	0x4
+ 627 018a 6E01     		.2byte	0x16e
+ 628 018c 8C000000 		.4byte	0x8c
+ 629 0190 27       		.byte	0x27
+ 630 0191 07       		.uleb128 0x7
+ 631 0192 2A060000 		.4byte	.LASF32
+ 632 0196 04       		.byte	0x4
+ 633 0197 6F01     		.2byte	0x16f
+ 634 0199 8C000000 		.4byte	0x8c
+ 635 019d 28       		.byte	0x28
+ 636 019e 07       		.uleb128 0x7
+ 637 019f 14020000 		.4byte	.LASF33
+ 638 01a3 04       		.byte	0x4
+ 639 01a4 7001     		.2byte	0x170
+ 640 01a6 8C000000 		.4byte	0x8c
+ 641 01aa 29       		.byte	0x29
+ 642 01ab 07       		.uleb128 0x7
+ 643 01ac 30040000 		.4byte	.LASF34
+ 644 01b0 04       		.byte	0x4
+ 645 01b1 7101     		.2byte	0x171
+ 646 01b3 8C000000 		.4byte	0x8c
+ 647 01b7 2A       		.byte	0x2a
+ 648 01b8 07       		.uleb128 0x7
+ 649 01b9 82000000 		.4byte	.LASF35
+ 650 01bd 04       		.byte	0x4
+ 651 01be 7201     		.2byte	0x172
+ 652 01c0 8C000000 		.4byte	0x8c
+ 653 01c4 2B       		.byte	0x2b
+ 654 01c5 00       		.byte	0
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 17
+
+
+ 655 01c6 03       		.uleb128 0x3
+ 656 01c7 00020000 		.4byte	.LASF36
+ 657 01cb 04       		.byte	0x4
+ 658 01cc D3       		.byte	0xd3
+ 659 01cd D1010000 		.4byte	0x1d1
+ 660 01d1 08       		.uleb128 0x8
+ 661 01d2 A2030000 		.4byte	.LASF38
+ 662 01d6 18       		.byte	0x18
+ 663 01d7 04       		.byte	0x4
+ 664 01d8 EC       		.byte	0xec
+ 665 01d9 CE020000 		.4byte	0x2ce
+ 666 01dd 09       		.uleb128 0x9
+ 667 01de 51000000 		.4byte	.LASF39
+ 668 01e2 04       		.byte	0x4
+ 669 01e3 F0       		.byte	0xf0
+ 670 01e4 8C000000 		.4byte	0x8c
+ 671 01e8 00       		.byte	0
+ 672 01e9 09       		.uleb128 0x9
+ 673 01ea 09050000 		.4byte	.LASF40
+ 674 01ee 04       		.byte	0x4
+ 675 01ef F1       		.byte	0xf1
+ 676 01f0 8C000000 		.4byte	0x8c
+ 677 01f4 01       		.byte	0x1
+ 678 01f5 09       		.uleb128 0x9
+ 679 01f6 A4010000 		.4byte	.LASF41
+ 680 01fa 04       		.byte	0x4
+ 681 01fb F3       		.byte	0xf3
+ 682 01fc 8C000000 		.4byte	0x8c
+ 683 0200 02       		.byte	0x2
+ 684 0201 09       		.uleb128 0x9
+ 685 0202 59060000 		.4byte	.LASF42
+ 686 0206 04       		.byte	0x4
+ 687 0207 F4       		.byte	0xf4
+ 688 0208 8C000000 		.4byte	0x8c
+ 689 020c 03       		.byte	0x3
+ 690 020d 09       		.uleb128 0x9
+ 691 020e D2030000 		.4byte	.LASF43
+ 692 0212 04       		.byte	0x4
+ 693 0213 F5       		.byte	0xf5
+ 694 0214 8C000000 		.4byte	0x8c
+ 695 0218 04       		.byte	0x4
+ 696 0219 09       		.uleb128 0x9
+ 697 021a D8000000 		.4byte	.LASF44
+ 698 021e 04       		.byte	0x4
+ 699 021f F6       		.byte	0xf6
+ 700 0220 8C000000 		.4byte	0x8c
+ 701 0224 05       		.byte	0x5
+ 702 0225 09       		.uleb128 0x9
+ 703 0226 C6000000 		.4byte	.LASF45
+ 704 022a 04       		.byte	0x4
+ 705 022b FD       		.byte	0xfd
+ 706 022c 8C000000 		.4byte	0x8c
+ 707 0230 06       		.byte	0x6
+ 708 0231 07       		.uleb128 0x7
+ 709 0232 46020000 		.4byte	.LASF46
+ 710 0236 04       		.byte	0x4
+ 711 0237 0101     		.2byte	0x101
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 18
+
+
+ 712 0239 8C000000 		.4byte	0x8c
+ 713 023d 07       		.byte	0x7
+ 714 023e 07       		.uleb128 0x7
+ 715 023f 03040000 		.4byte	.LASF47
+ 716 0243 04       		.byte	0x4
+ 717 0244 0401     		.2byte	0x104
+ 718 0246 A2000000 		.4byte	0xa2
+ 719 024a 08       		.byte	0x8
+ 720 024b 07       		.uleb128 0x7
+ 721 024c 40000000 		.4byte	.LASF48
+ 722 0250 04       		.byte	0x4
+ 723 0251 0E01     		.2byte	0x10e
+ 724 0253 8C000000 		.4byte	0x8c
+ 725 0257 0C       		.byte	0xc
+ 726 0258 07       		.uleb128 0x7
+ 727 0259 EE030000 		.4byte	.LASF49
+ 728 025d 04       		.byte	0x4
+ 729 025e 1101     		.2byte	0x111
+ 730 0260 8C000000 		.4byte	0x8c
+ 731 0264 0D       		.byte	0xd
+ 732 0265 07       		.uleb128 0x7
+ 733 0266 FC020000 		.4byte	.LASF50
+ 734 026a 04       		.byte	0x4
+ 735 026b 1701     		.2byte	0x117
+ 736 026d 8C000000 		.4byte	0x8c
+ 737 0271 0E       		.byte	0xe
+ 738 0272 07       		.uleb128 0x7
+ 739 0273 67010000 		.4byte	.LASF51
+ 740 0277 04       		.byte	0x4
+ 741 0278 1901     		.2byte	0x119
+ 742 027a 8C000000 		.4byte	0x8c
+ 743 027e 0F       		.byte	0xf
+ 744 027f 07       		.uleb128 0x7
+ 745 0280 B2000000 		.4byte	.LASF52
+ 746 0284 04       		.byte	0x4
+ 747 0285 1C01     		.2byte	0x11c
+ 748 0287 8C000000 		.4byte	0x8c
+ 749 028b 10       		.byte	0x10
+ 750 028c 07       		.uleb128 0x7
+ 751 028d 35030000 		.4byte	.LASF53
+ 752 0291 04       		.byte	0x4
+ 753 0292 1D01     		.2byte	0x11d
+ 754 0294 8C000000 		.4byte	0x8c
+ 755 0298 11       		.byte	0x11
+ 756 0299 07       		.uleb128 0x7
+ 757 029a EF010000 		.4byte	.LASF54
+ 758 029e 04       		.byte	0x4
+ 759 029f 1F01     		.2byte	0x11f
+ 760 02a1 8C000000 		.4byte	0x8c
+ 761 02a5 12       		.byte	0x12
+ 762 02a6 07       		.uleb128 0x7
+ 763 02a7 3F050000 		.4byte	.LASF55
+ 764 02ab 04       		.byte	0x4
+ 765 02ac 2001     		.2byte	0x120
+ 766 02ae 8C000000 		.4byte	0x8c
+ 767 02b2 13       		.byte	0x13
+ 768 02b3 07       		.uleb128 0x7
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 19
+
+
+ 769 02b4 6A040000 		.4byte	.LASF56
+ 770 02b8 04       		.byte	0x4
+ 771 02b9 2801     		.2byte	0x128
+ 772 02bb 97000000 		.4byte	0x97
+ 773 02bf 14       		.byte	0x14
+ 774 02c0 07       		.uleb128 0x7
+ 775 02c1 5D040000 		.4byte	.LASF57
+ 776 02c5 04       		.byte	0x4
+ 777 02c6 2901     		.2byte	0x129
+ 778 02c8 97000000 		.4byte	0x97
+ 779 02cc 16       		.byte	0x16
+ 780 02cd 00       		.byte	0
+ 781 02ce 03       		.uleb128 0x3
+ 782 02cf 90050000 		.4byte	.LASF58
+ 783 02d3 04       		.byte	0x4
+ 784 02d4 D4       		.byte	0xd4
+ 785 02d5 D9020000 		.4byte	0x2d9
+ 786 02d9 08       		.uleb128 0x8
+ 787 02da 7B030000 		.4byte	.LASF59
+ 788 02de 08       		.byte	0x8
+ 789 02df 04       		.byte	0x4
+ 790 02e0 E3       		.byte	0xe3
+ 791 02e1 16030000 		.4byte	0x316
+ 792 02e5 09       		.uleb128 0x9
+ 793 02e6 C2010000 		.4byte	.LASF60
+ 794 02ea 04       		.byte	0x4
+ 795 02eb E5       		.byte	0xe5
+ 796 02ec 70030000 		.4byte	0x370
+ 797 02f0 00       		.byte	0
+ 798 02f1 0A       		.uleb128 0xa
+ 799 02f2 636E7400 		.ascii	"cnt\000"
+ 800 02f6 04       		.byte	0x4
+ 801 02f7 E6       		.byte	0xe6
+ 802 02f8 8C000000 		.4byte	0x8c
+ 803 02fc 04       		.byte	0x4
+ 804 02fd 09       		.uleb128 0x9
+ 805 02fe A3020000 		.4byte	.LASF61
+ 806 0302 04       		.byte	0x4
+ 807 0303 E7       		.byte	0xe7
+ 808 0304 8C000000 		.4byte	0x8c
+ 809 0308 05       		.byte	0x5
+ 810 0309 09       		.uleb128 0x9
+ 811 030a 8D040000 		.4byte	.LASF62
+ 812 030e 04       		.byte	0x4
+ 813 030f E8       		.byte	0xe8
+ 814 0310 8C000000 		.4byte	0x8c
+ 815 0314 06       		.byte	0x6
+ 816 0315 00       		.byte	0
+ 817 0316 03       		.uleb128 0x3
+ 818 0317 45060000 		.4byte	.LASF63
+ 819 031b 04       		.byte	0x4
+ 820 031c D6       		.byte	0xd6
+ 821 031d 21030000 		.4byte	0x321
+ 822 0321 0B       		.uleb128 0xb
+ 823 0322 04       		.byte	0x4
+ 824 0323 27030000 		.4byte	0x327
+ 825 0327 0C       		.uleb128 0xc
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 20
+
+
+ 826 0328 8C000000 		.4byte	0x8c
+ 827 032c 45030000 		.4byte	0x345
+ 828 0330 0D       		.uleb128 0xd
+ 829 0331 45030000 		.4byte	0x345
+ 830 0335 0D       		.uleb128 0xd
+ 831 0336 8C000000 		.4byte	0x8c
+ 832 033a 0D       		.uleb128 0xd
+ 833 033b 8C000000 		.4byte	0x8c
+ 834 033f 0D       		.uleb128 0xd
+ 835 0340 AD000000 		.4byte	0xad
+ 836 0344 00       		.byte	0
+ 837 0345 0B       		.uleb128 0xb
+ 838 0346 04       		.byte	0x4
+ 839 0347 B6000000 		.4byte	0xb6
+ 840 034b 03       		.uleb128 0x3
+ 841 034c 23040000 		.4byte	.LASF64
+ 842 0350 04       		.byte	0x4
+ 843 0351 D7       		.byte	0xd7
+ 844 0352 56030000 		.4byte	0x356
+ 845 0356 0B       		.uleb128 0xb
+ 846 0357 04       		.byte	0x4
+ 847 0358 5C030000 		.4byte	0x35c
+ 848 035c 0C       		.uleb128 0xc
+ 849 035d 97000000 		.4byte	0x97
+ 850 0361 70030000 		.4byte	0x370
+ 851 0365 0D       		.uleb128 0xd
+ 852 0366 45030000 		.4byte	0x345
+ 853 036a 0D       		.uleb128 0xd
+ 854 036b 8C000000 		.4byte	0x8c
+ 855 036f 00       		.byte	0
+ 856 0370 0B       		.uleb128 0xb
+ 857 0371 04       		.byte	0x4
+ 858 0372 8C000000 		.4byte	0x8c
+ 859 0376 0B       		.uleb128 0xb
+ 860 0377 04       		.byte	0x4
+ 861 0378 7C030000 		.4byte	0x37c
+ 862 037c 0E       		.uleb128 0xe
+ 863 037d C6010000 		.4byte	0x1c6
+ 864 0381 0B       		.uleb128 0xb
+ 865 0382 04       		.byte	0x4
+ 866 0383 87030000 		.4byte	0x387
+ 867 0387 0E       		.uleb128 0xe
+ 868 0388 8C000000 		.4byte	0x8c
+ 869 038c 0F       		.uleb128 0xf
+ 870 038d 50010000 		.4byte	.LASF68
+ 871 0391 01       		.byte	0x1
+ 872 0392 45       		.byte	0x45
+ 873 0393 8C000000 		.4byte	0x8c
+ 874 0397 00000000 		.4byte	.LFB0
+ 875 039b CC000000 		.4byte	.LFE0-.LFB0
+ 876 039f 01       		.uleb128 0x1
+ 877 03a0 9C       		.byte	0x9c
+ 878 03a1 27050000 		.4byte	0x527
+ 879 03a5 10       		.uleb128 0x10
+ 880 03a6 BD010000 		.4byte	.LASF65
+ 881 03aa 01       		.byte	0x1
+ 882 03ab 45       		.byte	0x45
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 21
+
+
+ 883 03ac 45030000 		.4byte	0x345
+ 884 03b0 00000000 		.4byte	.LLST0
+ 885 03b4 11       		.uleb128 0x11
+ 886 03b5 6D736700 		.ascii	"msg\000"
+ 887 03b9 01       		.byte	0x1
+ 888 03ba 45       		.byte	0x45
+ 889 03bb 8C000000 		.4byte	0x8c
+ 890 03bf B0000000 		.4byte	.LLST1
+ 891 03c3 10       		.uleb128 0x10
+ 892 03c4 CB010000 		.4byte	.LASF66
+ 893 03c8 01       		.byte	0x1
+ 894 03c9 45       		.byte	0x45
+ 895 03ca 8C000000 		.4byte	0x8c
+ 896 03ce D1000000 		.4byte	.LLST2
+ 897 03d2 10       		.uleb128 0x10
+ 898 03d3 49000000 		.4byte	.LASF67
+ 899 03d7 01       		.byte	0x1
+ 900 03d8 45       		.byte	0x45
+ 901 03d9 AD000000 		.4byte	0xad
+ 902 03dd 77010000 		.4byte	.LLST3
+ 903 03e1 12       		.uleb128 0x12
+ 904 03e2 7800     		.ascii	"x\000"
+ 905 03e4 01       		.byte	0x1
+ 906 03e5 47       		.byte	0x47
+ 907 03e6 8C000000 		.4byte	0x8c
+ 908 03ea BC010000 		.4byte	.LLST4
+ 909 03ee 12       		.uleb128 0x12
+ 910 03ef 7900     		.ascii	"y\000"
+ 911 03f1 01       		.byte	0x1
+ 912 03f2 47       		.byte	0x47
+ 913 03f3 8C000000 		.4byte	0x8c
+ 914 03f7 06020000 		.4byte	.LLST5
+ 915 03fb 12       		.uleb128 0x12
+ 916 03fc 6300     		.ascii	"c\000"
+ 917 03fe 01       		.byte	0x1
+ 918 03ff 47       		.byte	0x47
+ 919 0400 8C000000 		.4byte	0x8c
+ 920 0404 1A020000 		.4byte	.LLST6
+ 921 0408 12       		.uleb128 0x12
+ 922 0409 70747200 		.ascii	"ptr\000"
+ 923 040d 01       		.byte	0x1
+ 924 040e 48       		.byte	0x48
+ 925 040f 70030000 		.4byte	0x370
+ 926 0413 44020000 		.4byte	.LLST7
+ 927 0417 13       		.uleb128 0x13
+ 928 0418 20000000 		.4byte	.LVL5
+ 929 041c B5060000 		.4byte	0x6b5
+ 930 0420 14       		.uleb128 0x14
+ 931 0421 36000000 		.4byte	.LVL11
+ 932 0425 C1060000 		.4byte	0x6c1
+ 933 0429 3A040000 		.4byte	0x43a
+ 934 042d 15       		.uleb128 0x15
+ 935 042e 01       		.uleb128 0x1
+ 936 042f 50       		.byte	0x50
+ 937 0430 02       		.uleb128 0x2
+ 938 0431 75       		.byte	0x75
+ 939 0432 00       		.sleb128 0
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 22
+
+
+ 940 0433 15       		.uleb128 0x15
+ 941 0434 01       		.uleb128 0x1
+ 942 0435 51       		.byte	0x51
+ 943 0436 02       		.uleb128 0x2
+ 944 0437 09       		.byte	0x9
+ 945 0438 B1       		.byte	0xb1
+ 946 0439 00       		.byte	0
+ 947 043a 14       		.uleb128 0x14
+ 948 043b 3E000000 		.4byte	.LVL12
+ 949 043f CD060000 		.4byte	0x6cd
+ 950 0443 4E040000 		.4byte	0x44e
+ 951 0447 15       		.uleb128 0x15
+ 952 0448 01       		.uleb128 0x1
+ 953 0449 50       		.byte	0x50
+ 954 044a 02       		.uleb128 0x2
+ 955 044b 75       		.byte	0x75
+ 956 044c 00       		.sleb128 0
+ 957 044d 00       		.byte	0
+ 958 044e 14       		.uleb128 0x14
+ 959 044f 46000000 		.4byte	.LVL13
+ 960 0453 C1060000 		.4byte	0x6c1
+ 961 0457 67040000 		.4byte	0x467
+ 962 045b 15       		.uleb128 0x15
+ 963 045c 01       		.uleb128 0x1
+ 964 045d 50       		.byte	0x50
+ 965 045e 02       		.uleb128 0x2
+ 966 045f 75       		.byte	0x75
+ 967 0460 00       		.sleb128 0
+ 968 0461 15       		.uleb128 0x15
+ 969 0462 01       		.uleb128 0x1
+ 970 0463 51       		.byte	0x51
+ 971 0464 01       		.uleb128 0x1
+ 972 0465 43       		.byte	0x43
+ 973 0466 00       		.byte	0
+ 974 0467 14       		.uleb128 0x14
+ 975 0468 4E000000 		.4byte	.LVL14
+ 976 046c CD060000 		.4byte	0x6cd
+ 977 0470 81040000 		.4byte	0x481
+ 978 0474 15       		.uleb128 0x15
+ 979 0475 01       		.uleb128 0x1
+ 980 0476 50       		.byte	0x50
+ 981 0477 02       		.uleb128 0x2
+ 982 0478 75       		.byte	0x75
+ 983 0479 00       		.sleb128 0
+ 984 047a 15       		.uleb128 0x15
+ 985 047b 01       		.uleb128 0x1
+ 986 047c 51       		.byte	0x51
+ 987 047d 02       		.uleb128 0x2
+ 988 047e 76       		.byte	0x76
+ 989 047f 00       		.sleb128 0
+ 990 0480 00       		.byte	0
+ 991 0481 14       		.uleb128 0x14
+ 992 0482 56000000 		.4byte	.LVL15
+ 993 0486 C1060000 		.4byte	0x6c1
+ 994 048a 9A040000 		.4byte	0x49a
+ 995 048e 15       		.uleb128 0x15
+ 996 048f 01       		.uleb128 0x1
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 23
+
+
+ 997 0490 50       		.byte	0x50
+ 998 0491 02       		.uleb128 0x2
+ 999 0492 75       		.byte	0x75
+ 1000 0493 00       		.sleb128 0
+ 1001 0494 15       		.uleb128 0x15
+ 1002 0495 01       		.uleb128 0x1
+ 1003 0496 51       		.byte	0x51
+ 1004 0497 01       		.uleb128 0x1
+ 1005 0498 4D       		.byte	0x4d
+ 1006 0499 00       		.byte	0
+ 1007 049a 14       		.uleb128 0x14
+ 1008 049b 68000000 		.4byte	.LVL20
+ 1009 049f D9060000 		.4byte	0x6d9
+ 1010 04a3 BA040000 		.4byte	0x4ba
+ 1011 04a7 15       		.uleb128 0x15
+ 1012 04a8 01       		.uleb128 0x1
+ 1013 04a9 50       		.byte	0x50
+ 1014 04aa 02       		.uleb128 0x2
+ 1015 04ab 75       		.byte	0x75
+ 1016 04ac 00       		.sleb128 0
+ 1017 04ad 15       		.uleb128 0x15
+ 1018 04ae 01       		.uleb128 0x1
+ 1019 04af 51       		.byte	0x51
+ 1020 04b0 02       		.uleb128 0x2
+ 1021 04b1 76       		.byte	0x76
+ 1022 04b2 00       		.sleb128 0
+ 1023 04b3 15       		.uleb128 0x15
+ 1024 04b4 01       		.uleb128 0x1
+ 1025 04b5 52       		.byte	0x52
+ 1026 04b6 02       		.uleb128 0x2
+ 1027 04b7 77       		.byte	0x77
+ 1028 04b8 00       		.sleb128 0
+ 1029 04b9 00       		.byte	0
+ 1030 04ba 14       		.uleb128 0x14
+ 1031 04bb 76000000 		.4byte	.LVL22
+ 1032 04bf E5060000 		.4byte	0x6e5
+ 1033 04c3 CE040000 		.4byte	0x4ce
+ 1034 04c7 15       		.uleb128 0x15
+ 1035 04c8 01       		.uleb128 0x1
+ 1036 04c9 50       		.byte	0x50
+ 1037 04ca 02       		.uleb128 0x2
+ 1038 04cb 75       		.byte	0x75
+ 1039 04cc 00       		.sleb128 0
+ 1040 04cd 00       		.byte	0
+ 1041 04ce 14       		.uleb128 0x14
+ 1042 04cf 82000000 		.4byte	.LVL24
+ 1043 04d3 F1060000 		.4byte	0x6f1
+ 1044 04d7 E5040000 		.4byte	0x4e5
+ 1045 04db 15       		.uleb128 0x15
+ 1046 04dc 01       		.uleb128 0x1
+ 1047 04dd 51       		.byte	0x51
+ 1048 04de 05       		.uleb128 0x5
+ 1049 04df 03       		.byte	0x3
+ 1050 04e0 00000000 		.4byte	.LANCHOR0
+ 1051 04e4 00       		.byte	0
+ 1052 04e5 14       		.uleb128 0x14
+ 1053 04e6 8C000000 		.4byte	.LVL26
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 24
+
+
+ 1054 04ea F1060000 		.4byte	0x6f1
+ 1055 04ee FC040000 		.4byte	0x4fc
+ 1056 04f2 15       		.uleb128 0x15
+ 1057 04f3 01       		.uleb128 0x1
+ 1058 04f4 51       		.byte	0x51
+ 1059 04f5 05       		.uleb128 0x5
+ 1060 04f6 03       		.byte	0x3
+ 1061 04f7 08000000 		.4byte	.LANCHOR0+8
+ 1062 04fb 00       		.byte	0
+ 1063 04fc 14       		.uleb128 0x14
+ 1064 04fd 98000000 		.4byte	.LVL28
+ 1065 0501 F1060000 		.4byte	0x6f1
+ 1066 0505 13050000 		.4byte	0x513
+ 1067 0509 15       		.uleb128 0x15
+ 1068 050a 01       		.uleb128 0x1
+ 1069 050b 51       		.byte	0x51
+ 1070 050c 05       		.uleb128 0x5
+ 1071 050d 03       		.byte	0x3
+ 1072 050e 10000000 		.4byte	.LANCHOR0+16
+ 1073 0512 00       		.byte	0
+ 1074 0513 16       		.uleb128 0x16
+ 1075 0514 AA000000 		.4byte	.LVL30
+ 1076 0518 F1060000 		.4byte	0x6f1
+ 1077 051c 15       		.uleb128 0x15
+ 1078 051d 01       		.uleb128 0x1
+ 1079 051e 51       		.byte	0x51
+ 1080 051f 05       		.uleb128 0x5
+ 1081 0520 03       		.byte	0x3
+ 1082 0521 18000000 		.4byte	.LANCHOR0+24
+ 1083 0525 00       		.byte	0
+ 1084 0526 00       		.byte	0
+ 1085 0527 0F       		.uleb128 0xf
+ 1086 0528 28050000 		.4byte	.LASF69
+ 1087 052c 01       		.byte	0x1
+ 1088 052d BC       		.byte	0xbc
+ 1089 052e 8C000000 		.4byte	0x8c
+ 1090 0532 00000000 		.4byte	.LFB1
+ 1091 0536 78000000 		.4byte	.LFE1-.LFB1
+ 1092 053a 01       		.uleb128 0x1
+ 1093 053b 9C       		.byte	0x9c
+ 1094 053c 0F060000 		.4byte	0x60f
+ 1095 0540 10       		.uleb128 0x10
+ 1096 0541 BD010000 		.4byte	.LASF65
+ 1097 0545 01       		.byte	0x1
+ 1098 0546 BC       		.byte	0xbc
+ 1099 0547 45030000 		.4byte	0x345
+ 1100 054b 57020000 		.4byte	.LLST8
+ 1101 054f 11       		.uleb128 0x11
+ 1102 0550 6D736700 		.ascii	"msg\000"
+ 1103 0554 01       		.byte	0x1
+ 1104 0555 BC       		.byte	0xbc
+ 1105 0556 8C000000 		.4byte	0x8c
+ 1106 055a AF020000 		.4byte	.LLST9
+ 1107 055e 10       		.uleb128 0x10
+ 1108 055f CB010000 		.4byte	.LASF66
+ 1109 0563 01       		.byte	0x1
+ 1110 0564 BC       		.byte	0xbc
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 25
+
+
+ 1111 0565 8C000000 		.4byte	0x8c
+ 1112 0569 02030000 		.4byte	.LLST10
+ 1113 056d 10       		.uleb128 0x10
+ 1114 056e 49000000 		.4byte	.LASF67
+ 1115 0572 01       		.byte	0x1
+ 1116 0573 BC       		.byte	0xbc
+ 1117 0574 AD000000 		.4byte	0xad
+ 1118 0578 55030000 		.4byte	.LLST11
+ 1119 057c 14       		.uleb128 0x14
+ 1120 057d 10000000 		.4byte	.LVL36
+ 1121 0581 F1060000 		.4byte	0x6f1
+ 1122 0585 99050000 		.4byte	0x599
+ 1123 0589 15       		.uleb128 0x15
+ 1124 058a 01       		.uleb128 0x1
+ 1125 058b 50       		.byte	0x50
+ 1126 058c 02       		.uleb128 0x2
+ 1127 058d 74       		.byte	0x74
+ 1128 058e 00       		.sleb128 0
+ 1129 058f 15       		.uleb128 0x15
+ 1130 0590 01       		.uleb128 0x1
+ 1131 0591 51       		.byte	0x51
+ 1132 0592 05       		.uleb128 0x5
+ 1133 0593 03       		.byte	0x3
+ 1134 0594 10000000 		.4byte	.LANCHOR0+16
+ 1135 0598 00       		.byte	0
+ 1136 0599 14       		.uleb128 0x14
+ 1137 059a 22000000 		.4byte	.LVL39
+ 1138 059e F1060000 		.4byte	0x6f1
+ 1139 05a2 B0050000 		.4byte	0x5b0
+ 1140 05a6 15       		.uleb128 0x15
+ 1141 05a7 01       		.uleb128 0x1
+ 1142 05a8 51       		.byte	0x51
+ 1143 05a9 05       		.uleb128 0x5
+ 1144 05aa 03       		.byte	0x3
+ 1145 05ab 18000000 		.4byte	.LANCHOR0+24
+ 1146 05af 00       		.byte	0
+ 1147 05b0 14       		.uleb128 0x14
+ 1148 05b1 34000000 		.4byte	.LVL41
+ 1149 05b5 8C030000 		.4byte	0x38c
+ 1150 05b9 C4050000 		.4byte	0x5c4
+ 1151 05bd 15       		.uleb128 0x15
+ 1152 05be 01       		.uleb128 0x1
+ 1153 05bf 51       		.byte	0x51
+ 1154 05c0 02       		.uleb128 0x2
+ 1155 05c1 75       		.byte	0x75
+ 1156 05c2 00       		.sleb128 0
+ 1157 05c3 00       		.byte	0
+ 1158 05c4 14       		.uleb128 0x14
+ 1159 05c5 4A000000 		.4byte	.LVL42
+ 1160 05c9 FD060000 		.4byte	0x6fd
+ 1161 05cd E1050000 		.4byte	0x5e1
+ 1162 05d1 15       		.uleb128 0x15
+ 1163 05d2 01       		.uleb128 0x1
+ 1164 05d3 50       		.byte	0x50
+ 1165 05d4 02       		.uleb128 0x2
+ 1166 05d5 74       		.byte	0x74
+ 1167 05d6 00       		.sleb128 0
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 26
+
+
+ 1168 05d7 15       		.uleb128 0x15
+ 1169 05d8 01       		.uleb128 0x1
+ 1170 05d9 51       		.byte	0x51
+ 1171 05da 05       		.uleb128 0x5
+ 1172 05db 03       		.byte	0x3
+ 1173 05dc 20000000 		.4byte	.LANCHOR0+32
+ 1174 05e0 00       		.byte	0
+ 1175 05e1 14       		.uleb128 0x14
+ 1176 05e2 54000000 		.4byte	.LVL43
+ 1177 05e6 09070000 		.4byte	0x709
+ 1178 05ea F5050000 		.4byte	0x5f5
+ 1179 05ee 15       		.uleb128 0x15
+ 1180 05ef 01       		.uleb128 0x1
+ 1181 05f0 50       		.byte	0x50
+ 1182 05f1 02       		.uleb128 0x2
+ 1183 05f2 74       		.byte	0x74
+ 1184 05f3 00       		.sleb128 0
+ 1185 05f4 00       		.byte	0
+ 1186 05f5 16       		.uleb128 0x16
+ 1187 05f6 5C000000 		.4byte	.LVL44
+ 1188 05fa F1060000 		.4byte	0x6f1
+ 1189 05fe 15       		.uleb128 0x15
+ 1190 05ff 01       		.uleb128 0x1
+ 1191 0600 50       		.byte	0x50
+ 1192 0601 02       		.uleb128 0x2
+ 1193 0602 74       		.byte	0x74
+ 1194 0603 00       		.sleb128 0
+ 1195 0604 15       		.uleb128 0x15
+ 1196 0605 01       		.uleb128 0x1
+ 1197 0606 51       		.byte	0x51
+ 1198 0607 05       		.uleb128 0x5
+ 1199 0608 03       		.byte	0x3
+ 1200 0609 38000000 		.4byte	.LANCHOR0+56
+ 1201 060d 00       		.byte	0
+ 1202 060e 00       		.byte	0
+ 1203 060f 17       		.uleb128 0x17
+ 1204 0610 87030000 		.4byte	0x387
+ 1205 0614 1F060000 		.4byte	0x61f
+ 1206 0618 18       		.uleb128 0x18
+ 1207 0619 1F060000 		.4byte	0x61f
+ 1208 061d 04       		.byte	0x4
+ 1209 061e 00       		.byte	0
+ 1210 061f 02       		.uleb128 0x2
+ 1211 0620 04       		.byte	0x4
+ 1212 0621 07       		.byte	0x7
+ 1213 0622 BD000000 		.4byte	.LASF70
+ 1214 0626 19       		.uleb128 0x19
+ 1215 0627 DD020000 		.4byte	.LASF71
+ 1216 062b 01       		.byte	0x1
+ 1217 062c 29       		.byte	0x29
+ 1218 062d 37060000 		.4byte	0x637
+ 1219 0631 05       		.uleb128 0x5
+ 1220 0632 03       		.byte	0x3
+ 1221 0633 00000000 		.4byte	u8x8_d_s1d15721_powersave0_seq
+ 1222 0637 0E       		.uleb128 0xe
+ 1223 0638 0F060000 		.4byte	0x60f
+ 1224 063c 19       		.uleb128 0x19
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 27
+
+
+ 1225 063d A9020000 		.4byte	.LASF72
+ 1226 0641 01       		.byte	0x1
+ 1227 0642 30       		.byte	0x30
+ 1228 0643 4D060000 		.4byte	0x64d
+ 1229 0647 05       		.uleb128 0x5
+ 1230 0648 03       		.byte	0x3
+ 1231 0649 08000000 		.4byte	u8x8_d_s1d15721_powersave1_seq
+ 1232 064d 0E       		.uleb128 0xe
+ 1233 064e 0F060000 		.4byte	0x60f
+ 1234 0652 19       		.uleb128 0x19
+ 1235 0653 63000000 		.4byte	.LASF73
+ 1236 0657 01       		.byte	0x1
+ 1237 0658 37       		.byte	0x37
+ 1238 0659 63060000 		.4byte	0x663
+ 1239 065d 05       		.uleb128 0x5
+ 1240 065e 03       		.byte	0x3
+ 1241 065f 10000000 		.4byte	u8x8_d_s1d15721_flip0_seq
+ 1242 0663 0E       		.uleb128 0xe
+ 1243 0664 0F060000 		.4byte	0x60f
+ 1244 0668 19       		.uleb128 0x19
+ 1245 0669 0F030000 		.4byte	.LASF74
+ 1246 066d 01       		.byte	0x1
+ 1247 066e 3E       		.byte	0x3e
+ 1248 066f 79060000 		.4byte	0x679
+ 1249 0673 05       		.uleb128 0x5
+ 1250 0674 03       		.byte	0x3
+ 1251 0675 18000000 		.4byte	u8x8_d_s1d15721_flip1_seq
+ 1252 0679 0E       		.uleb128 0xe
+ 1253 067a 0F060000 		.4byte	0x60f
+ 1254 067e 19       		.uleb128 0x19
+ 1255 067f 1E000000 		.4byte	.LASF75
+ 1256 0683 01       		.byte	0x1
+ 1257 0684 90       		.byte	0x90
+ 1258 0685 7C030000 		.4byte	0x37c
+ 1259 0689 05       		.uleb128 0x5
+ 1260 068a 03       		.byte	0x3
+ 1261 068b 20000000 		.4byte	u8x8_s1d15721_240x64_display_info
+ 1262 068f 17       		.uleb128 0x17
+ 1263 0690 87030000 		.4byte	0x387
+ 1264 0694 9F060000 		.4byte	0x69f
+ 1265 0698 18       		.uleb128 0x18
+ 1266 0699 1F060000 		.4byte	0x61f
+ 1267 069d 3A       		.byte	0x3a
+ 1268 069e 00       		.byte	0
+ 1269 069f 19       		.uleb128 0x19
+ 1270 06a0 7C010000 		.4byte	.LASF76
+ 1271 06a4 01       		.byte	0x1
+ 1272 06a5 A7       		.byte	0xa7
+ 1273 06a6 B0060000 		.4byte	0x6b0
+ 1274 06aa 05       		.uleb128 0x5
+ 1275 06ab 03       		.byte	0x3
+ 1276 06ac 38000000 		.4byte	u8x8_d_s1d15721_240x64_init_seq
+ 1277 06b0 0E       		.uleb128 0xe
+ 1278 06b1 8F060000 		.4byte	0x68f
+ 1279 06b5 1A       		.uleb128 0x1a
+ 1280 06b6 BB030000 		.4byte	.LASF77
+ 1281 06ba BB030000 		.4byte	.LASF77
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 28
+
+
+ 1282 06be 04       		.byte	0x4
+ 1283 06bf 7F02     		.2byte	0x27f
+ 1284 06c1 1A       		.uleb128 0x1a
+ 1285 06c2 59020000 		.4byte	.LASF78
+ 1286 06c6 59020000 		.4byte	.LASF78
+ 1287 06ca 04       		.byte	0x4
+ 1288 06cb 7B02     		.2byte	0x27b
+ 1289 06cd 1A       		.uleb128 0x1a
+ 1290 06ce 3F040000 		.4byte	.LASF79
+ 1291 06d2 3F040000 		.4byte	.LASF79
+ 1292 06d6 04       		.byte	0x4
+ 1293 06d7 7C02     		.2byte	0x27c
+ 1294 06d9 1A       		.uleb128 0x1a
+ 1295 06da D3010000 		.4byte	.LASF80
+ 1296 06de D3010000 		.4byte	.LASF80
+ 1297 06e2 04       		.byte	0x4
+ 1298 06e3 7E02     		.2byte	0x27e
+ 1299 06e5 1A       		.uleb128 0x1a
+ 1300 06e6 8E020000 		.4byte	.LASF81
+ 1301 06ea 8E020000 		.4byte	.LASF81
+ 1302 06ee 04       		.byte	0x4
+ 1303 06ef 8002     		.2byte	0x280
+ 1304 06f1 1A       		.uleb128 0x1a
+ 1305 06f2 93040000 		.4byte	.LASF82
+ 1306 06f6 93040000 		.4byte	.LASF82
+ 1307 06fa 04       		.byte	0x4
+ 1308 06fb 9E02     		.2byte	0x29e
+ 1309 06fd 1A       		.uleb128 0x1a
+ 1310 06fe 66050000 		.4byte	.LASF83
+ 1311 0702 66050000 		.4byte	.LASF83
+ 1312 0706 04       		.byte	0x4
+ 1313 0707 C201     		.2byte	0x1c2
+ 1314 0709 1A       		.uleb128 0x1a
+ 1315 070a 6A020000 		.4byte	.LASF84
+ 1316 070e 6A020000 		.4byte	.LASF84
+ 1317 0712 04       		.byte	0x4
+ 1318 0713 C301     		.2byte	0x1c3
+ 1319 0715 00       		.byte	0
+ 1320              		.section	.debug_abbrev,"",%progbits
+ 1321              	.Ldebug_abbrev0:
+ 1322 0000 01       		.uleb128 0x1
+ 1323 0001 11       		.uleb128 0x11
+ 1324 0002 01       		.byte	0x1
+ 1325 0003 25       		.uleb128 0x25
+ 1326 0004 0E       		.uleb128 0xe
+ 1327 0005 13       		.uleb128 0x13
+ 1328 0006 0B       		.uleb128 0xb
+ 1329 0007 03       		.uleb128 0x3
+ 1330 0008 0E       		.uleb128 0xe
+ 1331 0009 1B       		.uleb128 0x1b
+ 1332 000a 0E       		.uleb128 0xe
+ 1333 000b 55       		.uleb128 0x55
+ 1334 000c 17       		.uleb128 0x17
+ 1335 000d 11       		.uleb128 0x11
+ 1336 000e 01       		.uleb128 0x1
+ 1337 000f 10       		.uleb128 0x10
+ 1338 0010 17       		.uleb128 0x17
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 29
+
+
+ 1339 0011 00       		.byte	0
+ 1340 0012 00       		.byte	0
+ 1341 0013 02       		.uleb128 0x2
+ 1342 0014 24       		.uleb128 0x24
+ 1343 0015 00       		.byte	0
+ 1344 0016 0B       		.uleb128 0xb
+ 1345 0017 0B       		.uleb128 0xb
+ 1346 0018 3E       		.uleb128 0x3e
+ 1347 0019 0B       		.uleb128 0xb
+ 1348 001a 03       		.uleb128 0x3
+ 1349 001b 0E       		.uleb128 0xe
+ 1350 001c 00       		.byte	0
+ 1351 001d 00       		.byte	0
+ 1352 001e 03       		.uleb128 0x3
+ 1353 001f 16       		.uleb128 0x16
+ 1354 0020 00       		.byte	0
+ 1355 0021 03       		.uleb128 0x3
+ 1356 0022 0E       		.uleb128 0xe
+ 1357 0023 3A       		.uleb128 0x3a
+ 1358 0024 0B       		.uleb128 0xb
+ 1359 0025 3B       		.uleb128 0x3b
+ 1360 0026 0B       		.uleb128 0xb
+ 1361 0027 49       		.uleb128 0x49
+ 1362 0028 13       		.uleb128 0x13
+ 1363 0029 00       		.byte	0
+ 1364 002a 00       		.byte	0
+ 1365 002b 04       		.uleb128 0x4
+ 1366 002c 24       		.uleb128 0x24
+ 1367 002d 00       		.byte	0
+ 1368 002e 0B       		.uleb128 0xb
+ 1369 002f 0B       		.uleb128 0xb
+ 1370 0030 3E       		.uleb128 0x3e
+ 1371 0031 0B       		.uleb128 0xb
+ 1372 0032 03       		.uleb128 0x3
+ 1373 0033 08       		.uleb128 0x8
+ 1374 0034 00       		.byte	0
+ 1375 0035 00       		.byte	0
+ 1376 0036 05       		.uleb128 0x5
+ 1377 0037 0F       		.uleb128 0xf
+ 1378 0038 00       		.byte	0
+ 1379 0039 0B       		.uleb128 0xb
+ 1380 003a 0B       		.uleb128 0xb
+ 1381 003b 00       		.byte	0
+ 1382 003c 00       		.byte	0
+ 1383 003d 06       		.uleb128 0x6
+ 1384 003e 13       		.uleb128 0x13
+ 1385 003f 01       		.byte	0x1
+ 1386 0040 03       		.uleb128 0x3
+ 1387 0041 0E       		.uleb128 0xe
+ 1388 0042 0B       		.uleb128 0xb
+ 1389 0043 0B       		.uleb128 0xb
+ 1390 0044 3A       		.uleb128 0x3a
+ 1391 0045 0B       		.uleb128 0xb
+ 1392 0046 3B       		.uleb128 0x3b
+ 1393 0047 05       		.uleb128 0x5
+ 1394 0048 01       		.uleb128 0x1
+ 1395 0049 13       		.uleb128 0x13
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 30
+
+
+ 1396 004a 00       		.byte	0
+ 1397 004b 00       		.byte	0
+ 1398 004c 07       		.uleb128 0x7
+ 1399 004d 0D       		.uleb128 0xd
+ 1400 004e 00       		.byte	0
+ 1401 004f 03       		.uleb128 0x3
+ 1402 0050 0E       		.uleb128 0xe
+ 1403 0051 3A       		.uleb128 0x3a
+ 1404 0052 0B       		.uleb128 0xb
+ 1405 0053 3B       		.uleb128 0x3b
+ 1406 0054 05       		.uleb128 0x5
+ 1407 0055 49       		.uleb128 0x49
+ 1408 0056 13       		.uleb128 0x13
+ 1409 0057 38       		.uleb128 0x38
+ 1410 0058 0B       		.uleb128 0xb
+ 1411 0059 00       		.byte	0
+ 1412 005a 00       		.byte	0
+ 1413 005b 08       		.uleb128 0x8
+ 1414 005c 13       		.uleb128 0x13
+ 1415 005d 01       		.byte	0x1
+ 1416 005e 03       		.uleb128 0x3
+ 1417 005f 0E       		.uleb128 0xe
+ 1418 0060 0B       		.uleb128 0xb
+ 1419 0061 0B       		.uleb128 0xb
+ 1420 0062 3A       		.uleb128 0x3a
+ 1421 0063 0B       		.uleb128 0xb
+ 1422 0064 3B       		.uleb128 0x3b
+ 1423 0065 0B       		.uleb128 0xb
+ 1424 0066 01       		.uleb128 0x1
+ 1425 0067 13       		.uleb128 0x13
+ 1426 0068 00       		.byte	0
+ 1427 0069 00       		.byte	0
+ 1428 006a 09       		.uleb128 0x9
+ 1429 006b 0D       		.uleb128 0xd
+ 1430 006c 00       		.byte	0
+ 1431 006d 03       		.uleb128 0x3
+ 1432 006e 0E       		.uleb128 0xe
+ 1433 006f 3A       		.uleb128 0x3a
+ 1434 0070 0B       		.uleb128 0xb
+ 1435 0071 3B       		.uleb128 0x3b
+ 1436 0072 0B       		.uleb128 0xb
+ 1437 0073 49       		.uleb128 0x49
+ 1438 0074 13       		.uleb128 0x13
+ 1439 0075 38       		.uleb128 0x38
+ 1440 0076 0B       		.uleb128 0xb
+ 1441 0077 00       		.byte	0
+ 1442 0078 00       		.byte	0
+ 1443 0079 0A       		.uleb128 0xa
+ 1444 007a 0D       		.uleb128 0xd
+ 1445 007b 00       		.byte	0
+ 1446 007c 03       		.uleb128 0x3
+ 1447 007d 08       		.uleb128 0x8
+ 1448 007e 3A       		.uleb128 0x3a
+ 1449 007f 0B       		.uleb128 0xb
+ 1450 0080 3B       		.uleb128 0x3b
+ 1451 0081 0B       		.uleb128 0xb
+ 1452 0082 49       		.uleb128 0x49
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 31
+
+
+ 1453 0083 13       		.uleb128 0x13
+ 1454 0084 38       		.uleb128 0x38
+ 1455 0085 0B       		.uleb128 0xb
+ 1456 0086 00       		.byte	0
+ 1457 0087 00       		.byte	0
+ 1458 0088 0B       		.uleb128 0xb
+ 1459 0089 0F       		.uleb128 0xf
+ 1460 008a 00       		.byte	0
+ 1461 008b 0B       		.uleb128 0xb
+ 1462 008c 0B       		.uleb128 0xb
+ 1463 008d 49       		.uleb128 0x49
+ 1464 008e 13       		.uleb128 0x13
+ 1465 008f 00       		.byte	0
+ 1466 0090 00       		.byte	0
+ 1467 0091 0C       		.uleb128 0xc
+ 1468 0092 15       		.uleb128 0x15
+ 1469 0093 01       		.byte	0x1
+ 1470 0094 27       		.uleb128 0x27
+ 1471 0095 19       		.uleb128 0x19
+ 1472 0096 49       		.uleb128 0x49
+ 1473 0097 13       		.uleb128 0x13
+ 1474 0098 01       		.uleb128 0x1
+ 1475 0099 13       		.uleb128 0x13
+ 1476 009a 00       		.byte	0
+ 1477 009b 00       		.byte	0
+ 1478 009c 0D       		.uleb128 0xd
+ 1479 009d 05       		.uleb128 0x5
+ 1480 009e 00       		.byte	0
+ 1481 009f 49       		.uleb128 0x49
+ 1482 00a0 13       		.uleb128 0x13
+ 1483 00a1 00       		.byte	0
+ 1484 00a2 00       		.byte	0
+ 1485 00a3 0E       		.uleb128 0xe
+ 1486 00a4 26       		.uleb128 0x26
+ 1487 00a5 00       		.byte	0
+ 1488 00a6 49       		.uleb128 0x49
+ 1489 00a7 13       		.uleb128 0x13
+ 1490 00a8 00       		.byte	0
+ 1491 00a9 00       		.byte	0
+ 1492 00aa 0F       		.uleb128 0xf
+ 1493 00ab 2E       		.uleb128 0x2e
+ 1494 00ac 01       		.byte	0x1
+ 1495 00ad 3F       		.uleb128 0x3f
+ 1496 00ae 19       		.uleb128 0x19
+ 1497 00af 03       		.uleb128 0x3
+ 1498 00b0 0E       		.uleb128 0xe
+ 1499 00b1 3A       		.uleb128 0x3a
+ 1500 00b2 0B       		.uleb128 0xb
+ 1501 00b3 3B       		.uleb128 0x3b
+ 1502 00b4 0B       		.uleb128 0xb
+ 1503 00b5 27       		.uleb128 0x27
+ 1504 00b6 19       		.uleb128 0x19
+ 1505 00b7 49       		.uleb128 0x49
+ 1506 00b8 13       		.uleb128 0x13
+ 1507 00b9 11       		.uleb128 0x11
+ 1508 00ba 01       		.uleb128 0x1
+ 1509 00bb 12       		.uleb128 0x12
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 32
+
+
+ 1510 00bc 06       		.uleb128 0x6
+ 1511 00bd 40       		.uleb128 0x40
+ 1512 00be 18       		.uleb128 0x18
+ 1513 00bf 9742     		.uleb128 0x2117
+ 1514 00c1 19       		.uleb128 0x19
+ 1515 00c2 01       		.uleb128 0x1
+ 1516 00c3 13       		.uleb128 0x13
+ 1517 00c4 00       		.byte	0
+ 1518 00c5 00       		.byte	0
+ 1519 00c6 10       		.uleb128 0x10
+ 1520 00c7 05       		.uleb128 0x5
+ 1521 00c8 00       		.byte	0
+ 1522 00c9 03       		.uleb128 0x3
+ 1523 00ca 0E       		.uleb128 0xe
+ 1524 00cb 3A       		.uleb128 0x3a
+ 1525 00cc 0B       		.uleb128 0xb
+ 1526 00cd 3B       		.uleb128 0x3b
+ 1527 00ce 0B       		.uleb128 0xb
+ 1528 00cf 49       		.uleb128 0x49
+ 1529 00d0 13       		.uleb128 0x13
+ 1530 00d1 02       		.uleb128 0x2
+ 1531 00d2 17       		.uleb128 0x17
+ 1532 00d3 00       		.byte	0
+ 1533 00d4 00       		.byte	0
+ 1534 00d5 11       		.uleb128 0x11
+ 1535 00d6 05       		.uleb128 0x5
+ 1536 00d7 00       		.byte	0
+ 1537 00d8 03       		.uleb128 0x3
+ 1538 00d9 08       		.uleb128 0x8
+ 1539 00da 3A       		.uleb128 0x3a
+ 1540 00db 0B       		.uleb128 0xb
+ 1541 00dc 3B       		.uleb128 0x3b
+ 1542 00dd 0B       		.uleb128 0xb
+ 1543 00de 49       		.uleb128 0x49
+ 1544 00df 13       		.uleb128 0x13
+ 1545 00e0 02       		.uleb128 0x2
+ 1546 00e1 17       		.uleb128 0x17
+ 1547 00e2 00       		.byte	0
+ 1548 00e3 00       		.byte	0
+ 1549 00e4 12       		.uleb128 0x12
+ 1550 00e5 34       		.uleb128 0x34
+ 1551 00e6 00       		.byte	0
+ 1552 00e7 03       		.uleb128 0x3
+ 1553 00e8 08       		.uleb128 0x8
+ 1554 00e9 3A       		.uleb128 0x3a
+ 1555 00ea 0B       		.uleb128 0xb
+ 1556 00eb 3B       		.uleb128 0x3b
+ 1557 00ec 0B       		.uleb128 0xb
+ 1558 00ed 49       		.uleb128 0x49
+ 1559 00ee 13       		.uleb128 0x13
+ 1560 00ef 02       		.uleb128 0x2
+ 1561 00f0 17       		.uleb128 0x17
+ 1562 00f1 00       		.byte	0
+ 1563 00f2 00       		.byte	0
+ 1564 00f3 13       		.uleb128 0x13
+ 1565 00f4 898201   		.uleb128 0x4109
+ 1566 00f7 00       		.byte	0
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 33
+
+
+ 1567 00f8 11       		.uleb128 0x11
+ 1568 00f9 01       		.uleb128 0x1
+ 1569 00fa 31       		.uleb128 0x31
+ 1570 00fb 13       		.uleb128 0x13
+ 1571 00fc 00       		.byte	0
+ 1572 00fd 00       		.byte	0
+ 1573 00fe 14       		.uleb128 0x14
+ 1574 00ff 898201   		.uleb128 0x4109
+ 1575 0102 01       		.byte	0x1
+ 1576 0103 11       		.uleb128 0x11
+ 1577 0104 01       		.uleb128 0x1
+ 1578 0105 31       		.uleb128 0x31
+ 1579 0106 13       		.uleb128 0x13
+ 1580 0107 01       		.uleb128 0x1
+ 1581 0108 13       		.uleb128 0x13
+ 1582 0109 00       		.byte	0
+ 1583 010a 00       		.byte	0
+ 1584 010b 15       		.uleb128 0x15
+ 1585 010c 8A8201   		.uleb128 0x410a
+ 1586 010f 00       		.byte	0
+ 1587 0110 02       		.uleb128 0x2
+ 1588 0111 18       		.uleb128 0x18
+ 1589 0112 9142     		.uleb128 0x2111
+ 1590 0114 18       		.uleb128 0x18
+ 1591 0115 00       		.byte	0
+ 1592 0116 00       		.byte	0
+ 1593 0117 16       		.uleb128 0x16
+ 1594 0118 898201   		.uleb128 0x4109
+ 1595 011b 01       		.byte	0x1
+ 1596 011c 11       		.uleb128 0x11
+ 1597 011d 01       		.uleb128 0x1
+ 1598 011e 31       		.uleb128 0x31
+ 1599 011f 13       		.uleb128 0x13
+ 1600 0120 00       		.byte	0
+ 1601 0121 00       		.byte	0
+ 1602 0122 17       		.uleb128 0x17
+ 1603 0123 01       		.uleb128 0x1
+ 1604 0124 01       		.byte	0x1
+ 1605 0125 49       		.uleb128 0x49
+ 1606 0126 13       		.uleb128 0x13
+ 1607 0127 01       		.uleb128 0x1
+ 1608 0128 13       		.uleb128 0x13
+ 1609 0129 00       		.byte	0
+ 1610 012a 00       		.byte	0
+ 1611 012b 18       		.uleb128 0x18
+ 1612 012c 21       		.uleb128 0x21
+ 1613 012d 00       		.byte	0
+ 1614 012e 49       		.uleb128 0x49
+ 1615 012f 13       		.uleb128 0x13
+ 1616 0130 2F       		.uleb128 0x2f
+ 1617 0131 0B       		.uleb128 0xb
+ 1618 0132 00       		.byte	0
+ 1619 0133 00       		.byte	0
+ 1620 0134 19       		.uleb128 0x19
+ 1621 0135 34       		.uleb128 0x34
+ 1622 0136 00       		.byte	0
+ 1623 0137 03       		.uleb128 0x3
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 34
+
+
+ 1624 0138 0E       		.uleb128 0xe
+ 1625 0139 3A       		.uleb128 0x3a
+ 1626 013a 0B       		.uleb128 0xb
+ 1627 013b 3B       		.uleb128 0x3b
+ 1628 013c 0B       		.uleb128 0xb
+ 1629 013d 49       		.uleb128 0x49
+ 1630 013e 13       		.uleb128 0x13
+ 1631 013f 02       		.uleb128 0x2
+ 1632 0140 18       		.uleb128 0x18
+ 1633 0141 00       		.byte	0
+ 1634 0142 00       		.byte	0
+ 1635 0143 1A       		.uleb128 0x1a
+ 1636 0144 2E       		.uleb128 0x2e
+ 1637 0145 00       		.byte	0
+ 1638 0146 3F       		.uleb128 0x3f
+ 1639 0147 19       		.uleb128 0x19
+ 1640 0148 3C       		.uleb128 0x3c
+ 1641 0149 19       		.uleb128 0x19
+ 1642 014a 6E       		.uleb128 0x6e
+ 1643 014b 0E       		.uleb128 0xe
+ 1644 014c 03       		.uleb128 0x3
+ 1645 014d 0E       		.uleb128 0xe
+ 1646 014e 3A       		.uleb128 0x3a
+ 1647 014f 0B       		.uleb128 0xb
+ 1648 0150 3B       		.uleb128 0x3b
+ 1649 0151 05       		.uleb128 0x5
+ 1650 0152 00       		.byte	0
+ 1651 0153 00       		.byte	0
+ 1652 0154 00       		.byte	0
+ 1653              		.section	.debug_loc,"",%progbits
+ 1654              	.Ldebug_loc0:
+ 1655              	.LLST0:
+ 1656 0000 00000000 		.4byte	.LVL0
+ 1657 0004 1A000000 		.4byte	.LVL3
+ 1658 0008 0100     		.2byte	0x1
+ 1659 000a 50       		.byte	0x50
+ 1660 000b 1A000000 		.4byte	.LVL3
+ 1661 000f 1C000000 		.4byte	.LVL4
+ 1662 0013 0100     		.2byte	0x1
+ 1663 0015 55       		.byte	0x55
+ 1664 0016 1C000000 		.4byte	.LVL4
+ 1665 001a 1F000000 		.4byte	.LVL5-1
+ 1666 001e 0100     		.2byte	0x1
+ 1667 0020 50       		.byte	0x50
+ 1668 0021 1F000000 		.4byte	.LVL5-1
+ 1669 0025 7A000000 		.4byte	.LVL23
+ 1670 0029 0100     		.2byte	0x1
+ 1671 002b 55       		.byte	0x55
+ 1672 002c 7A000000 		.4byte	.LVL23
+ 1673 0030 81000000 		.4byte	.LVL24-1
+ 1674 0034 0100     		.2byte	0x1
+ 1675 0036 50       		.byte	0x50
+ 1676 0037 81000000 		.4byte	.LVL24-1
+ 1677 003b 86000000 		.4byte	.LVL25
+ 1678 003f 0100     		.2byte	0x1
+ 1679 0041 55       		.byte	0x55
+ 1680 0042 86000000 		.4byte	.LVL25
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 35
+
+
+ 1681 0046 8B000000 		.4byte	.LVL26-1
+ 1682 004a 0100     		.2byte	0x1
+ 1683 004c 50       		.byte	0x50
+ 1684 004d 8B000000 		.4byte	.LVL26-1
+ 1685 0051 90000000 		.4byte	.LVL27
+ 1686 0055 0100     		.2byte	0x1
+ 1687 0057 55       		.byte	0x55
+ 1688 0058 90000000 		.4byte	.LVL27
+ 1689 005c 97000000 		.4byte	.LVL28-1
+ 1690 0060 0100     		.2byte	0x1
+ 1691 0062 50       		.byte	0x50
+ 1692 0063 97000000 		.4byte	.LVL28-1
+ 1693 0067 A4000000 		.4byte	.LVL29
+ 1694 006b 0100     		.2byte	0x1
+ 1695 006d 55       		.byte	0x55
+ 1696 006e A4000000 		.4byte	.LVL29
+ 1697 0072 A9000000 		.4byte	.LVL30-1
+ 1698 0076 0100     		.2byte	0x1
+ 1699 0078 50       		.byte	0x50
+ 1700 0079 A9000000 		.4byte	.LVL30-1
+ 1701 007d B6000000 		.4byte	.LVL31
+ 1702 0081 0100     		.2byte	0x1
+ 1703 0083 55       		.byte	0x55
+ 1704 0084 B6000000 		.4byte	.LVL31
+ 1705 0088 B8000000 		.4byte	.LVL32
+ 1706 008c 0100     		.2byte	0x1
+ 1707 008e 50       		.byte	0x50
+ 1708 008f B8000000 		.4byte	.LVL32
+ 1709 0093 BA000000 		.4byte	.LVL33
+ 1710 0097 0100     		.2byte	0x1
+ 1711 0099 55       		.byte	0x55
+ 1712 009a BA000000 		.4byte	.LVL33
+ 1713 009e CC000000 		.4byte	.LFE0
+ 1714 00a2 0400     		.2byte	0x4
+ 1715 00a4 F3       		.byte	0xf3
+ 1716 00a5 01       		.uleb128 0x1
+ 1717 00a6 50       		.byte	0x50
+ 1718 00a7 9F       		.byte	0x9f
+ 1719 00a8 00000000 		.4byte	0
+ 1720 00ac 00000000 		.4byte	0
+ 1721              	.LLST1:
+ 1722 00b0 00000000 		.4byte	.LVL0
+ 1723 00b4 0A000000 		.4byte	.LVL1
+ 1724 00b8 0100     		.2byte	0x1
+ 1725 00ba 51       		.byte	0x51
+ 1726 00bb 0A000000 		.4byte	.LVL1
+ 1727 00bf CC000000 		.4byte	.LFE0
+ 1728 00c3 0400     		.2byte	0x4
+ 1729 00c5 F3       		.byte	0xf3
+ 1730 00c6 01       		.uleb128 0x1
+ 1731 00c7 51       		.byte	0x51
+ 1732 00c8 9F       		.byte	0x9f
+ 1733 00c9 00000000 		.4byte	0
+ 1734 00cd 00000000 		.4byte	0
+ 1735              	.LLST2:
+ 1736 00d1 00000000 		.4byte	.LVL0
+ 1737 00d5 1F000000 		.4byte	.LVL5-1
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 36
+
+
+ 1738 00d9 0100     		.2byte	0x1
+ 1739 00db 52       		.byte	0x52
+ 1740 00dc 1F000000 		.4byte	.LVL5-1
+ 1741 00e0 5E000000 		.4byte	.LVL19
+ 1742 00e4 0400     		.2byte	0x4
+ 1743 00e6 F3       		.byte	0xf3
+ 1744 00e7 01       		.uleb128 0x1
+ 1745 00e8 52       		.byte	0x52
+ 1746 00e9 9F       		.byte	0x9f
+ 1747 00ea 5E000000 		.4byte	.LVL19
+ 1748 00ee 6A000000 		.4byte	.LVL21
+ 1749 00f2 0100     		.2byte	0x1
+ 1750 00f4 54       		.byte	0x54
+ 1751 00f5 6A000000 		.4byte	.LVL21
+ 1752 00f9 75000000 		.4byte	.LVL22-1
+ 1753 00fd 0100     		.2byte	0x1
+ 1754 00ff 52       		.byte	0x52
+ 1755 0100 7A000000 		.4byte	.LVL23
+ 1756 0104 81000000 		.4byte	.LVL24-1
+ 1757 0108 0100     		.2byte	0x1
+ 1758 010a 52       		.byte	0x52
+ 1759 010b 81000000 		.4byte	.LVL24-1
+ 1760 010f 86000000 		.4byte	.LVL25
+ 1761 0113 0400     		.2byte	0x4
+ 1762 0115 F3       		.byte	0xf3
+ 1763 0116 01       		.uleb128 0x1
+ 1764 0117 52       		.byte	0x52
+ 1765 0118 9F       		.byte	0x9f
+ 1766 0119 86000000 		.4byte	.LVL25
+ 1767 011d 8B000000 		.4byte	.LVL26-1
+ 1768 0121 0100     		.2byte	0x1
+ 1769 0123 52       		.byte	0x52
+ 1770 0124 8B000000 		.4byte	.LVL26-1
+ 1771 0128 90000000 		.4byte	.LVL27
+ 1772 012c 0400     		.2byte	0x4
+ 1773 012e F3       		.byte	0xf3
+ 1774 012f 01       		.uleb128 0x1
+ 1775 0130 52       		.byte	0x52
+ 1776 0131 9F       		.byte	0x9f
+ 1777 0132 90000000 		.4byte	.LVL27
+ 1778 0136 97000000 		.4byte	.LVL28-1
+ 1779 013a 0100     		.2byte	0x1
+ 1780 013c 52       		.byte	0x52
+ 1781 013d 97000000 		.4byte	.LVL28-1
+ 1782 0141 A4000000 		.4byte	.LVL29
+ 1783 0145 0400     		.2byte	0x4
+ 1784 0147 F3       		.byte	0xf3
+ 1785 0148 01       		.uleb128 0x1
+ 1786 0149 52       		.byte	0x52
+ 1787 014a 9F       		.byte	0x9f
+ 1788 014b A4000000 		.4byte	.LVL29
+ 1789 014f A9000000 		.4byte	.LVL30-1
+ 1790 0153 0100     		.2byte	0x1
+ 1791 0155 52       		.byte	0x52
+ 1792 0156 A9000000 		.4byte	.LVL30-1
+ 1793 015a B6000000 		.4byte	.LVL31
+ 1794 015e 0400     		.2byte	0x4
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 37
+
+
+ 1795 0160 F3       		.byte	0xf3
+ 1796 0161 01       		.uleb128 0x1
+ 1797 0162 52       		.byte	0x52
+ 1798 0163 9F       		.byte	0x9f
+ 1799 0164 B6000000 		.4byte	.LVL31
+ 1800 0168 CC000000 		.4byte	.LFE0
+ 1801 016c 0100     		.2byte	0x1
+ 1802 016e 52       		.byte	0x52
+ 1803 016f 00000000 		.4byte	0
+ 1804 0173 00000000 		.4byte	0
+ 1805              	.LLST3:
+ 1806 0177 00000000 		.4byte	.LVL0
+ 1807 017b 12000000 		.4byte	.LVL2
+ 1808 017f 0100     		.2byte	0x1
+ 1809 0181 53       		.byte	0x53
+ 1810 0182 12000000 		.4byte	.LVL2
+ 1811 0186 5E000000 		.4byte	.LVL19
+ 1812 018a 0100     		.2byte	0x1
+ 1813 018c 57       		.byte	0x57
+ 1814 018d 5E000000 		.4byte	.LVL19
+ 1815 0191 7A000000 		.4byte	.LVL23
+ 1816 0195 0400     		.2byte	0x4
+ 1817 0197 F3       		.byte	0xf3
+ 1818 0198 01       		.uleb128 0x1
+ 1819 0199 53       		.byte	0x53
+ 1820 019a 9F       		.byte	0x9f
+ 1821 019b 7A000000 		.4byte	.LVL23
+ 1822 019f BA000000 		.4byte	.LVL33
+ 1823 01a3 0100     		.2byte	0x1
+ 1824 01a5 57       		.byte	0x57
+ 1825 01a6 BA000000 		.4byte	.LVL33
+ 1826 01aa CC000000 		.4byte	.LFE0
+ 1827 01ae 0400     		.2byte	0x4
+ 1828 01b0 F3       		.byte	0xf3
+ 1829 01b1 01       		.uleb128 0x1
+ 1830 01b2 53       		.byte	0x53
+ 1831 01b3 9F       		.byte	0x9f
+ 1832 01b4 00000000 		.4byte	0
+ 1833 01b8 00000000 		.4byte	0
+ 1834              	.LLST4:
+ 1835 01bc 22000000 		.4byte	.LVL6
+ 1836 01c0 28000000 		.4byte	.LVL7
+ 1837 01c4 0100     		.2byte	0x1
+ 1838 01c6 56       		.byte	0x56
+ 1839 01c7 28000000 		.4byte	.LVL7
+ 1840 01cb 2A000000 		.4byte	.LVL8
+ 1841 01cf 0200     		.2byte	0x2
+ 1842 01d1 77       		.byte	0x77
+ 1843 01d2 05       		.sleb128 5
+ 1844 01d3 2A000000 		.4byte	.LVL8
+ 1845 01d7 2C000000 		.4byte	.LVL9
+ 1846 01db 0100     		.2byte	0x1
+ 1847 01dd 56       		.byte	0x56
+ 1848 01de 2C000000 		.4byte	.LVL9
+ 1849 01e2 2E000000 		.4byte	.LVL10
+ 1850 01e6 0B00     		.2byte	0xb
+ 1851 01e8 77       		.byte	0x77
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 38
+
+
+ 1852 01e9 05       		.sleb128 5
+ 1853 01ea 94       		.byte	0x94
+ 1854 01eb 01       		.byte	0x1
+ 1855 01ec 08       		.byte	0x8
+ 1856 01ed FF       		.byte	0xff
+ 1857 01ee 1A       		.byte	0x1a
+ 1858 01ef 73       		.byte	0x73
+ 1859 01f0 00       		.sleb128 0
+ 1860 01f1 22       		.byte	0x22
+ 1861 01f2 9F       		.byte	0x9f
+ 1862 01f3 2E000000 		.4byte	.LVL10
+ 1863 01f7 58000000 		.4byte	.LVL16
+ 1864 01fb 0100     		.2byte	0x1
+ 1865 01fd 56       		.byte	0x56
+ 1866 01fe 00000000 		.4byte	0
+ 1867 0202 00000000 		.4byte	0
+ 1868              	.LLST5:
+ 1869 0206 3E000000 		.4byte	.LVL12
+ 1870 020a 45000000 		.4byte	.LVL13-1
+ 1871 020e 0200     		.2byte	0x2
+ 1872 0210 77       		.byte	0x77
+ 1873 0211 06       		.sleb128 6
+ 1874 0212 00000000 		.4byte	0
+ 1875 0216 00000000 		.4byte	0
+ 1876              	.LLST6:
+ 1877 021a 58000000 		.4byte	.LVL16
+ 1878 021e 5A000000 		.4byte	.LVL17
+ 1879 0222 0100     		.2byte	0x1
+ 1880 0224 56       		.byte	0x56
+ 1881 0225 5A000000 		.4byte	.LVL17
+ 1882 0229 5C000000 		.4byte	.LVL18
+ 1883 022d 0200     		.2byte	0x2
+ 1884 022f 77       		.byte	0x77
+ 1885 0230 04       		.sleb128 4
+ 1886 0231 5C000000 		.4byte	.LVL18
+ 1887 0235 7A000000 		.4byte	.LVL23
+ 1888 0239 0100     		.2byte	0x1
+ 1889 023b 56       		.byte	0x56
+ 1890 023c 00000000 		.4byte	0
+ 1891 0240 00000000 		.4byte	0
+ 1892              	.LLST7:
+ 1893 0244 5E000000 		.4byte	.LVL19
+ 1894 0248 7A000000 		.4byte	.LVL23
+ 1895 024c 0100     		.2byte	0x1
+ 1896 024e 57       		.byte	0x57
+ 1897 024f 00000000 		.4byte	0
+ 1898 0253 00000000 		.4byte	0
+ 1899              	.LLST8:
+ 1900 0257 00000000 		.4byte	.LVL34
+ 1901 025b 0F000000 		.4byte	.LVL36-1
+ 1902 025f 0100     		.2byte	0x1
+ 1903 0261 50       		.byte	0x50
+ 1904 0262 0F000000 		.4byte	.LVL36-1
+ 1905 0266 1C000000 		.4byte	.LVL37
+ 1906 026a 0100     		.2byte	0x1
+ 1907 026c 54       		.byte	0x54
+ 1908 026d 1C000000 		.4byte	.LVL37
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 39
+
+
+ 1909 0271 21000000 		.4byte	.LVL39-1
+ 1910 0275 0100     		.2byte	0x1
+ 1911 0277 50       		.byte	0x50
+ 1912 0278 21000000 		.4byte	.LVL39-1
+ 1913 027c 2E000000 		.4byte	.LVL40
+ 1914 0280 0100     		.2byte	0x1
+ 1915 0282 54       		.byte	0x54
+ 1916 0283 2E000000 		.4byte	.LVL40
+ 1917 0287 33000000 		.4byte	.LVL41-1
+ 1918 028b 0100     		.2byte	0x1
+ 1919 028d 50       		.byte	0x50
+ 1920 028e 33000000 		.4byte	.LVL41-1
+ 1921 0292 66000000 		.4byte	.LVL45
+ 1922 0296 0100     		.2byte	0x1
+ 1923 0298 54       		.byte	0x54
+ 1924 0299 66000000 		.4byte	.LVL45
+ 1925 029d 78000000 		.4byte	.LFE1
+ 1926 02a1 0400     		.2byte	0x4
+ 1927 02a3 F3       		.byte	0xf3
+ 1928 02a4 01       		.uleb128 0x1
+ 1929 02a5 50       		.byte	0x50
+ 1930 02a6 9F       		.byte	0x9f
+ 1931 02a7 00000000 		.4byte	0
+ 1932 02ab 00000000 		.4byte	0
+ 1933              	.LLST9:
+ 1934 02af 00000000 		.4byte	.LVL34
+ 1935 02b3 0C000000 		.4byte	.LVL35
+ 1936 02b7 0100     		.2byte	0x1
+ 1937 02b9 51       		.byte	0x51
+ 1938 02ba 0C000000 		.4byte	.LVL35
+ 1939 02be 1C000000 		.4byte	.LVL37
+ 1940 02c2 0400     		.2byte	0x4
+ 1941 02c4 F3       		.byte	0xf3
+ 1942 02c5 01       		.uleb128 0x1
+ 1943 02c6 51       		.byte	0x51
+ 1944 02c7 9F       		.byte	0x9f
+ 1945 02c8 1C000000 		.4byte	.LVL37
+ 1946 02cc 1E000000 		.4byte	.LVL38
+ 1947 02d0 0100     		.2byte	0x1
+ 1948 02d2 51       		.byte	0x51
+ 1949 02d3 1E000000 		.4byte	.LVL38
+ 1950 02d7 2E000000 		.4byte	.LVL40
+ 1951 02db 0400     		.2byte	0x4
+ 1952 02dd F3       		.byte	0xf3
+ 1953 02de 01       		.uleb128 0x1
+ 1954 02df 51       		.byte	0x51
+ 1955 02e0 9F       		.byte	0x9f
+ 1956 02e1 2E000000 		.4byte	.LVL40
+ 1957 02e5 33000000 		.4byte	.LVL41-1
+ 1958 02e9 0100     		.2byte	0x1
+ 1959 02eb 51       		.byte	0x51
+ 1960 02ec 33000000 		.4byte	.LVL41-1
+ 1961 02f0 78000000 		.4byte	.LFE1
+ 1962 02f4 0400     		.2byte	0x4
+ 1963 02f6 F3       		.byte	0xf3
+ 1964 02f7 01       		.uleb128 0x1
+ 1965 02f8 51       		.byte	0x51
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 40
+
+
+ 1966 02f9 9F       		.byte	0x9f
+ 1967 02fa 00000000 		.4byte	0
+ 1968 02fe 00000000 		.4byte	0
+ 1969              	.LLST10:
+ 1970 0302 00000000 		.4byte	.LVL34
+ 1971 0306 0F000000 		.4byte	.LVL36-1
+ 1972 030a 0100     		.2byte	0x1
+ 1973 030c 52       		.byte	0x52
+ 1974 030d 0F000000 		.4byte	.LVL36-1
+ 1975 0311 1C000000 		.4byte	.LVL37
+ 1976 0315 0400     		.2byte	0x4
+ 1977 0317 F3       		.byte	0xf3
+ 1978 0318 01       		.uleb128 0x1
+ 1979 0319 52       		.byte	0x52
+ 1980 031a 9F       		.byte	0x9f
+ 1981 031b 1C000000 		.4byte	.LVL37
+ 1982 031f 21000000 		.4byte	.LVL39-1
+ 1983 0323 0100     		.2byte	0x1
+ 1984 0325 52       		.byte	0x52
+ 1985 0326 21000000 		.4byte	.LVL39-1
+ 1986 032a 2E000000 		.4byte	.LVL40
+ 1987 032e 0400     		.2byte	0x4
+ 1988 0330 F3       		.byte	0xf3
+ 1989 0331 01       		.uleb128 0x1
+ 1990 0332 52       		.byte	0x52
+ 1991 0333 9F       		.byte	0x9f
+ 1992 0334 2E000000 		.4byte	.LVL40
+ 1993 0338 33000000 		.4byte	.LVL41-1
+ 1994 033c 0100     		.2byte	0x1
+ 1995 033e 52       		.byte	0x52
+ 1996 033f 33000000 		.4byte	.LVL41-1
+ 1997 0343 78000000 		.4byte	.LFE1
+ 1998 0347 0400     		.2byte	0x4
+ 1999 0349 F3       		.byte	0xf3
+ 2000 034a 01       		.uleb128 0x1
+ 2001 034b 52       		.byte	0x52
+ 2002 034c 9F       		.byte	0x9f
+ 2003 034d 00000000 		.4byte	0
+ 2004 0351 00000000 		.4byte	0
+ 2005              	.LLST11:
+ 2006 0355 00000000 		.4byte	.LVL34
+ 2007 0359 0F000000 		.4byte	.LVL36-1
+ 2008 035d 0100     		.2byte	0x1
+ 2009 035f 53       		.byte	0x53
+ 2010 0360 0F000000 		.4byte	.LVL36-1
+ 2011 0364 1C000000 		.4byte	.LVL37
+ 2012 0368 0400     		.2byte	0x4
+ 2013 036a F3       		.byte	0xf3
+ 2014 036b 01       		.uleb128 0x1
+ 2015 036c 53       		.byte	0x53
+ 2016 036d 9F       		.byte	0x9f
+ 2017 036e 1C000000 		.4byte	.LVL37
+ 2018 0372 21000000 		.4byte	.LVL39-1
+ 2019 0376 0100     		.2byte	0x1
+ 2020 0378 53       		.byte	0x53
+ 2021 0379 21000000 		.4byte	.LVL39-1
+ 2022 037d 2E000000 		.4byte	.LVL40
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 41
+
+
+ 2023 0381 0400     		.2byte	0x4
+ 2024 0383 F3       		.byte	0xf3
+ 2025 0384 01       		.uleb128 0x1
+ 2026 0385 53       		.byte	0x53
+ 2027 0386 9F       		.byte	0x9f
+ 2028 0387 2E000000 		.4byte	.LVL40
+ 2029 038b 33000000 		.4byte	.LVL41-1
+ 2030 038f 0100     		.2byte	0x1
+ 2031 0391 53       		.byte	0x53
+ 2032 0392 33000000 		.4byte	.LVL41-1
+ 2033 0396 78000000 		.4byte	.LFE1
+ 2034 039a 0400     		.2byte	0x4
+ 2035 039c F3       		.byte	0xf3
+ 2036 039d 01       		.uleb128 0x1
+ 2037 039e 53       		.byte	0x53
+ 2038 039f 9F       		.byte	0x9f
+ 2039 03a0 00000000 		.4byte	0
+ 2040 03a4 00000000 		.4byte	0
+ 2041              		.section	.debug_aranges,"",%progbits
+ 2042 0000 24000000 		.4byte	0x24
+ 2043 0004 0200     		.2byte	0x2
+ 2044 0006 00000000 		.4byte	.Ldebug_info0
+ 2045 000a 04       		.byte	0x4
+ 2046 000b 00       		.byte	0
+ 2047 000c 0000     		.2byte	0
+ 2048 000e 0000     		.2byte	0
+ 2049 0010 00000000 		.4byte	.LFB0
+ 2050 0014 CC000000 		.4byte	.LFE0-.LFB0
+ 2051 0018 00000000 		.4byte	.LFB1
+ 2052 001c 78000000 		.4byte	.LFE1-.LFB1
+ 2053 0020 00000000 		.4byte	0
+ 2054 0024 00000000 		.4byte	0
+ 2055              		.section	.debug_ranges,"",%progbits
+ 2056              	.Ldebug_ranges0:
+ 2057 0000 00000000 		.4byte	.LFB0
+ 2058 0004 CC000000 		.4byte	.LFE0
+ 2059 0008 00000000 		.4byte	.LFB1
+ 2060 000c 78000000 		.4byte	.LFE1
+ 2061 0010 00000000 		.4byte	0
+ 2062 0014 00000000 		.4byte	0
+ 2063              		.section	.debug_line,"",%progbits
+ 2064              	.Ldebug_line0:
+ 2065 0000 1C020000 		.section	.debug_str,"MS",%progbits,1
+ 2065      02009A01 
+ 2065      00000201 
+ 2065      FB0E0D00 
+ 2065      01010101 
+ 2066              	.LASF26:
+ 2067 0000 785F6F66 		.ascii	"x_offset\000"
+ 2067      66736574 
+ 2067      00
+ 2068              	.LASF27:
+ 2069 0009 69735F66 		.ascii	"is_font_inverse_mode\000"
+ 2069      6F6E745F 
+ 2069      696E7665 
+ 2069      7273655F 
+ 2069      6D6F6465 
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 42
+
+
+ 2070              	.LASF75:
+ 2071 001e 75387838 		.ascii	"u8x8_s1d15721_240x64_display_info\000"
+ 2071      5F733164 
+ 2071      31353732 
+ 2071      315F3234 
+ 2071      30783634 
+ 2072              	.LASF48:
+ 2073 0040 7370695F 		.ascii	"spi_mode\000"
+ 2073      6D6F6465 
+ 2073      00
+ 2074              	.LASF67:
+ 2075 0049 6172675F 		.ascii	"arg_ptr\000"
+ 2075      70747200 
+ 2076              	.LASF39:
+ 2077 0051 63686970 		.ascii	"chip_enable_level\000"
+ 2077      5F656E61 
+ 2077      626C655F 
+ 2077      6C657665 
+ 2077      6C00
+ 2078              	.LASF73:
+ 2079 0063 75387838 		.ascii	"u8x8_d_s1d15721_flip0_seq\000"
+ 2079      5F645F73 
+ 2079      31643135 
+ 2079      3732315F 
+ 2079      666C6970 
+ 2080              	.LASF24:
+ 2081 007d 666F6E74 		.ascii	"font\000"
+ 2081      00
+ 2082              	.LASF35:
+ 2083 0082 6465626F 		.ascii	"debounce_result_msg\000"
+ 2083      756E6365 
+ 2083      5F726573 
+ 2083      756C745F 
+ 2083      6D736700 
+ 2084              	.LASF2:
+ 2085 0096 73686F72 		.ascii	"short int\000"
+ 2085      7420696E 
+ 2085      7400
+ 2086              	.LASF22:
+ 2087 00a0 6770696F 		.ascii	"gpio_and_delay_cb\000"
+ 2087      5F616E64 
+ 2087      5F64656C 
+ 2087      61795F63 
+ 2087      6200
+ 2088              	.LASF52:
+ 2089 00b2 74696C65 		.ascii	"tile_width\000"
+ 2089      5F776964 
+ 2089      746800
+ 2090              	.LASF70:
+ 2091 00bd 73697A65 		.ascii	"sizetype\000"
+ 2091      74797065 
+ 2091      00
+ 2092              	.LASF45:
+ 2093 00c6 7364615F 		.ascii	"sda_setup_time_ns\000"
+ 2093      73657475 
+ 2093      705F7469 
+ 2093      6D655F6E 
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 43
+
+
+ 2093      7300
+ 2094              	.LASF44:
+ 2095 00d8 706F7374 		.ascii	"post_reset_wait_ms\000"
+ 2095      5F726573 
+ 2095      65745F77 
+ 2095      6169745F 
+ 2095      6D7300
+ 2096              	.LASF7:
+ 2097 00eb 5F5F7569 		.ascii	"__uint32_t\000"
+ 2097      6E743332 
+ 2097      5F7400
+ 2098              	.LASF4:
+ 2099 00f6 5F5F7569 		.ascii	"__uint16_t\000"
+ 2099      6E743136 
+ 2099      5F7400
+ 2100              	.LASF86:
+ 2101 0101 2E2E5C2E 		.ascii	"..\\..\\..\\..\\..\\..\\Dev\\Library embedded l2c d"
+ 2101      2E5C2E2E 
+ 2101      5C2E2E5C 
+ 2101      2E2E5C2E 
+ 2101      2E5C4465 
+ 2102 012d 6973706C 		.ascii	"isplay\\u8g2\\csrc\\u8x8_d_s1d15721.c\000"
+ 2102      61795C75 
+ 2102      3867325C 
+ 2102      63737263 
+ 2102      5C753878 
+ 2103              	.LASF68:
+ 2104 0150 75387838 		.ascii	"u8x8_d_s1d15721_common\000"
+ 2104      5F645F73 
+ 2104      31643135 
+ 2104      3732315F 
+ 2104      636F6D6D 
+ 2105              	.LASF51:
+ 2106 0167 77726974 		.ascii	"write_pulse_width_ns\000"
+ 2106      655F7075 
+ 2106      6C73655F 
+ 2106      77696474 
+ 2106      685F6E73 
+ 2107              	.LASF76:
+ 2108 017c 75387838 		.ascii	"u8x8_d_s1d15721_240x64_init_seq\000"
+ 2108      5F645F73 
+ 2108      31643135 
+ 2108      3732315F 
+ 2108      32343078 
+ 2109              	.LASF12:
+ 2110 019c 75696E74 		.ascii	"uint8_t\000"
+ 2110      385F7400 
+ 2111              	.LASF41:
+ 2112 01a4 706F7374 		.ascii	"post_chip_enable_wait_ns\000"
+ 2112      5F636869 
+ 2112      705F656E 
+ 2112      61626C65 
+ 2112      5F776169 
+ 2113              	.LASF65:
+ 2114 01bd 75387838 		.ascii	"u8x8\000"
+ 2114      00
+ 2115              	.LASF60:
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 44
+
+
+ 2116 01c2 74696C65 		.ascii	"tile_ptr\000"
+ 2116      5F707472 
+ 2116      00
+ 2117              	.LASF66:
+ 2118 01cb 6172675F 		.ascii	"arg_int\000"
+ 2118      696E7400 
+ 2119              	.LASF80:
+ 2120 01d3 75387838 		.ascii	"u8x8_cad_SendData\000"
+ 2120      5F636164 
+ 2120      5F53656E 
+ 2120      64446174 
+ 2120      6100
+ 2121              	.LASF23:
+ 2122 01e5 6275735F 		.ascii	"bus_clock\000"
+ 2122      636C6F63 
+ 2122      6B00
+ 2123              	.LASF54:
+ 2124 01ef 64656661 		.ascii	"default_x_offset\000"
+ 2124      756C745F 
+ 2124      785F6F66 
+ 2124      66736574 
+ 2124      00
+ 2125              	.LASF36:
+ 2126 0200 75387838 		.ascii	"u8x8_display_info_t\000"
+ 2126      5F646973 
+ 2126      706C6179 
+ 2126      5F696E66 
+ 2126      6F5F7400 
+ 2127              	.LASF33:
+ 2128 0214 6465626F 		.ascii	"debounce_last_pin_state\000"
+ 2128      756E6365 
+ 2128      5F6C6173 
+ 2128      745F7069 
+ 2128      6E5F7374 
+ 2129              	.LASF9:
+ 2130 022c 6C6F6E67 		.ascii	"long long int\000"
+ 2130      206C6F6E 
+ 2130      6720696E 
+ 2130      7400
+ 2131              	.LASF31:
+ 2132 023a 6770696F 		.ascii	"gpio_result\000"
+ 2132      5F726573 
+ 2132      756C7400 
+ 2133              	.LASF46:
+ 2134 0246 73636B5F 		.ascii	"sck_pulse_width_ns\000"
+ 2134      70756C73 
+ 2134      655F7769 
+ 2134      6474685F 
+ 2134      6E7300
+ 2135              	.LASF78:
+ 2136 0259 75387838 		.ascii	"u8x8_cad_SendCmd\000"
+ 2136      5F636164 
+ 2136      5F53656E 
+ 2136      64436D64 
+ 2136      00
+ 2137              	.LASF84:
+ 2138 026a 75387838 		.ascii	"u8x8_d_helper_display_init\000"
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 45
+
+
+ 2138      5F645F68 
+ 2138      656C7065 
+ 2138      725F6469 
+ 2138      73706C61 
+ 2139              	.LASF6:
+ 2140 0285 6C6F6E67 		.ascii	"long int\000"
+ 2140      20696E74 
+ 2140      00
+ 2141              	.LASF81:
+ 2142 028e 75387838 		.ascii	"u8x8_cad_EndTransfer\000"
+ 2142      5F636164 
+ 2142      5F456E64 
+ 2142      5472616E 
+ 2142      73666572 
+ 2143              	.LASF61:
+ 2144 02a3 785F706F 		.ascii	"x_pos\000"
+ 2144      7300
+ 2145              	.LASF72:
+ 2146 02a9 75387838 		.ascii	"u8x8_d_s1d15721_powersave1_seq\000"
+ 2146      5F645F73 
+ 2146      31643135 
+ 2146      3732315F 
+ 2146      706F7765 
+ 2147              	.LASF3:
+ 2148 02c8 5F5F7569 		.ascii	"__uint8_t\000"
+ 2148      6E74385F 
+ 2148      7400
+ 2149              	.LASF19:
+ 2150 02d2 64697370 		.ascii	"display_cb\000"
+ 2150      6C61795F 
+ 2150      636200
+ 2151              	.LASF71:
+ 2152 02dd 75387838 		.ascii	"u8x8_d_s1d15721_powersave0_seq\000"
+ 2152      5F645F73 
+ 2152      31643135 
+ 2152      3732315F 
+ 2152      706F7765 
+ 2153              	.LASF50:
+ 2154 02fc 64617461 		.ascii	"data_setup_time_ns\000"
+ 2154      5F736574 
+ 2154      75705F74 
+ 2154      696D655F 
+ 2154      6E7300
+ 2155              	.LASF74:
+ 2156 030f 75387838 		.ascii	"u8x8_d_s1d15721_flip1_seq\000"
+ 2156      5F645F73 
+ 2156      31643135 
+ 2156      3732315F 
+ 2156      666C6970 
+ 2157              	.LASF15:
+ 2158 0329 6C6F6E67 		.ascii	"long double\000"
+ 2158      20646F75 
+ 2158      626C6500 
+ 2159              	.LASF53:
+ 2160 0335 74696C65 		.ascii	"tile_height\000"
+ 2160      5F686569 
+ 2160      67687400 
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 46
+
+
+ 2161              	.LASF1:
+ 2162 0341 756E7369 		.ascii	"unsigned char\000"
+ 2162      676E6564 
+ 2162      20636861 
+ 2162      7200
+ 2163              	.LASF0:
+ 2164 034f 7369676E 		.ascii	"signed char\000"
+ 2164      65642063 
+ 2164      68617200 
+ 2165              	.LASF10:
+ 2166 035b 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2166      206C6F6E 
+ 2166      6720756E 
+ 2166      7369676E 
+ 2166      65642069 
+ 2167              	.LASF14:
+ 2168 0372 75696E74 		.ascii	"uint32_t\000"
+ 2168      33325F74 
+ 2168      00
+ 2169              	.LASF59:
+ 2170 037b 75387838 		.ascii	"u8x8_tile_struct\000"
+ 2170      5F74696C 
+ 2170      655F7374 
+ 2170      72756374 
+ 2170      00
+ 2171              	.LASF11:
+ 2172 038c 756E7369 		.ascii	"unsigned int\000"
+ 2172      676E6564 
+ 2172      20696E74 
+ 2172      00
+ 2173              	.LASF13:
+ 2174 0399 75696E74 		.ascii	"uint16_t\000"
+ 2174      31365F74 
+ 2174      00
+ 2175              	.LASF38:
+ 2176 03a2 75387838 		.ascii	"u8x8_display_info_struct\000"
+ 2176      5F646973 
+ 2176      706C6179 
+ 2176      5F696E66 
+ 2176      6F5F7374 
+ 2177              	.LASF77:
+ 2178 03bb 75387838 		.ascii	"u8x8_cad_StartTransfer\000"
+ 2178      5F636164 
+ 2178      5F537461 
+ 2178      72745472 
+ 2178      616E7366 
+ 2179              	.LASF43:
+ 2180 03d2 72657365 		.ascii	"reset_pulse_width_ms\000"
+ 2180      745F7075 
+ 2180      6C73655F 
+ 2180      77696474 
+ 2180      685F6D73 
+ 2181              	.LASF16:
+ 2182 03e7 75387838 		.ascii	"u8x8_t\000"
+ 2182      5F7400
+ 2183              	.LASF49:
+ 2184 03ee 6932635F 		.ascii	"i2c_bus_clock_100kHz\000"
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 47
+
+
+ 2184      6275735F 
+ 2184      636C6F63 
+ 2184      6B5F3130 
+ 2184      306B487A 
+ 2185              	.LASF47:
+ 2186 0403 73636B5F 		.ascii	"sck_clock_hz\000"
+ 2186      636C6F63 
+ 2186      6B5F687A 
+ 2186      00
+ 2187              	.LASF5:
+ 2188 0410 73686F72 		.ascii	"short unsigned int\000"
+ 2188      7420756E 
+ 2188      7369676E 
+ 2188      65642069 
+ 2188      6E7400
+ 2189              	.LASF64:
+ 2190 0423 75387838 		.ascii	"u8x8_char_cb\000"
+ 2190      5F636861 
+ 2190      725F6362 
+ 2190      00
+ 2191              	.LASF34:
+ 2192 0430 6465626F 		.ascii	"debounce_state\000"
+ 2192      756E6365 
+ 2192      5F737461 
+ 2192      746500
+ 2193              	.LASF79:
+ 2194 043f 75387838 		.ascii	"u8x8_cad_SendArg\000"
+ 2194      5F636164 
+ 2194      5F53656E 
+ 2194      64417267 
+ 2194      00
+ 2195              	.LASF17:
+ 2196 0450 64697370 		.ascii	"display_info\000"
+ 2196      6C61795F 
+ 2196      696E666F 
+ 2196      00
+ 2197              	.LASF57:
+ 2198 045d 70697865 		.ascii	"pixel_height\000"
+ 2198      6C5F6865 
+ 2198      69676874 
+ 2198      00
+ 2199              	.LASF56:
+ 2200 046a 70697865 		.ascii	"pixel_width\000"
+ 2200      6C5F7769 
+ 2200      64746800 
+ 2201              	.LASF30:
+ 2202 0476 75746638 		.ascii	"utf8_state\000"
+ 2202      5F737461 
+ 2202      746500
+ 2203              	.LASF37:
+ 2204 0481 75387838 		.ascii	"u8x8_struct\000"
+ 2204      5F737472 
+ 2204      75637400 
+ 2205              	.LASF62:
+ 2206 048d 795F706F 		.ascii	"y_pos\000"
+ 2206      7300
+ 2207              	.LASF82:
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 48
+
+
+ 2208 0493 75387838 		.ascii	"u8x8_cad_SendSequence\000"
+ 2208      5F636164 
+ 2208      5F53656E 
+ 2208      64536571 
+ 2208      75656E63 
+ 2209              	.LASF8:
+ 2210 04a9 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2210      20756E73 
+ 2210      69676E65 
+ 2210      6420696E 
+ 2210      7400
+ 2211              	.LASF87:
+ 2212 04bb 433A5C55 		.ascii	"C:\\Users\\Abude\\Documents\\PSoC Creator\\Embedded"
+ 2212      73657273 
+ 2212      5C416275 
+ 2212      64655C44 
+ 2212      6F63756D 
+ 2213 04e9 53797374 		.ascii	"SystemsLab5\\Lab 5.cydsn\000"
+ 2213      656D734C 
+ 2213      6162355C 
+ 2213      4C616220 
+ 2213      352E6379 
+ 2214              	.LASF21:
+ 2215 0501 62797465 		.ascii	"byte_cb\000"
+ 2215      5F636200 
+ 2216              	.LASF40:
+ 2217 0509 63686970 		.ascii	"chip_disable_level\000"
+ 2217      5F646973 
+ 2217      61626C65 
+ 2217      5F6C6576 
+ 2217      656C00
+ 2218              	.LASF28:
+ 2219 051c 6932635F 		.ascii	"i2c_address\000"
+ 2219      61646472 
+ 2219      65737300 
+ 2220              	.LASF69:
+ 2221 0528 75387838 		.ascii	"u8x8_d_s1d15721_240x64\000"
+ 2221      5F645F73 
+ 2221      31643135 
+ 2221      3732315F 
+ 2221      32343078 
+ 2222              	.LASF55:
+ 2223 053f 666C6970 		.ascii	"flipmode_x_offset\000"
+ 2223      6D6F6465 
+ 2223      5F785F6F 
+ 2223      66667365 
+ 2223      7400
+ 2224              	.LASF25:
+ 2225 0551 656E636F 		.ascii	"encoding\000"
+ 2225      64696E67 
+ 2225      00
+ 2226              	.LASF29:
+ 2227 055a 6932635F 		.ascii	"i2c_started\000"
+ 2227      73746172 
+ 2227      74656400 
+ 2228              	.LASF83:
+ 2229 0566 75387838 		.ascii	"u8x8_d_helper_display_setup_memory\000"
+ARM GAS  C:\Users\Abude\AppData\Local\Temp\ccWXSq0E.s 			page 49
+
+
+ 2229      5F645F68 
+ 2229      656C7065 
+ 2229      725F6469 
+ 2229      73706C61 
+ 2230              	.LASF20:
+ 2231 0589 6361645F 		.ascii	"cad_cb\000"
+ 2231      636200
+ 2232              	.LASF58:
+ 2233 0590 75387838 		.ascii	"u8x8_tile_t\000"
+ 2233      5F74696C 
+ 2233      655F7400 
+ 2234              	.LASF85:
+ 2235 059c 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 2235      43313120 
+ 2235      352E342E 
+ 2235      31203230 
+ 2235      31363036 
+ 2236 05cf 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 2236      20726576 
+ 2236      6973696F 
+ 2236      6E203233 
+ 2236      37373135 
+ 2237 0602 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 2237      66756E63 
+ 2237      74696F6E 
+ 2237      2D736563 
+ 2237      74696F6E 
+ 2238              	.LASF32:
+ 2239 062a 6465626F 		.ascii	"debounce_default_pin_state\000"
+ 2239      756E6365 
+ 2239      5F646566 
+ 2239      61756C74 
+ 2239      5F70696E 
+ 2240              	.LASF63:
+ 2241 0645 75387838 		.ascii	"u8x8_msg_cb\000"
+ 2241      5F6D7367 
+ 2241      5F636200 
+ 2242              	.LASF18:
+ 2243 0651 6E657874 		.ascii	"next_cb\000"
+ 2243      5F636200 
+ 2244              	.LASF42:
+ 2245 0659 7072655F 		.ascii	"pre_chip_disable_wait_ns\000"
+ 2245      63686970 
+ 2245      5F646973 
+ 2245      61626C65 
+ 2245      5F776169 
+ 2246              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
